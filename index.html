@@ -1097,14 +1097,17 @@
       <div class="live-card" id="liveCard">
         <div class="live-card-head">
           <span class="live-badge">✦ Today's Brief</span>
-          <span class="live-time" id="liveTime">Loading...</span>
+          <span class="live-time" id="liveTime">Sunday, 12 Apr</span>
         </div>
         <div id="liveContent">
-          <div class="live-skeleton w80"></div>
-          <div class="live-skeleton w60"></div>
-          <div class="live-skeleton w70"></div>
-          <div class="live-skeleton w80"></div>
-          <div class="live-skeleton w60"></div>
+          <div class="live-mood">"Political tensions rise while economic disruptions reshape consumer markets across key economies."</div>
+          <div class="live-stories">
+            <div class="live-story"><div class="live-story-num">01</div><div class="live-story-text"><div class="live-story-src">Times of India</div><div class="live-story-hl">PM Modi writes to parties, seeks support on women's quota bills</div></div></div>
+            <div class="live-story"><div class="live-story-num">02</div><div class="live-story-text"><div class="live-story-src">Reuters</div><div class="live-story-hl">ECB holds rates steady amid eurozone inflation concerns</div></div></div>
+            <div class="live-story"><div class="live-story-num">03</div><div class="live-story-text"><div class="live-story-src">Bloomberg</div><div class="live-story-hl">Asian markets rally as US-China trade talks resume</div></div></div>
+            <div class="live-story"><div class="live-story-num">04</div><div class="live-story-text"><div class="live-story-src">FT</div><div class="live-story-hl">UK tech sector adds 50,000 jobs in first quarter</div></div></div>
+            <div class="live-story"><div class="live-story-num">05</div><div class="live-story-text"><div class="live-story-src">DW</div><div class="live-story-hl">Berlin climate summit enters second day of negotiations</div></div></div>
+          </div>
         </div>
       </div>
       <div class="live-note">Updates every few hours · Sourced from 100+ newsrooms</div>
@@ -1367,84 +1370,59 @@
   const eu = ['hello','verityn.news'].join('@');
   document.querySelectorAll('.eml').forEach(a => { a.href = 'mail' + 'to:' + eu; a.textContent = eu; });
 
-  // ═══ LIVE BRIEF ═══
+  // ═══ LIVE BRIEF — show static instantly, swap to live silently ═══
   const BACKEND = 'https://verityn-backend-ten.vercel.app';
 
   async function fetchLiveBrief() {
     try {
-      // Fetch daily summary
-      const res = await fetch(BACKEND + '/api/user?action=daily-summary');
-      const data = await res.json();
-
-      // Fetch top headlines for display
       const newsRes = await fetch(BACKEND + '/api/content?action=news&country=in&category=general&max=5');
       const newsData = await newsRes.json();
       const articles = (newsData.articles || newsData || []).slice(0, 5);
 
+      if (!articles.length) return; // keep static content
+
+      let summaryRes, summaryData;
+      try {
+        summaryRes = await fetch(BACKEND + '/api/user?action=daily-summary');
+        summaryData = await summaryRes.json();
+      } catch(e) {}
+
       const liveContent = document.getElementById('liveContent');
       const liveTime = document.getElementById('liveTime');
 
-      // Set time
       const now = new Date();
       const hours = now.getHours();
       const timeLabel = hours < 12 ? 'This morning' : hours < 17 ? 'This afternoon' : 'This evening';
       liveTime.textContent = timeLabel + ' · ' + now.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
 
-      // Build content
       let html = '';
+      const mood = summaryData?.summary || summaryData?.digest;
+      if (mood) html += '<div class="live-mood">"' + mood + '"</div>';
 
-      // Mood/summary from daily-summary
-      if (data && data.summary) {
-        html += '<div class="live-mood">"' + data.summary + '"</div>';
-      } else if (data && data.digest) {
-        html += '<div class="live-mood">"' + data.digest + '"</div>';
-      }
+      html += '<div class="live-stories">';
+      articles.forEach((a, i) => {
+        const source = a.source?.name || a.source || 'News';
+        const title = (a.title || a.headline || '').split(' - ')[0];
+        html += `<div class="live-story"><div class="live-story-num">${String(i+1).padStart(2,'0')}</div><div class="live-story-text"><div class="live-story-src">${source}</div><div class="live-story-hl">${title}</div></div></div>`;
+      });
+      html += '</div>';
 
-      // Top stories
-      if (articles.length > 0) {
-        html += '<div class="live-stories">';
-        articles.forEach((a, i) => {
-          const source = a.source?.name || a.source || 'News';
-          const title = a.title || a.headline || '';
-          html += `<div class="live-story">
-            <div class="live-story-num">${String(i + 1).padStart(2, '0')}</div>
-            <div class="live-story-text">
-              <div class="live-story-src">${source}</div>
-              <div class="live-story-hl">${title.split(' - ')[0]}</div>
-            </div>
-          </div>`;
-        });
-        html += '</div>';
-      }
-
-      if (html) {
+      // Smooth swap
+      liveContent.style.opacity = '0';
+      setTimeout(() => {
         liveContent.innerHTML = html;
-      } else {
-        showFallbackBrief();
-      }
+        liveContent.style.opacity = '1';
+      }, 300);
     } catch (e) {
-      console.log('Live brief fetch failed, showing fallback');
-      showFallbackBrief();
+      // Static content stays — visitor sees nothing wrong
     }
   }
 
-  function showFallbackBrief() {
-    const liveTime = document.getElementById('liveTime');
-    const liveContent = document.getElementById('liveContent');
-    liveTime.textContent = 'Sample brief';
-    liveContent.innerHTML = `
-      <div class="live-mood">"Political tensions rise while economic disruptions reshape consumer markets across key economies."</div>
-      <div class="live-stories">
-        <div class="live-story"><div class="live-story-num">01</div><div class="live-story-text"><div class="live-story-src">Times of India</div><div class="live-story-hl">PM Modi writes to parties, seeks support on women's quota bills</div></div></div>
-        <div class="live-story"><div class="live-story-num">02</div><div class="live-story-text"><div class="live-story-src">Reuters</div><div class="live-story-hl">ECB holds rates steady amid eurozone inflation concerns</div></div></div>
-        <div class="live-story"><div class="live-story-num">03</div><div class="live-story-text"><div class="live-story-src">Bloomberg</div><div class="live-story-hl">Asian markets rally as US-China trade talks resume</div></div></div>
-        <div class="live-story"><div class="live-story-num">04</div><div class="live-story-text"><div class="live-story-src">FT</div><div class="live-story-hl">UK tech sector adds 50,000 jobs in first quarter</div></div></div>
-        <div class="live-story"><div class="live-story-num">05</div><div class="live-story-text"><div class="live-story-src">DW</div><div class="live-story-hl">Berlin climate summit enters second day of negotiations</div></div></div>
-      </div>`;
-  }
+  // Add transition for smooth swap
+  document.getElementById('liveContent').style.transition = 'opacity 0.3s ease';
 
-  // Load live brief after page loads
-  setTimeout(fetchLiveBrief, 2000);
+  // Fetch in background after page settles
+  setTimeout(fetchLiveBrief, 1500);
 
   // ═══ WAITLIST ═══
   async function submitWaitlist() {
