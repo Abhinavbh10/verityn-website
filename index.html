@@ -634,6 +634,135 @@
   .demo-dot.filling::after { animation: dotFill 3.5s linear forwards; }
   @keyframes dotFill { from { width: 0; } to { width: 100%; } }
 
+  /* ═══ LIVE BRIEF SECTION ═══ */
+  .live-s {
+    padding: 100px 0; background: var(--ink); color: var(--parchment);
+    position: relative; overflow: hidden;
+  }
+  .live-s::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--red), var(--gold), var(--red));
+  }
+  .live-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+  .live-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .live-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--red);
+    animation: livePulse 2s ease-in-out infinite;
+  }
+  @keyframes livePulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .live-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem); font-weight: 600;
+    line-height: 1.15; color: var(--parchment); margin-bottom: 28px;
+  }
+  .live-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px; padding: 28px 32px; text-align: left;
+    margin-bottom: 16px;
+  }
+  .live-card-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .live-badge {
+    font-size: 0.55rem; font-weight: 800; letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--gold), #D4B86A);
+    color: var(--ink); padding: 3px 10px; border-radius: 100px;
+  }
+  .live-time {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem; color: rgba(245,240,232,0.3);
+  }
+  .live-mood {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.15rem; font-weight: 500; font-style: italic;
+    line-height: 1.5; color: rgba(245,240,232,0.7);
+    margin-bottom: 16px;
+  }
+  .live-stories { display: flex; flex-direction: column; gap: 8px; }
+  .live-story {
+    display: flex; align-items: baseline; gap: 8px;
+    padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .live-story:last-child { border-bottom: none; padding-bottom: 0; }
+  .live-story-num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.2rem; font-weight: 700; color: rgba(245,240,232,0.08);
+    flex-shrink: 0; width: 20px;
+  }
+  .live-story-text { flex: 1; }
+  .live-story-src {
+    font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+    color: var(--red); letter-spacing: 0.03em; margin-bottom: 1px;
+  }
+  .live-story-hl {
+    font-family: Georgia, serif; font-size: 0.85rem; font-weight: 700;
+    color: var(--parchment); line-height: 1.25;
+  }
+  .live-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem; color: rgba(245,240,232,0.25);
+    text-align: center;
+  }
+  .live-skeleton {
+    height: 14px; background: rgba(255,255,255,0.05);
+    border-radius: 4px; margin-bottom: 8px;
+    animation: skelPulse 1.5s ease-in-out infinite;
+  }
+  .live-skeleton.w60 { width: 60%; }
+  .live-skeleton.w80 { width: 80%; }
+  .live-skeleton.w70 { width: 70%; }
+  @keyframes skelPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+  /* ═══ WAITLIST / EMAIL CAPTURE ═══ */
+  .wl-form {
+    display: flex; gap: 0; max-width: 460px; margin: 0 auto;
+    border-radius: 10px; overflow: hidden;
+    border: 2px solid var(--ink-10);
+    transition: border-color 0.3s;
+  }
+  .wl-form:focus-within { border-color: var(--red); }
+  .wl-input {
+    flex: 1; padding: 16px 20px;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.9rem; color: var(--ink);
+    border: none; outline: none;
+    background: var(--white);
+  }
+  .wl-input::placeholder { color: var(--ink-30); }
+  .wl-btn {
+    padding: 16px 28px;
+    background: var(--red); color: var(--parchment);
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 0.02em;
+    border: none; cursor: pointer;
+    transition: background 0.25s;
+    white-space: nowrap;
+  }
+  .wl-btn:hover { background: var(--red-hover); }
+  .wl-btn:disabled { background: var(--ink-30); cursor: not-allowed; }
+  .wl-count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem; color: var(--ink-50);
+    margin-top: 14px; text-align: center;
+  }
+  .wl-success {
+    font-size: 0.9rem; font-weight: 600; color: #16A34A;
+    text-align: center; padding: 16px 0;
+  }
+  .wl-error {
+    font-size: 0.8rem; color: var(--red);
+    text-align: center; margin-top: 8px;
+  }
+
   /* ═══ LEGAL MODAL ═══ */
   .legal-overlay {
     position: fixed; inset: 0; z-index: 8500;
@@ -756,7 +885,7 @@
       <a href="#how">Features</a>
       <a href="#brief">AI Brief</a>
       <a href="#about">About</a>
-      <a href="#download" class="n-cta">Get the App</a>
+      <a href="#download" class="n-cta">Join Waitlist</a>
     </div>
   </div>
 </nav>
@@ -959,16 +1088,47 @@
   </div>
 </section>
 
-<!-- CTA -->
+<!-- Live Brief -->
+<section class="live-s rv" id="live">
+  <div class="w">
+    <div class="live-inner">
+      <div class="live-label"><div class="live-dot"></div>Live from Verityn</div>
+      <h2 class="live-title">Here's what Verityn readers<br>saw this morning.</h2>
+      <div class="live-card" id="liveCard">
+        <div class="live-card-head">
+          <span class="live-badge">✦ Today's Brief</span>
+          <span class="live-time" id="liveTime">Loading...</span>
+        </div>
+        <div id="liveContent">
+          <div class="live-skeleton w80"></div>
+          <div class="live-skeleton w60"></div>
+          <div class="live-skeleton w70"></div>
+          <div class="live-skeleton w80"></div>
+          <div class="live-skeleton w60"></div>
+        </div>
+      </div>
+      <div class="live-note">Updates every few hours · Sourced from 100+ newsrooms</div>
+    </div>
+  </div>
+</section>
+
+<!-- Waitlist CTA -->
 <section class="cta-s" id="download">
   <div class="w">
     <div class="cta-inner">
-      <div class="how-label">Get Started</div>
-      <h2 class="brief-title">Your news agent<br>is ready.</h2>
-      <p class="cta-desc">Free to download. No account needed. Tell it where you live, where you're from, and what you follow — it handles the rest.</p>
-      <div class="cta-btns">
-        <a href="#" class="store-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg><div class="store-btn-text"><div class="store-btn-lbl">Download on the</div><div class="store-btn-name">App Store</div></div></a>
-        <a href="#" class="store-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302L15.396 12l2.302-2.492zM5.864 2.658L16.8 9.991l-2.302 2.302L5.864 2.658z"/></svg><div class="store-btn-text"><div class="store-btn-lbl">Get it on</div><div class="store-btn-name">Google Play</div></div></a>
+      <div class="how-label">Coming Soon</div>
+      <h2 class="brief-title">Be the first to know<br>when Verityn launches.</h2>
+      <p class="cta-desc">We're putting the finishing touches on the app. Drop your email and we'll let you know the moment it's ready — no spam, just one email on launch day.</p>
+      <div id="wlForm">
+        <div class="wl-form">
+          <input type="email" class="wl-input" id="wlEmail" placeholder="you@example.com" required>
+          <button class="wl-btn" id="wlBtn" onclick="submitWaitlist()">Notify me</button>
+        </div>
+        <div class="wl-error" id="wlError" style="display:none"></div>
+        <div class="wl-count" id="wlCount"></div>
+      </div>
+      <div id="wlSuccess" style="display:none">
+        <div class="wl-success">You're in. We'll email you on launch day.</div>
       </div>
     </div>
   </div>
@@ -1206,6 +1366,135 @@
   // Render emails via JS to prevent Cloudflare obfuscation
   const eu = ['hello','verityn.news'].join('@');
   document.querySelectorAll('.eml').forEach(a => { a.href = 'mail' + 'to:' + eu; a.textContent = eu; });
+
+  // ═══ LIVE BRIEF ═══
+  const BACKEND = 'https://verityn-backend-ten.vercel.app';
+
+  async function fetchLiveBrief() {
+    try {
+      // Fetch daily summary
+      const res = await fetch(BACKEND + '/api/user?action=daily-summary');
+      const data = await res.json();
+
+      // Fetch top headlines for display
+      const newsRes = await fetch(BACKEND + '/api/content?action=news&country=in&category=general&max=5');
+      const newsData = await newsRes.json();
+      const articles = (newsData.articles || newsData || []).slice(0, 5);
+
+      const liveContent = document.getElementById('liveContent');
+      const liveTime = document.getElementById('liveTime');
+
+      // Set time
+      const now = new Date();
+      const hours = now.getHours();
+      const timeLabel = hours < 12 ? 'This morning' : hours < 17 ? 'This afternoon' : 'This evening';
+      liveTime.textContent = timeLabel + ' · ' + now.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+
+      // Build content
+      let html = '';
+
+      // Mood/summary from daily-summary
+      if (data && data.summary) {
+        html += '<div class="live-mood">"' + data.summary + '"</div>';
+      } else if (data && data.digest) {
+        html += '<div class="live-mood">"' + data.digest + '"</div>';
+      }
+
+      // Top stories
+      if (articles.length > 0) {
+        html += '<div class="live-stories">';
+        articles.forEach((a, i) => {
+          const source = a.source?.name || a.source || 'News';
+          const title = a.title || a.headline || '';
+          html += `<div class="live-story">
+            <div class="live-story-num">${String(i + 1).padStart(2, '0')}</div>
+            <div class="live-story-text">
+              <div class="live-story-src">${source}</div>
+              <div class="live-story-hl">${title.split(' - ')[0]}</div>
+            </div>
+          </div>`;
+        });
+        html += '</div>';
+      }
+
+      if (html) {
+        liveContent.innerHTML = html;
+      } else {
+        showFallbackBrief();
+      }
+    } catch (e) {
+      console.log('Live brief fetch failed, showing fallback');
+      showFallbackBrief();
+    }
+  }
+
+  function showFallbackBrief() {
+    const liveTime = document.getElementById('liveTime');
+    const liveContent = document.getElementById('liveContent');
+    liveTime.textContent = 'Sample brief';
+    liveContent.innerHTML = `
+      <div class="live-mood">"Political tensions rise while economic disruptions reshape consumer markets across key economies."</div>
+      <div class="live-stories">
+        <div class="live-story"><div class="live-story-num">01</div><div class="live-story-text"><div class="live-story-src">Times of India</div><div class="live-story-hl">PM Modi writes to parties, seeks support on women's quota bills</div></div></div>
+        <div class="live-story"><div class="live-story-num">02</div><div class="live-story-text"><div class="live-story-src">Reuters</div><div class="live-story-hl">ECB holds rates steady amid eurozone inflation concerns</div></div></div>
+        <div class="live-story"><div class="live-story-num">03</div><div class="live-story-text"><div class="live-story-src">Bloomberg</div><div class="live-story-hl">Asian markets rally as US-China trade talks resume</div></div></div>
+        <div class="live-story"><div class="live-story-num">04</div><div class="live-story-text"><div class="live-story-src">FT</div><div class="live-story-hl">UK tech sector adds 50,000 jobs in first quarter</div></div></div>
+        <div class="live-story"><div class="live-story-num">05</div><div class="live-story-text"><div class="live-story-src">DW</div><div class="live-story-hl">Berlin climate summit enters second day of negotiations</div></div></div>
+      </div>`;
+  }
+
+  // Load live brief after page loads
+  setTimeout(fetchLiveBrief, 2000);
+
+  // ═══ WAITLIST ═══
+  async function submitWaitlist() {
+    const emailInput = document.getElementById('wlEmail');
+    const btn = document.getElementById('wlBtn');
+    const errorEl = document.getElementById('wlError');
+    const email = emailInput.value.trim();
+
+    // Validate
+    errorEl.style.display = 'none';
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errorEl.textContent = 'Please enter a valid email address.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    // Submit
+    btn.disabled = true;
+    btn.textContent = 'Joining...';
+
+    try {
+      const res = await fetch(BACKEND + '/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        document.getElementById('wlForm').style.display = 'none';
+        document.getElementById('wlSuccess').style.display = 'block';
+      } else {
+        errorEl.textContent = data.error || 'Something went wrong. Try again.';
+        errorEl.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Notify me';
+      }
+    } catch (e) {
+      errorEl.textContent = 'Could not connect. Try again in a moment.';
+      errorEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Notify me';
+    }
+  }
+
+  // Submit on Enter key
+  document.getElementById('wlEmail').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') submitWaitlist();
+  });
 
   // ═══ 3D INTERACTIONS ═══
 
