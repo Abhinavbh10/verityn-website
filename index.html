@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verityn — 7 Stories. Why They Matter to You.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C0392B;
+    --red-hover: #A93226;
+    --parchment: #F5F0E8;
+    --parchment-dark: #EDE7DB;
+    --ink: #141414;
+    --ink-80: #3D3D3D;
+    --ink-50: #7A7A7A;
+    --ink-30: #ABABAB;
+    --ink-10: #E0DCD5;
+    --white: #FFFFFF;
+    --gold: #B8963E;
+    --app-bg: #FAF8F4;
+    --app-text: #111111;
+    --app-muted: #999999;
+    --app-secondary: #555555;
+    --app-border: rgba(0,0,0,0.08);
+    --app-dark: #0D1117;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Libre Franklin', sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Grain overlay */
+  body::after {
+    content: ''; position: fixed; inset: 0; z-index: 50;
+    pointer-events: none; opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat; background-size: 180px;
+  }
+
+  .w { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+
+  /* ═══ PRELOADER ═══ */
+  .pre {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.7s ease, visibility 0.7s ease;
+  }
+  .pre.done { opacity: 0; visibility: hidden; pointer-events: none; }
+  .pre-logo { display: flex; align-items: baseline; letter-spacing: -0.05em; }
+  .pre-v {
+    font-family: Georgia, 'Times New Roman', serif; font-size: 3.5rem; font-weight: 700;
+    color: var(--red); line-height: 1;
+    transform: scale(0); animation: pop 0.5s 0.2s cubic-bezier(0.23,1,0.32,1) forwards;
+  }
+  .pre-word {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 2.5rem; font-weight: 900;
+    color: var(--parchment); letter-spacing: -0.02em; margin-left: -0.05em; overflow: hidden;
+  }
+  .pre-word span {
+    display: inline-block; transform: translateY(110%);
+    animation: rise 0.45s cubic-bezier(0.23,1,0.32,1) forwards;
+  }
+  @keyframes pop { to { transform: scale(1); } }
+  @keyframes rise { to { transform: translateY(0); } }
+
+  /* ═══ NAV ═══ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 18px 0;
+    transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(245,240,232,0.88);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+  }
+  nav .w { display: flex; align-items: center; justify-content: space-between; }
+  .n-logo { display: inline-flex; align-items: baseline; text-decoration: none; letter-spacing: -0.05em; }
+  .n-v { font-family: Georgia, 'Times New Roman', serif; font-size: 1.75rem; font-weight: 700; color: var(--red); line-height: 1; }
+  .n-word {
+    font-family: 'Libre Franklin', sans-serif; font-size: 1.2rem; font-weight: 900;
+    color: var(--ink); letter-spacing: -0.02em; margin-left: -0.05em;
+  }
+  .n-links { display: flex; gap: 32px; align-items: center; }
+  .n-links a {
+    text-decoration: none; color: var(--ink-50); font-size: 0.82rem;
+    font-weight: 500; letter-spacing: 0.01em; transition: color 0.25s;
+  }
+  .n-links a:hover { color: var(--ink); }
+  .n-cta {
+    background: var(--ink) !important; color: var(--parchment) !important;
+    padding: 10px 22px !important; border-radius: 8px;
+    font-weight: 700 !important; font-size: 0.72rem !important;
+    letter-spacing: 0.06em !important; text-transform: uppercase;
+    transition: background 0.3s, transform 0.15s !important;
+  }
+  .n-cta:hover { background: var(--red) !important; transform: translateY(-1px); }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 160px 0 100px; position: relative;
+  }
+  /* Decorative red rule */
+  .hero::before {
+    content: ''; position: absolute; top: 100px; left: 48px;
+    width: 3px; height: 140px; background: var(--red);
+  }
+  .hero .w {
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center;
+  }
+
+  .hero-content { position: relative; padding-top: 20px; }
+
+  .h-issue {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-50); margin-bottom: 32px;
+    opacity: 0; animation: fadeUp 0.7s 1.1s ease forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(3.2rem, 6vw, 5.5rem);
+    font-weight: 700; line-height: 0.95; letter-spacing: -0.04em;
+    color: var(--ink); margin-bottom: 36px;
+    opacity: 0; animation: fadeUp 0.7s 1.3s ease forwards;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--red); font-weight: 500;
+    display: block; margin-top: 4px;
+  }
+
+  .h-desc {
+    font-size: 1.05rem; line-height: 1.7; color: var(--ink-80);
+    max-width: 440px; margin-bottom: 44px;
+    opacity: 0; animation: fadeUp 0.7s 1.5s ease forwards;
+  }
+
+  .h-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--red); color: var(--parchment);
+    padding: 16px 32px; border-radius: 8px;
+    text-decoration: none; font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 0.01em; transition: all 0.3s; border: none; cursor: pointer;
+    opacity: 0; animation: fadeUp 0.7s 1.7s ease forwards;
+  }
+  .h-cta:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(192,57,43,0.25); }
+
+  /* ═══ PHONE MOCKUP ═══ */
+  .hero-phone {
+    position: relative; display: flex; justify-content: center;
+    opacity: 0; animation: fadeUp 0.9s 1.4s ease forwards;
+    perspective: 1200px;
+  }
+  .phone {
+    width: 290px; height: 600px;
+    background: #1A1A1A; border-radius: 42px; padding: 11px;
+    position: relative;
+    box-shadow: 0 60px 120px rgba(0,0,0,0.12), 0 20px 40px rgba(0,0,0,0.08);
+    transform-style: preserve-3d;
+    transform: rotateY(-6deg) rotateX(2deg);
+    transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+    will-change: transform;
+  }
+  .phone.tilt-active {
+    box-shadow: 0 80px 160px rgba(0,0,0,0.18), 0 30px 60px rgba(0,0,0,0.1);
+  }
+  /* Reflection/shine layer */
+  .phone::after {
+    content: ''; position: absolute; inset: 0;
+    border-radius: 42px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.03) 100%);
+    pointer-events: none; z-index: 10;
+    transition: opacity 0.3s;
+  }
+  .phone-notch {
+    position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
+    width: 115px; height: 27px; background: #1A1A1A;
+    border-radius: 0 0 16px 16px; z-index: 5;
+  }
+  .phone-scr {
+    width: 100%; height: 100%; background: var(--app-bg);
+    border-radius: 32px; overflow: hidden; position: relative;
+  }
+
+  /* ── In-phone UI matching actual app ── */
+  .ps-hdr {
+    padding: 42px 16px 8px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .ps-date { font-size: 0.42rem; color: var(--app-muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2px; }
+  .ps-logo { display: flex; align-items: baseline; letter-spacing: -0.03em; }
+  .ps-v { font-family: Georgia, 'Times New Roman', serif; font-size: 1.15rem; font-weight: 700; color: var(--red); line-height: 1; }
+  .ps-logotxt { font-family: 'Libre Franklin', sans-serif; font-size: 0.85rem; font-weight: 900; color: var(--app-text); letter-spacing: -0.02em; margin-left: -0.03em; }
+  .ps-brieflink { font-size: 0.42rem; color: var(--app-muted); letter-spacing: 0.02em; }
+
+  .ps-tib { background: var(--app-dark); padding: 10px 16px 8px; }
+  .ps-tib-label { font-size: 0.36rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.4); margin-bottom: 4px; }
+  .ps-tib-quote { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 0.55rem; font-style: italic; line-height: 1.4; color: rgba(245,240,232,0.75); margin-bottom: 5px; }
+  .ps-tib-sub { font-size: 0.32rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,240,232,0.3); }
+
+  .ps-lead { padding: 10px 16px 10px; }
+  .ps-lead-tag { font-size: 0.38rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--red); margin-bottom: 5px; }
+  .ps-lead-hl { font-family: Georgia, serif; font-size: 0.72rem; font-weight: 700; line-height: 1.2; color: var(--app-text); margin-bottom: 5px; }
+  .ps-lead-why { font-size: 0.44rem; color: var(--app-text); line-height: 1.5; margin-bottom: 6px; opacity: 0.75; }
+  .ps-lead-foot { display: flex; justify-content: space-between; align-items: flex-end; }
+  .ps-src { font-size: 0.36rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--red); }
+  .ps-time { font-size: 0.34rem; color: var(--app-muted); }
+  .ps-lead-btns { display: flex; gap: 4px; }
+  .ps-btn-read { font-size: 0.36rem; font-weight: 700; background: var(--app-text); color: var(--white); padding: 3px 10px; border-radius: 4px; }
+  .ps-btn-dive { font-size: 0.36rem; font-weight: 700; color: var(--red); padding: 3px 10px; border-radius: 4px; border: 1px solid rgba(192,57,43,0.25); }
+
+  .ps-also { padding: 8px 16px 4px; }
+  .ps-also-label { font-size: 0.36rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--app-muted); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .ps-also-label::after { content: ''; flex: 1; height: 1px; background: var(--app-border); }
+  .ps-also-item { display: flex; gap: 8px; padding: 5px 0; }
+  .ps-also-text { flex: 1; }
+  .ps-also-num { font-size: 0.36rem; font-weight: 700; color: var(--app-muted); margin-bottom: 1px; }
+  .ps-also-hl { font-family: Georgia, serif; font-size: 0.5rem; font-weight: 700; line-height: 1.2; color: var(--app-text); margin-bottom: 2px; }
+  .ps-also-why { font-size: 0.38rem; color: var(--app-text); line-height: 1.35; opacity: 0.65; }
+  .ps-also-thumb { width: 52px; height: 52px; border-radius: 6px; flex-shrink: 0; background: linear-gradient(135deg, #1a2030, #2a3545); }
+
+  .ps-nav5 { position: absolute; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 1px solid var(--app-border); display: flex; align-items: flex-end; padding: 0 4px 8px; }
+  .ps-nav5-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; padding-top: 7px; }
+  .ps-nav5-svg { color: var(--app-muted); }
+  .ps-nav5-svg.on { color: var(--red); }
+  .ps-nav5-lb { font-size: 0.3rem; font-weight: 600; color: var(--app-muted); }
+  .ps-nav5-lb.on { color: var(--red); }
+  .ps-nav5-center { flex: 1; display: flex; justify-content: center; margin-top: -14px; }
+  .ps-nav5-bolt {
+    width: 38px; height: 38px; border-radius: 16px;
+    background: linear-gradient(145deg, #FFE066, #F0C030);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 12px rgba(240,192,48,0.35);
+  }
+
+  .ps-anim { opacity: 0; animation: screenIn 0.5s ease forwards; }
+  .ps-anim:nth-child(1) { animation-delay: 1.8s; }
+  .ps-anim:nth-child(2) { animation-delay: 2s; }
+  .ps-anim:nth-child(3) { animation-delay: 2.15s; }
+  .ps-anim:nth-child(4) { animation-delay: 2.3s; }
+  .ps-anim:nth-child(5) { animation-delay: 2.45s; }
+  @keyframes screenIn { to { opacity: 1; } }
+
+  /* Floating badges */
+  .fbadge {
+    position: absolute; background: var(--white); border-radius: 12px;
+    padding: 10px 16px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+    display: flex; align-items: center; gap: 9px;
+    font-size: 0.72rem; font-weight: 600;
+    opacity: 0; animation: floatUp 0.5s ease forwards;
+  }
+  .fbadge.tl { top: 30px; left: -36px; animation-delay: 2.5s; }
+  .fbadge.br { bottom: 70px; right: -26px; animation-delay: 2.8s; }
+  .fbadge-ic {
+    width: 30px; height: 30px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .fbadge-ic.r { background: rgba(192,57,43,0.08); color: var(--red); }
+  .fbadge-ic.g { background: rgba(184,150,62,0.1); color: var(--gold); }
+  @keyframes floatUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ═══ EDITORIAL STRIP ═══ */
+  .strip {
+    background: var(--ink); padding: 16px 0; overflow: hidden;
+    border-top: 3px solid var(--red);
+  }
+  .strip-track {
+    display: flex; gap: 48px; white-space: nowrap;
+    animation: scroll 28s linear infinite;
+  }
+  .strip-item {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem; font-weight: 400; letter-spacing: 0.04em;
+    text-transform: uppercase; color: rgba(245,240,232,0.4);
+    display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+  }
+  .strip-dot { width: 4px; height: 4px; background: var(--red); border-radius: 50%; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ═══ HOW IT WORKS — EDITORIAL LAYOUT ═══ */
+  .how {
+    padding: 140px 0 120px;
+    position: relative;
+  }
+  .how .w {
+    display: grid; grid-template-columns: 0.4fr 0.6fr; gap: 80px;
+  }
+  .how-left { position: sticky; top: 140px; align-self: start; }
+  .how-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 20px;
+  }
+  .how-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 600;
+    line-height: 1.05; letter-spacing: -0.03em; color: var(--ink);
+  }
+
+  .how-cards { display: flex; flex-direction: column; gap: 24px; }
+
+  .how-card {
+    background: var(--white); border-radius: 16px;
+    padding: 36px 32px; position: relative; overflow: hidden;
+    border: 1px solid var(--ink-10);
+    transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
+    cursor: default;
+  }
+  .how-card:hover { box-shadow: 0 24px 64px rgba(0,0,0,0.08); }
+  /* Shine overlay on hover */
+  .how-card::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+    opacity: 0; transition: opacity 0.4s;
+    pointer-events: none; border-radius: 16px;
+    transform: translateX(-100%);
+  }
+  .how-card:hover::after {
+    opacity: 0.15;
+    animation: cardShine 0.6s ease forwards;
+  }
+  @keyframes cardShine {
+    from { transform: translateX(-100%) rotate(15deg); }
+    to { transform: translateX(100%) rotate(15deg); }
+  }
+  .how-num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 4rem; font-weight: 700;
+    color: var(--ink); opacity: 0.04;
+    position: absolute; top: 10px; right: 24px; line-height: 1;
+  }
+  .how-card h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em;
+    margin-bottom: 10px; color: var(--ink);
+  }
+  .how-card h3 span { color: var(--red); }
+  .how-card p {
+    font-size: 0.88rem; line-height: 1.65; color: var(--ink-80);
+  }
+
+  /* ═══ BRIEF SECTION — DARK ═══ */
+  .brief-s {
+    padding: 140px 0; background: var(--ink); color: var(--parchment);
+    position: relative; overflow: hidden;
+  }
+  .brief-s::before {
+    content: ''; position: absolute; top: -300px; right: -150px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(192,57,43,0.1) 0%, transparent 60%);
+  }
+  .brief-s .w {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+
+  .brief-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+  }
+  .brief-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 600;
+    line-height: 1.05; letter-spacing: -0.03em; color: var(--parchment);
+    margin-bottom: 24px;
+  }
+  .brief-desc {
+    font-size: 1rem; line-height: 1.7;
+    color: rgba(245,240,232,0.55); margin-bottom: 40px; max-width: 440px;
+  }
+  .brief-feat { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+  .brief-feat-ic {
+    width: 34px; height: 34px; border-radius: 9px;
+    background: rgba(184,150,62,0.1); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; color: var(--gold);
+  }
+  .brief-feat h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 2px; color: var(--parchment); }
+  .brief-feat p { font-size: 0.78rem; color: rgba(245,240,232,0.45); line-height: 1.45; }
+
+  /* Brief card */
+  .b-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px; padding: 32px; max-width: 400px; width: 100%;
+    backdrop-filter: blur(16px);
+  }
+  .b-card-head { display: flex; align-items: center; gap: 9px; margin-bottom: 20px; }
+  .b-card-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: linear-gradient(135deg, var(--gold), #D4B86A);
+    color: var(--ink); padding: 4px 11px; border-radius: 100px;
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .b-card-time { font-size: 0.65rem; color: rgba(245,240,232,0.35); }
+  .b-card-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.25rem; font-weight: 600; line-height: 1.2; margin-bottom: 14px;
+  }
+  .b-card-body {
+    font-size: 0.82rem; line-height: 1.7; color: rgba(245,240,232,0.6); margin-bottom: 18px;
+  }
+  .b-card-srcs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .b-src {
+    font-size: 0.55rem; font-weight: 600; padding: 4px 10px;
+    border-radius: 100px; border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(245,240,232,0.4);
+  }
+
+  /* ═══ NUMBERS — HORIZONTAL ═══ */
+  .nums {
+    padding: 100px 0;
+    border-bottom: 1px solid var(--ink-10);
+  }
+  .nums .w {
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .num-item { text-align: center; flex: 1; }
+  .num-val {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 700;
+    color: var(--ink); letter-spacing: -0.03em;
+  }
+  .num-val span { color: var(--red); }
+  .num-lbl {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem; color: var(--ink-50);
+    letter-spacing: 0.04em; margin-top: 6px;
+  }
+
+  /* ═══ QUOTE ═══ */
+  .quote-s { padding: 100px 0; position: relative; }
+  .quote-s .w { max-width: 800px; }
+  .quote-s::before {
+    content: ''; position: absolute; top: 80px; left: 48px;
+    width: 50px; height: 3px; background: var(--red);
+  }
+  .quote-s blockquote {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.3rem, 2.2vw, 1.7rem); font-weight: 500;
+    font-style: italic; line-height: 1.6; color: var(--ink-80);
+    margin-bottom: 20px; padding-left: 64px;
+  }
+  .quote-s cite {
+    font-style: normal; font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem; color: var(--ink-50); padding-left: 64px;
+  }
+
+  /* ═══ CTA ═══ */
+  .cta-s {
+    padding: 120px 0; background: var(--parchment-dark);
+    position: relative; overflow: hidden;
+  }
+  .cta-s::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(0,0,0,0.015) 79px, rgba(0,0,0,0.015) 80px),
+      repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(0,0,0,0.015) 79px, rgba(0,0,0,0.015) 80px);
+    pointer-events: none;
+  }
+  .cta-inner {
+    text-align: center; max-width: 560px; margin: 0 auto; position: relative;
+  }
+  .cta-inner .how-label { text-align: center; }
+  .cta-inner .brief-title { color: var(--ink); text-align: center; }
+  .cta-desc {
+    font-size: 1rem; line-height: 1.7; color: var(--ink-80); margin-bottom: 40px;
+  }
+  .cta-btns { display: flex; justify-content: center; gap: 14px; }
+  .store-btn {
+    display: inline-flex; align-items: center; gap: 11px;
+    background: var(--ink); color: var(--parchment);
+    padding: 13px 26px; border-radius: 12px;
+    text-decoration: none; transition: all 0.3s;
+  }
+  .store-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.12); }
+  .store-btn svg { width: 22px; height: 22px; }
+  .store-btn-text { text-align: left; }
+  .store-btn-lbl { font-size: 0.52rem; color: rgba(245,240,232,0.55); }
+  .store-btn-name { font-size: 0.92rem; font-weight: 700; }
+
+  /* ═══ FOOTER ═══ */
+  footer { background: var(--ink); color: var(--parchment); padding: 56px 0 28px; }
+  .ft-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 44px; }
+  .ft-brand .n-word { color: var(--parchment); }
+  .ft-brand .n-logo { letter-spacing: -0.05em; }
+  .ft-tag {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.85rem; color: rgba(245,240,232,0.35); margin-top: 7px; font-style: italic;
+  }
+  .ft-links { display: flex; gap: 44px; }
+  .ft-col h4 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.58rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(245,240,232,0.25); margin-bottom: 14px;
+  }
+  .ft-col a {
+    display: block; font-size: 0.82rem; color: rgba(245,240,232,0.5);
+    text-decoration: none; margin-bottom: 9px; transition: color 0.25s;
+  }
+  .ft-col a:hover { color: var(--parchment); }
+  .ft-div { height: 1px; background: rgba(245,240,232,0.06); margin-bottom: 20px; }
+  .ft-bot {
+    display: flex; justify-content: space-between;
+    font-size: 0.7rem; color: rgba(245,240,232,0.25);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* ═══ DEMO MODAL ═══ */
+  .demo-overlay {
+    position: fixed; inset: 0; z-index: 9000;
+    background: rgba(10,10,10,0.9);
+    backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden; transition: opacity 0.4s, visibility 0.4s;
+  }
+  .demo-overlay.open { opacity: 1; visibility: visible; }
+  .demo-close {
+    position: absolute; top: 24px; right: 28px;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background 0.25s; color: rgba(255,255,255,0.5);
+  }
+  .demo-close:hover { background: rgba(255,255,255,0.12); }
+  .demo-wrap {
+    display: flex; align-items: center; gap: 56px;
+    transform: translateY(16px) scale(0.98);
+    transition: transform 0.5s cubic-bezier(0.23,1,0.32,1);
+  }
+  .demo-overlay.open .demo-wrap { transform: translateY(0) scale(1); }
+
+  .demo-phone {
+    width: 270px; height: 560px;
+    background: #1A1A1A; border-radius: 38px; padding: 10px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.35); position: relative; flex-shrink: 0;
+  }
+  .demo-phone-notch {
+    position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+    width: 105px; height: 24px; background: #1A1A1A; border-radius: 0 0 14px 14px; z-index: 5;
+  }
+  .demo-scr {
+    width: 100%; height: 100%; background: var(--app-bg);
+    border-radius: 30px; overflow: hidden; position: relative;
+  }
+
+  .d-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s; display: flex; flex-direction: column; }
+  .d-slide.active { opacity: 1; }
+
+  /* Demo slide internals — reuse phone styles with ds- prefix */
+  .ds-bar { padding: 36px 14px 4px; display: flex; justify-content: space-between; font-size: 0.55rem; }
+  .ds-time { font-weight: 700; color: var(--app-text); }
+  .ds-mast { padding: 3px 14px 6px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--app-border); }
+  .ds-logo { display: flex; align-items: center; gap: 0; }
+  .ds-logo svg { display: block; }
+  .ds-logotxt { font-family: 'Libre Franklin', sans-serif; font-size: 0.72rem; font-weight: 800; color: var(--app-text); letter-spacing: -0.02em; }
+  .ds-date { font-size: 0.4rem; color: var(--app-muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1px; }
+  .ds-tabs { display: flex; gap: 10px; }
+  .ds-tab { font-size: 0.48rem; font-weight: 600; color: var(--app-muted); }
+  .ds-tab.on { color: var(--red); border-bottom: 2px solid var(--red); padding-bottom: 1px; }
+
+  .ds-brief-bar { background: var(--app-dark); padding: 6px 14px; display: flex; align-items: center; gap: 6px; }
+  .ds-brief-badge { font-size: 0.36rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gold); background: rgba(184,150,62,0.15); padding: 2px 4px; border-radius: 3px; }
+  .ds-brief-txt { font-family: 'Cormorant Garamond', serif; font-size: 0.45rem; color: rgba(240,246,252,0.6); line-height: 1.3; }
+
+  /* Demo header matching actual app */
+  .ds-hdr { padding: 38px 14px 6px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .ds-tib { background: var(--app-dark); padding: 8px 14px 6px; }
+
+  .ds-feed { padding: 9px 14px; flex: 1; overflow: hidden; }
+  .ds-card-tag { font-size: 0.38rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--red); margin-bottom: 2px; }
+  .ds-card-rule { height: 2px; background: var(--red); margin-bottom: 5px; }
+  .ds-card-img { width: 100%; height: 62px; border-radius: 4px; background: linear-gradient(135deg, #2C3E50, #34495E); margin-bottom: 5px; position: relative; }
+  .ds-card-img::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(192,57,43,0.1), transparent 50%); border-radius: 4px; }
+  .ds-card-hl { font-family: Georgia, serif; font-size: 0.68rem; font-weight: 700; line-height: 1.2; color: var(--app-text); margin-bottom: 2px; }
+  .ds-card-ai { font-size: 0.44rem; color: var(--app-secondary); line-height: 1.4; padding: 4px 6px; background: rgba(192,57,43,0.04); border-radius: 4px; border-left: 2px solid var(--red); margin-bottom: 3px; }
+  .ds-card-meta { font-size: 0.38rem; color: var(--app-muted); }
+  .ds-tl-label { font-size: 0.36rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--app-muted); margin: 5px 0 4px; }
+  .ds-tl-item { display: flex; align-items: flex-start; gap: 5px; padding: 3px 0; border-bottom: 1px solid var(--app-border); }
+  .ds-dot { width: 4px; height: 4px; border-radius: 50%; margin-top: 3px; flex-shrink: 0; }
+  .ds-dot.r { background: var(--red); } .ds-dot.a { background: #D97706; } .ds-dot.g { background: var(--app-muted); }
+  .ds-tl-hl { font-size: 0.46rem; font-weight: 600; color: var(--app-text); line-height: 1.2; }
+  .ds-tl-src { font-size: 0.36rem; color: var(--app-muted); margin-top: 1px; }
+  .ds-nav5 { position: absolute; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 1px solid var(--app-border); display: flex; align-items: flex-end; padding: 0 3px 6px; }
+  .ds-nav5-i { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 1px; padding-top: 5px; color: var(--app-muted); }
+  .ds-nav5-i.on { color: var(--red); }
+  .ds-nav5-i.on svg { color: var(--red); }
+  .ds-nav5-l { font-size: 0.26rem; font-weight: 600; color: inherit; }
+  .ds-nav5-c { flex: 1; display: flex; justify-content: center; margin-top: -10px; }
+  .ds-bolt { width: 30px; height: 30px; border-radius: 11px; background: linear-gradient(145deg, #FFE066, #F0C030); display: flex; align-items: center; justify-content: center; font-size: .6rem; box-shadow: 0 2px 8px rgba(240,192,48,0.3); }
+
+  .ds-brief-full { padding: 12px 14px; }
+  .ds-brief-head { display: flex; align-items: center; gap: 5px; margin-bottom: 10px; }
+  .ds-brief-ai { font-size: 0.38rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; background: linear-gradient(135deg, var(--gold), #D4B86A); color: var(--ink); padding: 3px 7px; border-radius: 100px; }
+  .ds-brief-tm { font-size: 0.38rem; color: var(--app-muted); }
+  .ds-brief-t { font-family: Georgia, serif; font-size: 0.72rem; font-weight: 700; line-height: 1.2; color: var(--app-text); margin-bottom: 7px; }
+  .ds-brief-b { font-size: 0.46rem; line-height: 1.6; color: var(--app-secondary); margin-bottom: 8px; }
+  .ds-brief-srcs { display: flex; gap: 4px; flex-wrap: wrap; }
+  .ds-brief-s { font-size: 0.36rem; font-weight: 600; padding: 3px 7px; border-radius: 100px; border: 1px solid var(--app-border); color: var(--app-muted); }
+
+  /* Captions */
+  .demo-cap { max-width: 300px; }
+  .demo-step {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 12px;
+  }
+  .demo-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.7rem; font-weight: 600; line-height: 1.1;
+    color: var(--parchment); margin-bottom: 12px; letter-spacing: -0.02em;
+  }
+  .demo-desc { font-size: 0.88rem; line-height: 1.55; color: rgba(245,240,232,0.45); }
+  .demo-dots { display: flex; gap: 7px; margin-top: 28px; }
+  .demo-dot {
+    width: 28px; height: 3px; border-radius: 2px;
+    background: rgba(255,255,255,0.1); position: relative; overflow: hidden; cursor: pointer;
+  }
+  .demo-dot::after {
+    content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 0;
+    background: var(--red); border-radius: 2px;
+  }
+  .demo-dot.done::after { width: 100%; }
+  .demo-dot.filling::after { animation: dotFill 3.5s linear forwards; }
+  @keyframes dotFill { from { width: 0; } to { width: 100%; } }
+
+  /* ═══ LEGAL MODAL ═══ */
+  .legal-overlay {
+    position: fixed; inset: 0; z-index: 8500;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden; transition: opacity 0.35s, visibility 0.35s;
+  }
+  .legal-overlay.open { opacity: 1; visibility: visible; }
+  .legal-box {
+    background: var(--parchment); border-radius: 16px;
+    width: 90%; max-width: 680px; max-height: 80vh;
+    overflow-y: auto; padding: 48px 40px 40px; position: relative;
+    transform: translateY(12px); transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
+  }
+  .legal-overlay.open .legal-box { transform: translateY(0); }
+  .legal-close {
+    position: absolute; top: 16px; right: 16px;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--ink-10); border: none;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background 0.2s; color: var(--ink-50);
+  }
+  .legal-close:hover { background: rgba(0,0,0,0.1); }
+  .legal-box h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.6rem; font-weight: 600; margin-bottom: 24px; color: var(--ink);
+  }
+  .legal-box h3 { font-size: 0.9rem; font-weight: 700; margin: 20px 0 8px; color: var(--ink); }
+  .legal-box p { font-size: 0.85rem; line-height: 1.7; color: var(--ink-80); margin-bottom: 12px; }
+  .legal-box ul { font-size: 0.85rem; line-height: 1.7; color: var(--ink-80); margin: 0 0 12px 20px; }
+  .legal-box li { margin-bottom: 4px; }
+  .legal-date { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--ink-50); margin-bottom: 20px; }
+
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  
+  /* 3D scroll reveals */
+  .rv { 
+    opacity: 0; 
+    transform: perspective(800px) translateY(40px) rotateX(4deg); 
+    transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.23,1,0.32,1); 
+  }
+  .rv.vis { opacity: 1; transform: perspective(800px) translateY(0) rotateX(0); }
+
+  /* Parallax floating badges */
+  .fbadge { transition: transform 0.1s ease-out; }
+
+  /* Brief card floating animation */
+  .b-card {
+    animation: briefFloat 4s ease-in-out infinite;
+  }
+  @keyframes briefFloat {
+    0%, 100% { transform: translateY(0) rotateY(0); }
+    50% { transform: translateY(-8px) rotateY(1deg); }
+  }
+
+  /* Number counter glow on visible */
+  .num-val { transition: color 0.5s ease; }
+  .num-item.counted .num-val { text-shadow: 0 0 40px rgba(192,57,43,0.15); }
+
+  /* Hero decorative grid (3D parallax layer) */
+  .hero-grid {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(0,0,0,0.015) 79px, rgba(0,0,0,0.015) 80px),
+      repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(0,0,0,0.015) 79px, rgba(0,0,0,0.015) 80px);
+    transform: perspective(1000px) rotateX(1deg);
+    opacity: 0.4;
+  }
+
+  /* Smooth scroll-linked transforms */
+  .hero-content { transform-style: preserve-3d; }
+  .strip { transform-style: preserve-3d; }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 1024px) {
+    .hero .w { grid-template-columns: 1fr; gap: 50px; }
+    .hero-phone { order: -1; perspective: none; }
+    .phone { transform: none !important; width: 260px; height: 530px; }
+    .fbadge { display: none; }
+    .how .w { grid-template-columns: 1fr; gap: 40px; }
+    .how-left { position: static; }
+    .brief-s .w { grid-template-columns: 1fr; gap: 50px; }
+    .hero::before { display: none; }
+    .hero-grid { display: none; }
+  }
+  @media (max-width: 768px) {
+    .w { padding: 0 24px; }
+    .n-links a:not(.n-cta) { display: none; }
+    .nums .w { flex-direction: column; gap: 32px; }
+    .ft-top { flex-direction: column; gap: 36px; }
+    .ft-links { gap: 28px; }
+    .cta-btns { flex-direction: column; align-items: center; }
+    .quote-s blockquote { padding-left: 0; font-size: 1.2rem; }
+    .quote-s cite { padding-left: 0; }
+    .quote-s::before { display: none; }
+    .demo-wrap { flex-direction: column; gap: 28px; }
+    .demo-cap { text-align: center; }
+    .demo-dots { justify-content: center; }
+    .demo-phone { width: 230px; height: 480px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div class="pre" id="pre">
+  <div class="pre-logo">
+    <div class="pre-v">V</div>
+    <div class="pre-word"><span style="animation-delay:.3s">e</span><span style="animation-delay:.35s">r</span><span style="animation-delay:.4s">i</span><span style="animation-delay:.45s">t</span><span style="animation-delay:.5s">y</span><span style="animation-delay:.55s">n</span></div>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav id="nav">
+  <div class="w">
+    <a href="#" class="n-logo"><span class="n-v">V</span><span class="n-word">erityn</span></a>
+    <div class="n-links">
+      <a href="#how">Features</a>
+      <a href="#brief">AI Brief</a>
+      <a href="#about">About</a>
+      <a href="#download" class="n-cta">Get the App</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="w">
+    <div class="hero-content">
+      <div class="h-issue">Not a news feed — a news agent</div>
+      <h1>7 stories.<br><em>Why they matter<br>to you.</em></h1>
+      <p class="h-desc">Verityn reads the news so you don't have to. It picks seven stories that actually matter to your life, and tells you exactly why each one should be on your radar. Open it at breakfast, done before the coffee gets cold.</p>
+      <a href="#" id="demoBtn" class="h-cta">Watch the demo <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><polygon points="6 3 20 12 6 21" fill="currentColor"/></svg></a>
+    </div>
+    <div class="hero-phone">
+      <div class="fbadge tl">
+        <div class="fbadge-ic r"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg></div>
+        <div><div style="font-size:.58rem;color:var(--ink-50)">Personalised</div><div style="font-size:.74rem;font-weight:700">7 Stories</div></div>
+      </div>
+      <div class="fbadge br">
+        <div class="fbadge-ic g"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div><div style="font-size:.58rem;color:var(--ink-50)">Every Morning</div><div style="font-size:.74rem;font-weight:700">AI Brief</div></div>
+      </div>
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-scr">
+          <!-- Header -->
+          <div class="ps-hdr ps-anim">
+            <div>
+              <div class="ps-date">Sun 12 April</div>
+              <div class="ps-logo"><span class="ps-v">V</span><span class="ps-logotxt">erityn</span></div>
+            </div>
+            <div class="ps-brieflink">Today's Briefing</div>
+          </div>
+
+          <!-- Today in Brief dark bar -->
+          <div class="ps-tib ps-anim">
+            <div class="ps-tib-label">Today in Brief</div>
+            <div class="ps-tib-quote">"Political tensions rise while economic disruptions reshape consumer markets across key economies."</div>
+            <div class="ps-tib-sub">7 Stories · Curated for you</div>
+          </div>
+
+          <!-- Tier 1: Lead Story -->
+          <div class="ps-lead ps-anim">
+            <div class="ps-lead-tag">01 · Lead Story</div>
+            <div class="ps-lead-hl">PM Modi writes to parties, seeks support on women's quota bills</div>
+            <div class="ps-lead-why">A major legislative push that could reshape India's political representation and gender dynamics...</div>
+            <div class="ps-lead-foot">
+              <div><span class="ps-src">Times of India</span><br><span class="ps-time">42m ago</span></div>
+              <div class="ps-lead-btns">
+                <span class="ps-btn-read">Read ↗</span>
+                <span class="ps-btn-dive">Deep Dive →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div style="height:1px;background:var(--app-border);margin:0 16px"></div>
+
+          <!-- Tier 2: Also Today -->
+          <div class="ps-also ps-anim">
+            <div class="ps-also-label">Also Today</div>
+            <div class="ps-also-item">
+              <div class="ps-also-text">
+                <div class="ps-also-num">02</div>
+                <div class="ps-src" style="font-size:.34rem">Times of India</div>
+                <div class="ps-also-hl">Avenge Mamata's insult to Murmu, Shah calls upon tribal community</div>
+                <div class="ps-also-why">This escalates political tensions ahead of state elections...</div>
+                <div style="font-size:.32rem;color:var(--app-muted);margin-top:2px">1h ago <span style="color:var(--red);font-weight:700;margin-left:8px">Deep Dive →</span></div>
+              </div>
+              <div class="ps-also-thumb"></div>
+            </div>
+            <div style="height:1px;background:var(--app-border);margin:4px 0"></div>
+            <div class="ps-also-item">
+              <div class="ps-also-text">
+                <div class="ps-also-num">03</div>
+                <div class="ps-src" style="font-size:.34rem">Times of India</div>
+                <div class="ps-also-hl">Big share of funds for kids' jabs not spent: RTI data</div>
+                <div class="ps-also-why">Government underspending on child vaccination raises public health concerns...</div>
+                <div style="font-size:.32rem;color:var(--app-muted);margin-top:2px">2h ago <span style="color:var(--red);font-weight:700;margin-left:8px">Deep Dive →</span></div>
+              </div>
+              <div class="ps-also-thumb" style="background:linear-gradient(135deg,#4a6070,#6a8898)"></div>
+            </div>
+          </div>
+
+          <!-- Bottom nav — 5 tabs with elevated center bolt -->
+          <div class="ps-nav5">
+            <div class="ps-nav5-item on">
+              <svg class="ps-nav5-svg on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/></svg>
+              <div class="ps-nav5-lb on">Today</div>
+            </div>
+            <div class="ps-nav5-item">
+              <svg class="ps-nav5-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+              <div class="ps-nav5-lb">My Topics</div>
+            </div>
+            <div class="ps-nav5-center"><div class="ps-nav5-bolt"><svg width="16" height="16" viewBox="0 0 24 24" fill="#1A1A1A"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div></div>
+            <div class="ps-nav5-item">
+              <svg class="ps-nav5-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+              <div class="ps-nav5-lb">Search</div>
+            </div>
+            <div class="ps-nav5-item">
+              <svg class="ps-nav5-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              <div class="ps-nav5-lb">Settings</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Strip -->
+<div class="strip">
+  <div class="strip-track">
+    <div class="strip-item"><div class="strip-dot"></div>7 Stories Every Morning</div>
+    <div class="strip-item"><div class="strip-dot"></div>Tells You Why It Matters</div>
+    <div class="strip-item"><div class="strip-dot"></div>Go Deeper on Any Story</div>
+    <div class="strip-item"><div class="strip-dot"></div>Follow Stories Over Time</div>
+    <div class="strip-item"><div class="strip-dot"></div>20+ Countries</div>
+    <div class="strip-item"><div class="strip-dot"></div>Done in 5 Minutes</div>
+    <div class="strip-item"><div class="strip-dot"></div>7 Stories Every Morning</div>
+    <div class="strip-item"><div class="strip-dot"></div>Tells You Why It Matters</div>
+    <div class="strip-item"><div class="strip-dot"></div>Go Deeper on Any Story</div>
+    <div class="strip-item"><div class="strip-dot"></div>Follow Stories Over Time</div>
+    <div class="strip-item"><div class="strip-dot"></div>20+ Countries</div>
+    <div class="strip-item"><div class="strip-dot"></div>Done in 5 Minutes</div>
+  </div>
+</div>
+
+<!-- How it works -->
+<section class="how" id="how">
+  <div class="w">
+    <div class="how-left rv">
+      <div class="how-label">How it works</div>
+      <h2 class="how-title">Four things that<br>make it different.</h2>
+    </div>
+    <div class="how-cards">
+      <div class="how-card rv">
+        <div class="how-num">01</div>
+        <h3><span>"Why it matters to you"</span></h3>
+        <p>Every headline comes with a line written for you. Not a generic summary — an explanation of why this story affects your world. An Indian finance professional in Berlin reads the same headline differently than a designer in Mumbai. Verityn knows that.</p>
+      </div>
+      <div class="how-card rv">
+        <div class="how-num">02</div>
+        <h3><span>Seven stories.</span> Three levels.</h3>
+        <p>The lead story gets the full treatment — photo, explanation, and a link to go deeper. The next three are "Also Today" — important but not urgent. The last three are "Worth Knowing" — a headline and one sentence. You always know what to read first.</p>
+      </div>
+      <div class="how-card rv">
+        <div class="how-num">03</div>
+        <h3><span>Go deeper</span> on anything.</h3>
+        <p>See a headline that makes you curious? Tap "Deep Dive" and Verityn writes you an intelligence report — what happened, the background, why it matters, what to watch for next, and what people on different sides are saying. Like texting a well-read friend who always has context.</p>
+      </div>
+      <div class="how-card rv">
+        <div class="how-num">04</div>
+        <h3><span>Follow the thread.</span></h3>
+        <p>Big stories don't happen in a single day. Verityn groups related events into threads — "US-China Trade", "ECB Rates", "India Elections" — so you can follow a story over days and weeks without searching for yesterday's update.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI Brief -->
+<section class="brief-s" id="brief">
+  <div class="w">
+    <div class="rv">
+      <div class="brief-label">AI-Powered</div>
+      <h2 class="brief-title">Your morning<br>briefing, rebuilt.</h2>
+      <p class="brief-desc">Other news apps hand you a feed and wish you luck. Verityn actually reads the news — pulling from Reuters, FT, Bloomberg, the Guardian, and dozens of local sources — then writes you a brief in plain language. No clickbait. No filler. Just what happened and why you should care.</p>
+      <div>
+        <div class="brief-feat"><div class="brief-feat-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><h4>Refreshes throughout the day</h4><p>Your stories stay current — not stale by lunchtime.</p></div></div>
+        <div class="brief-feat"><div class="brief-feat-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></div><div><h4>Picks stories by relevance, not clicks</h4><p>What matters to your life — not what gets the most engagement.</p></div></div>
+        <div class="brief-feat"><div class="brief-feat-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div><h4>Your data stays yours</h4><p>No tracking, no selling data, no profiling.</p></div></div>
+      </div>
+    </div>
+    <div class="rv" style="display:flex;justify-content:center">
+      <div class="b-card">
+        <div class="b-card-head"><div class="b-card-badge">✦ AI Brief</div><span class="b-card-time">Today, 7:00 AM</span></div>
+        <div class="b-card-title">Trade, Tech & Tension: Your Thursday Morning</div>
+        <div class="b-card-body">US–China trade talks entered a critical phase yesterday, with both sides signalling willingness to cut semiconductor tariffs. The EU finalised its AI governance framework. And the ECB held rates, pointing to sticky services inflation across the eurozone.</div>
+        <div class="b-card-srcs"><span class="b-src">Reuters</span><span class="b-src">FT</span><span class="b-src">Bloomberg</span><span class="b-src">+4</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Numbers -->
+<section class="nums rv" id="about">
+  <div class="w">
+    <div class="num-item"><div class="num-val">100<span>+</span></div><div class="num-lbl">Trusted sources</div></div>
+    <div class="num-item"><div class="num-val"><span>&lt;</span>5m</div><div class="num-lbl">Average brief read</div></div>
+    <div class="num-item"><div class="num-val">20<span>+</span></div><div class="num-lbl">Countries personalised</div></div>
+  </div>
+</section>
+
+<!-- Quote -->
+<section class="quote-s rv">
+  <div class="w">
+    <blockquote>I used to open three different apps and scroll for twenty minutes. Now I open Verityn, read seven stories, and I know what happened. Sometimes I tap one to go deeper. The whole thing takes five minutes.</blockquote>
+    <cite>— Early beta tester, London</cite>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-s" id="download">
+  <div class="w">
+    <div class="cta-inner">
+      <div class="how-label">Get Started</div>
+      <h2 class="brief-title">Your news agent<br>is ready.</h2>
+      <p class="cta-desc">Free to download. No account needed. Tell it where you live, where you're from, and what you follow — it handles the rest.</p>
+      <div class="cta-btns">
+        <a href="#" class="store-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg><div class="store-btn-text"><div class="store-btn-lbl">Download on the</div><div class="store-btn-name">App Store</div></div></a>
+        <a href="#" class="store-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302L15.396 12l2.302-2.492zM5.864 2.658L16.8 9.991l-2.302 2.302L5.864 2.658z"/></svg><div class="store-btn-text"><div class="store-btn-lbl">Get it on</div><div class="store-btn-name">Google Play</div></div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="w">
+    <div class="ft-top">
+      <div class="ft-brand"><a href="#" class="n-logo"><span class="n-v">V</span><span class="n-word">erityn</span></a><div class="ft-tag">Not a news feed — a news agent.</div></div>
+      <div class="ft-links">
+        <div class="ft-col"><h4>Product</h4><a href="#how">Features</a><a href="#brief">AI Brief</a><a href="#about">Sources</a></div>
+        <div class="ft-col"><h4>Legal</h4><a href="#" onclick="openLegal('privacy');return false">Privacy Policy</a><a href="#" onclick="openLegal('terms');return false">Terms & Conditions</a><a href="#" onclick="openLegal('cookies');return false">Cookie Policy</a></div>
+        <div class="ft-col"><h4>Contact</h4><a href="/cdn-cgi/l/email-protection#9cf4f9f0f0f3dceaf9eef5e8e5f2b2f2f9ebef"><span class="__cf_email__" data-cfemail="deb6bbb2b2b19ea8bbacb7aaa7b0f0b0bba9ad">[email&#160;protected]</span></a></div>
+      </div>
+    </div>
+    <div class="ft-div"></div>
+    <div class="ft-bot"><span>&copy; 2026 Verityn</span><span>Crafted for the discerning reader</span></div>
+  </div>
+</footer>
+
+<!-- Legal Modal -->
+<div class="legal-overlay" id="legalModal">
+  <div class="legal-box">
+    <button class="legal-close" onclick="closeLegal()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    <div id="legalContent"></div>
+  </div>
+</div>
+
+<!-- Demo Modal -->
+<div class="demo-overlay" id="demoModal">
+  <div class="demo-close" id="demoClose"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></div>
+  <div class="demo-wrap">
+    <div class="demo-phone"><div class="demo-phone-notch"></div><div class="demo-scr">
+
+      <!-- Slide 1: 7 stories across 3 tiers -->
+      <div class="d-slide active" data-s="0">
+        <div class="ds-hdr"><div><div class="ds-date">Sun 12 April</div><div class="ds-logo"><span style="font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:var(--red)">V</span><span class="ds-logotxt">erityn</span></div></div><span style="font-size:.36rem;color:var(--app-muted)">Today's Briefing</span></div>
+        <div class="ds-tib"><div style="font-size:.26rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(245,240,232,.35)">Today in Brief</div><div style="font-family:'Cormorant Garamond',serif;font-size:.38rem;font-style:italic;color:rgba(245,240,232,.6);line-height:1.25;margin:2px 0">"Political tensions rise while economic disruptions reshape markets."</div><div style="font-size:.22rem;letter-spacing:.05em;text-transform:uppercase;color:rgba(245,240,232,.22)">7 Stories · Curated for you</div></div>
+        <div class="ds-feed" style="padding:5px 11px">
+          <div style="font-size:.26rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--red);margin-bottom:1px">01 · Lead Story</div>
+          <div style="font-family:Georgia,serif;font-size:.46rem;font-weight:700;line-height:1.12;color:var(--app-text);margin-bottom:1px">PM Modi writes to parties on women's quota bills</div>
+          <div style="font-size:.3rem;color:var(--app-text);opacity:.6;line-height:1.25;margin-bottom:2px">A legislative push that could reshape India's political representation...</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px"><span style="font-size:.24rem;font-weight:700;text-transform:uppercase;color:var(--red)">Times of India · 42m</span><div style="display:flex;gap:2px"><span style="font-size:.24rem;font-weight:700;background:var(--app-text);color:white;padding:1px 5px;border-radius:2px">Read ↗</span><span style="font-size:.24rem;font-weight:700;color:var(--red);padding:1px 5px;border-radius:2px;border:1px solid rgba(192,57,43,.2)">Deep Dive →</span></div></div>
+          <div style="font-size:.24rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--app-muted);margin:3px 0 2px;display:flex;align-items:center;gap:3px">Also Today<span style="flex:1;height:1px;background:var(--app-border)"></span></div>
+          <div style="display:flex;gap:4px;padding:2px 0;border-bottom:1px solid var(--app-border)"><div style="flex:1"><span style="font-size:.22rem;font-weight:700;color:var(--app-muted)">02 </span><span style="font-size:.22rem;font-weight:700;text-transform:uppercase;color:var(--red)">TOI</span><div style="font-family:Georgia,serif;font-size:.34rem;font-weight:700;line-height:1.1;color:var(--app-text)">Shah calls upon tribal community over Murmu insult</div></div><div style="width:28px;height:28px;border-radius:3px;background:linear-gradient(135deg,#1a2030,#2a3545);flex-shrink:0"></div></div>
+          <div style="display:flex;gap:4px;padding:2px 0;border-bottom:1px solid var(--app-border)"><div style="flex:1"><span style="font-size:.22rem;font-weight:700;color:var(--app-muted)">03 </span><span style="font-size:.22rem;font-weight:700;text-transform:uppercase;color:var(--red)">TOI</span><div style="font-family:Georgia,serif;font-size:.34rem;font-weight:700;line-height:1.1;color:var(--app-text)">Big share of funds for kids' jabs not spent</div></div><div style="width:28px;height:28px;border-radius:3px;background:linear-gradient(135deg,#4a6070,#6a8898);flex-shrink:0"></div></div>
+          <div style="display:flex;gap:4px;padding:2px 0;border-bottom:1px solid var(--app-border)"><div style="flex:1"><span style="font-size:.22rem;font-weight:700;color:var(--app-muted)">04 </span><span style="font-size:.22rem;font-weight:700;text-transform:uppercase;color:var(--red)">Reuters</span><div style="font-family:Georgia,serif;font-size:.34rem;font-weight:700;line-height:1.1;color:var(--app-text)">ECB holds rates steady amid inflation fears</div></div><div style="width:28px;height:28px;border-radius:3px;background:linear-gradient(135deg,#2d4a3a,#3d6a50);flex-shrink:0"></div></div>
+          <div style="font-size:.24rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--app-muted);margin:3px 0 2px;display:flex;align-items:center;gap:3px">Worth Knowing<span style="flex:1;height:1px;background:var(--app-border)"></span></div>
+          <div style="padding:1px 0;border-bottom:1px solid var(--app-border);display:flex;gap:5px;align-items:center"><span style="font-size:.36rem;font-weight:700;color:rgba(0,0,0,.05);font-family:Georgia,serif">05</span><span style="font-size:.3rem;font-weight:600;color:var(--app-text);line-height:1.1">Japan's Nikkei closes at record high</span></div>
+          <div style="padding:1px 0;border-bottom:1px solid var(--app-border);display:flex;gap:5px;align-items:center"><span style="font-size:.36rem;font-weight:700;color:rgba(0,0,0,.05);font-family:Georgia,serif">06</span><span style="font-size:.3rem;font-weight:600;color:var(--app-text);line-height:1.1">UK tech sector adds 50,000 jobs in Q1</span></div>
+          <div style="padding:1px 0;display:flex;gap:5px;align-items:center"><span style="font-size:.36rem;font-weight:700;color:rgba(0,0,0,.05);font-family:Georgia,serif">07</span><span style="font-size:.3rem;font-weight:600;color:var(--app-text);line-height:1.1">Berlin climate summit enters day two</span></div>
+        </div>
+        <div class="ds-nav5"><div class="ds-nav5-i on"><span style="font-size:.5rem">⌂</span><div class="ds-nav5-l on">Today</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◉</span><div class="ds-nav5-l">Topics</div></div><div class="ds-nav5-c"><div class="ds-bolt">⚡</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◎</span><div class="ds-nav5-l">Search</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">⚙</span><div class="ds-nav5-l">Settings</div></div></div>
+      </div>
+
+      <!-- Slide 2: Follow the threads -->
+      <div class="d-slide" data-s="1">
+        <div class="ds-hdr"><div><div class="ds-date">Sun 12 April</div><div class="ds-logo"><span style="font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:var(--red)">V</span><span class="ds-logotxt">erityn</span></div></div><span style="font-size:.36rem;color:var(--app-muted)">My Topics</span></div>
+        <div class="ds-feed" style="padding:7px 11px">
+          <div style="font-size:.26rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--app-muted);margin-bottom:5px">Trending Topics</div>
+          <div style="background:white;border-radius:6px;padding:7px 9px;margin-bottom:4px;border:1px solid var(--app-border)">
+            <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:.26rem;font-weight:700;text-transform:uppercase;color:var(--red)">US-China Trade</span><span style="font-size:.22rem;color:var(--app-muted)">12 stories</span></div>
+            <div style="font-family:Georgia,serif;font-size:.38rem;font-weight:700;color:var(--app-text);line-height:1.1;margin-bottom:4px">Trade talks enter critical phase as tariff deadlines loom</div>
+            <div style="display:flex;gap:3px"><div style="width:2px;background:var(--red);border-radius:1px;flex-shrink:0"></div><div style="flex:1"><div style="font-size:.24rem;color:var(--app-text);padding:1px 0;border-bottom:1px solid var(--app-border)"><span style="color:var(--red);font-weight:700">Today</span> Both sides signal tariff cuts</div><div style="font-size:.24rem;color:var(--app-muted);padding:1px 0;border-bottom:1px solid var(--app-border)"><b>Apr 10</b> Negotiators meet in Geneva</div><div style="font-size:.24rem;color:var(--app-muted);padding:1px 0"><b>Apr 8</b> US announces new tariff list</div></div></div>
+          </div>
+          <div style="background:white;border-radius:6px;padding:7px 9px;margin-bottom:4px;border:1px solid var(--app-border)"><div style="display:flex;justify-content:space-between;margin-bottom:2px"><span style="font-size:.26rem;font-weight:700;text-transform:uppercase;color:var(--red)">EU AI Regulation</span><span style="font-size:.22rem;color:var(--app-muted)">8 stories</span></div><div style="font-family:Georgia,serif;font-size:.38rem;font-weight:700;color:var(--app-text);line-height:1.1">New governance framework finalised in Brussels</div></div>
+          <div style="background:white;border-radius:6px;padding:7px 9px;margin-bottom:4px;border:1px solid var(--app-border)"><div style="display:flex;justify-content:space-between;margin-bottom:2px"><span style="font-size:.26rem;font-weight:700;text-transform:uppercase;color:var(--red)">India Elections</span><span style="font-size:.22rem;color:var(--app-muted)">15 stories</span></div><div style="font-family:Georgia,serif;font-size:.38rem;font-weight:700;color:var(--app-text);line-height:1.1">Modi's outreach signals coalition building</div></div>
+          <div style="background:white;border-radius:6px;padding:7px 9px;border:1px solid var(--app-border)"><div style="display:flex;justify-content:space-between;margin-bottom:2px"><span style="font-size:.26rem;font-weight:700;text-transform:uppercase;color:var(--red)">ECB Policy</span><span style="font-size:.22rem;color:var(--app-muted)">6 stories</span></div><div style="font-family:Georgia,serif;font-size:.38rem;font-weight:700;color:var(--app-text);line-height:1.1">Rates held amid eurozone inflation</div></div>
+        </div>
+        <div class="ds-nav5"><div class="ds-nav5-i"><span style="font-size:.5rem">⌂</span><div class="ds-nav5-l">Today</div></div><div class="ds-nav5-i on"><span style="font-size:.5rem">◉</span><div class="ds-nav5-l on">Topics</div></div><div class="ds-nav5-c"><div class="ds-bolt">⚡</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◎</span><div class="ds-nav5-l">Search</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">⚙</span><div class="ds-nav5-l">Settings</div></div></div>
+      </div>
+
+      <!-- Slide 3: The morning brief -->
+      <div class="d-slide" data-s="2">
+        <div class="ds-hdr"><div><div class="ds-date">Sun 12 April</div><div class="ds-logo"><span style="font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:var(--red)">V</span><span class="ds-logotxt">erityn</span></div></div><span style="font-size:.36rem;color:var(--app-muted)">Digest</span></div>
+        <div style="padding:10px 12px">
+          <div style="display:flex;align-items:center;gap:4px;margin-bottom:8px"><span style="font-size:.28rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;background:linear-gradient(135deg,var(--gold),#D4B86A);color:var(--ink);padding:2px 6px;border-radius:100px">✦ AI Brief</span><span style="font-size:.28rem;color:var(--app-muted)">Today, 7:00 AM</span></div>
+          <div style="font-family:Georgia,serif;font-size:.56rem;font-weight:700;line-height:1.12;color:var(--app-text);margin-bottom:6px">Trade, Tech & Tension: Your Sunday Morning</div>
+          <div style="font-size:.36rem;color:var(--app-secondary);line-height:1.5;margin-bottom:8px">US–China trade talks entered a critical phase yesterday, with both sides signalling willingness to cut semiconductor tariffs. The EU finalised its AI governance framework, requiring mandatory risk assessments for all deployed systems.<br><br>In India, PM Modi reached out to opposition parties seeking support for women's quota bills. The ECB held rates steady, citing sticky services inflation.<br><br>Asian markets rallied on renewed trade optimism, with the Nikkei closing at a record high.</div>
+          <div style="display:flex;gap:3px;flex-wrap:wrap"><span style="font-size:.24rem;font-weight:600;padding:2px 6px;border-radius:100px;border:1px solid var(--app-border);color:var(--app-muted)">Reuters</span><span style="font-size:.24rem;font-weight:600;padding:2px 6px;border-radius:100px;border:1px solid var(--app-border);color:var(--app-muted)">FT</span><span style="font-size:.24rem;font-weight:600;padding:2px 6px;border-radius:100px;border:1px solid var(--app-border);color:var(--app-muted)">Bloomberg</span><span style="font-size:.24rem;font-weight:600;padding:2px 6px;border-radius:100px;border:1px solid var(--app-border);color:var(--app-muted)">NYT</span><span style="font-size:.24rem;font-weight:600;padding:2px 6px;border-radius:100px;border:1px solid var(--app-border);color:var(--app-muted)">Guardian</span><span style="font-size:.24rem;font-weight:600;padding:2px 6px;border-radius:100px;border:1px solid var(--app-border);color:var(--app-muted)">+4</span></div>
+        </div>
+        <div class="ds-nav5"><div class="ds-nav5-i"><span style="font-size:.5rem">⌂</span><div class="ds-nav5-l">Today</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◉</span><div class="ds-nav5-l">Topics</div></div><div class="ds-nav5-c"><div class="ds-bolt">⚡</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◎</span><div class="ds-nav5-l">Search</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">⚙</span><div class="ds-nav5-l">Settings</div></div></div>
+      </div>
+
+      <!-- Slide 4: Two countries, 7 stories blended -->
+      <div class="d-slide" data-s="3">
+        <div class="ds-hdr"><div><div class="ds-date">Sun 12 April</div><div class="ds-logo"><span style="font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:var(--red)">V</span><span class="ds-logotxt">erityn</span></div></div><span style="font-size:.36rem;color:var(--app-muted)">Today's Briefing</span></div>
+        <div class="ds-tib"><div style="font-size:.26rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(245,240,232,.35)">Today in Brief</div><div style="font-family:'Cormorant Garamond',serif;font-size:.38rem;font-style:italic;color:rgba(245,240,232,.6);line-height:1.25;margin:2px 0">"Berlin transit meets India's growth story — your two worlds."</div><div style="font-size:.22rem;letter-spacing:.05em;text-transform:uppercase;color:rgba(245,240,232,.22)">7 Stories · 🇩🇪 Berlin + 🇮🇳 India</div></div>
+        <div class="ds-feed" style="padding:5px 11px">
+          <div style="font-size:.26rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--red);margin-bottom:1px">01 · Lead · 🇩🇪</div>
+          <div style="font-family:Georgia,serif;font-size:.46rem;font-weight:700;line-height:1.12;color:var(--app-text);margin-bottom:1px">Berlin U-Bahn Expansion Gets Senate Approval</div>
+          <div style="font-size:.3rem;color:var(--app-text);opacity:.6;line-height:1.2;margin-bottom:2px">Your commute through Alexanderplatz could change — three new lines by 2030...</div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:.24rem;font-weight:700;text-transform:uppercase;color:var(--red)">Berliner Zeitung · 1h</span><span style="font-size:.24rem;font-weight:700;color:var(--red)">Deep Dive →</span></div>
+          <div style="font-size:.24rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--app-muted);margin:2px 0;display:flex;align-items:center;gap:3px">Also Today<span style="flex:1;height:1px;background:var(--app-border)"></span></div>
+          <div style="display:flex;gap:4px;padding:2px 0;border-bottom:1px solid var(--app-border)"><div style="flex:1"><span style="font-size:.22rem;font-weight:700;color:var(--app-muted)">02 🇮🇳 </span><span style="font-size:.22rem;font-weight:700;text-transform:uppercase;color:var(--red)">Mint</span><div style="font-family:Georgia,serif;font-size:.34rem;font-weight:700;line-height:1.1;color:var(--app-text)">RBI Holds Repo Rate, Upgrades GDP Forecast</div></div><div style="width:28px;height:28px;border-radius:3px;background:linear-gradient(135deg,#2d4a3a,#3d6a50);flex-shrink:0"></div></div>
+          <div style="display:flex;gap:4px;padding:2px 0;border-bottom:1px solid var(--app-border)"><div style="flex:1"><span style="font-size:.22rem;font-weight:700;color:var(--app-muted)">03 🇩🇪 </span><span style="font-size:.22rem;font-weight:700;text-transform:uppercase;color:var(--red)">DW</span><div style="font-family:Georgia,serif;font-size:.34rem;font-weight:700;line-height:1.1;color:var(--app-text)">Germany's green energy hits 60% milestone</div></div><div style="width:28px;height:28px;border-radius:3px;background:linear-gradient(135deg,#1a3a2a,#2d5a40);flex-shrink:0"></div></div>
+          <div style="display:flex;gap:4px;padding:2px 0;border-bottom:1px solid var(--app-border)"><div style="flex:1"><span style="font-size:.22rem;font-weight:700;color:var(--app-muted)">04 🇮🇳 </span><span style="font-size:.22rem;font-weight:700;text-transform:uppercase;color:var(--red)">NDTV</span><div style="font-family:Georgia,serif;font-size:.34rem;font-weight:700;line-height:1.1;color:var(--app-text)">ISRO's next-gen launch vehicle passes test</div></div><div style="width:28px;height:28px;border-radius:3px;background:linear-gradient(135deg,#1a2535,#2a3a50);flex-shrink:0"></div></div>
+          <div style="font-size:.24rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--app-muted);margin:2px 0;display:flex;align-items:center;gap:3px">Worth Knowing<span style="flex:1;height:1px;background:var(--app-border)"></span></div>
+          <div style="padding:1px 0;border-bottom:1px solid var(--app-border);display:flex;gap:4px;align-items:center"><span style="font-size:.34rem;font-weight:700;color:rgba(0,0,0,.04);font-family:Georgia,serif">05</span><span style="font-size:.28rem;font-weight:600;color:var(--app-text);line-height:1.1">🇩🇪 Berlin startup funding hits €2B</span></div>
+          <div style="padding:1px 0;border-bottom:1px solid var(--app-border);display:flex;gap:4px;align-items:center"><span style="font-size:.34rem;font-weight:700;color:rgba(0,0,0,.04);font-family:Georgia,serif">06</span><span style="font-size:.28rem;font-weight:600;color:var(--app-text);line-height:1.1">🇮🇳 Delhi Metro Phase IV breaks ground</span></div>
+          <div style="padding:1px 0;display:flex;gap:4px;align-items:center"><span style="font-size:.34rem;font-weight:700;color:rgba(0,0,0,.04);font-family:Georgia,serif">07</span><span style="font-size:.28rem;font-weight:600;color:var(--app-text);line-height:1.1">🇮🇳 Sensex crosses 82,000 on optimism</span></div>
+        </div>
+        <div class="ds-nav5"><div class="ds-nav5-i on"><span style="font-size:.5rem">⌂</span><div class="ds-nav5-l on">Today</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◉</span><div class="ds-nav5-l">Topics</div></div><div class="ds-nav5-c"><div class="ds-bolt">⚡</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◎</span><div class="ds-nav5-l">Search</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">⚙</span><div class="ds-nav5-l">Settings</div></div></div>
+      </div>
+
+    </div></div>
+    <div class="demo-cap">
+      <div class="demo-step" id="dStep">Step 1 of 4</div>
+      <div class="demo-title" id="dTitle">Your seven stories</div>
+      <div class="demo-desc" id="dDesc">The lead story gets the full treatment. Next three are "Also Today." Last three are "Worth Knowing." Every story tells you why it matters to your life.</div>
+      <div class="demo-dots" id="dDots"><div class="demo-dot filling" data-d="0"></div><div class="demo-dot" data-d="1"></div><div class="demo-dot" data-d="2"></div><div class="demo-dot" data-d="3"></div></div>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('pre').classList.add('done')},1100)});
+  window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>30)});
+  const obs=new IntersectionObserver(e=>{e.forEach((x,i)=>{if(x.isIntersecting){setTimeout(()=>x.target.classList.add('vis'),i*60);obs.unobserve(x.target)}})},{threshold:0.12,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+  document.querySelectorAll('a[href^="#"]:not(#demoBtn)').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+
+  // Demo
+  const dd=[
+    {s:'Step 1 of 4',t:'Your seven stories',d:'The lead story gets the full treatment. Next three are "Also Today." Last three are "Worth Knowing." Every story tells you why it matters to your life.'},
+    {s:'Step 2 of 4',t:'Follow the threads',d:'Stories cluster into topics automatically. Follow "US-China Trade" or "India Elections" and watch them develop over days — no searching required.'},
+    {s:'Step 3 of 4',t:'The morning brief',d:'Verityn reads the news and writes you a brief. Plain language, cross-referenced, straight to the point. Done before your coffee gets cold.'},
+    {s:'Step 4 of 4',t:'Two countries, one feed',d:'Live in Berlin, from India? Your feed blends local Berlin news with stories from home. Each one tells you why it matters — in both contexts.'}
+  ];
+  let di=0,dt=null;const mo=document.getElementById('demoModal');
+  function showS(i){di=i;document.querySelectorAll('.d-slide').forEach(s=>s.classList.remove('active'));document.querySelector(`.d-slide[data-s="${i}"]`).classList.add('active');document.getElementById('dStep').textContent=dd[i].s;document.getElementById('dTitle').textContent=dd[i].t;document.getElementById('dDesc').textContent=dd[i].d;document.querySelectorAll('.demo-dot').forEach((d,j)=>{d.classList.remove('filling','done');if(j<i)d.classList.add('done');else if(j===i)d.classList.add('filling')})}
+  function adv(){showS((di+1)%dd.length)}function startD(){showS(0);dt=setInterval(adv,3500)}function stopD(){if(dt){clearInterval(dt);dt=null}}
+  document.getElementById('demoBtn').addEventListener('click',e=>{e.preventDefault();mo.classList.add('open');document.body.style.overflow='hidden';startD()});
+  function closeD(){mo.classList.remove('open');document.body.style.overflow='';stopD()}
+  document.getElementById('demoClose').addEventListener('click',closeD);mo.addEventListener('click',e=>{if(e.target===mo)closeD()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mo.classList.contains('open'))closeD()});
+  document.querySelectorAll('.demo-dot').forEach(d=>{d.addEventListener('click',()=>{stopD();showS(parseInt(d.dataset.d));dt=setInterval(adv,3500)})});
+
+  // Legal modal
+  const legalPages = {
+    privacy: `
+      <h2>Privacy Policy</h2>
+      <div class="legal-date">Last updated: April 2026</div>
+      <p>Verityn ("we", "our", "us") is committed to protecting your privacy. This policy explains how we collect, use, and safeguard your information when you use our mobile application.</p>
+
+      <h3>Information We Collect</h3>
+      <p>We collect minimal information needed to personalise your news experience:</p>
+      <ul>
+        <li><strong>Preferences:</strong> Countries you select, topics you follow, and interests you choose during onboarding. These are stored locally on your device and on our servers to generate your personalised briefing.</li>
+        <li><strong>Device identifier:</strong> An anonymous device ID generated on first launch, used to associate your preferences with your briefing. We do not collect your name, email, phone number, or any personally identifiable information unless you choose to create an account.</li>
+        <li><strong>Usage data:</strong> We may collect anonymised usage statistics (screens viewed, features used) to improve the app. This data cannot be traced back to you.</li>
+      </ul>
+
+      <h3>How We Use Your Information</h3>
+      <ul>
+        <li>To generate your personalised 7-story briefing based on your selected countries and interests</li>
+        <li>To provide AI-generated "why it matters to you" context on each story</li>
+        <li>To improve the quality and relevance of our news curation</li>
+      </ul>
+
+      <h3>What We Do Not Do</h3>
+      <ul>
+        <li>We do not sell your data to third parties</li>
+        <li>We do not create advertising profiles based on your reading habits</li>
+        <li>We do not share your preferences with advertisers or data brokers</li>
+        <li>We do not track your browsing activity outside the Verityn app</li>
+      </ul>
+
+      <h3>Data Storage</h3>
+      <p>Your preferences and briefing data are stored on Supabase servers. AI processing is handled through Anthropic (Claude) and OpenAI APIs. News content is sourced from third-party providers including GNews, The New York Times, and The Guardian. We do not store the full text of articles — only headlines, summaries, and metadata needed for your briefing.</p>
+
+      <h3>Your Rights</h3>
+      <p>You can delete all your data at any time by going to Settings within the app. You can change your country and interest preferences at any time. If you uninstall the app, your locally stored data is automatically removed.</p>
+
+      <h3>Contact</h3>
+      <p>For any privacy-related questions, contact us at <a href="mailto:hello@verityn.news" style="color:var(--red)">hello@verityn.news</a>.</p>
+    `,
+    terms: `
+      <h2>Terms & Conditions</h2>
+      <div class="legal-date">Last updated: April 2026</div>
+      <p>By downloading or using Verityn, you agree to these terms. Please read them carefully.</p>
+
+      <h3>The Service</h3>
+      <p>Verityn is a news intelligence application that curates and summarises news from third-party sources using artificial intelligence. We do not create original news content. All news articles are sourced from established publishers and news agencies.</p>
+
+      <h3>AI-Generated Content</h3>
+      <p>The "why it matters to you" lines, daily briefings, and Deep Dive reports are generated by AI (powered by Anthropic Claude). While we strive for accuracy, AI-generated content may occasionally contain errors or inaccuracies. Verityn is not a substitute for reading original source material, and we encourage users to tap "Read" to access the full article from the original publisher.</p>
+
+      <h3>No Financial or Legal Advice</h3>
+      <p>Nothing in Verityn constitutes financial, legal, medical, or professional advice. News summaries and AI-generated context are for informational purposes only. Always consult qualified professionals for decisions affecting your finances, health, or legal matters.</p>
+
+      <h3>Intellectual Property</h3>
+      <p>News headlines and article content belong to their respective publishers. Verityn's AI-generated summaries, briefings, and the app interface are the property of Verityn. You may not reproduce, distribute, or commercially exploit any content from the app without permission.</p>
+
+      <h3>Availability</h3>
+      <p>We aim to keep Verityn available at all times but do not guarantee uninterrupted service. News feeds depend on third-party APIs that may experience downtime. We reserve the right to modify, suspend, or discontinue any feature at any time.</p>
+
+      <h3>User Conduct</h3>
+      <p>You agree not to reverse-engineer, decompile, or attempt to extract the source code of the application. You agree not to use automated systems to access the app in a manner that exceeds reasonable personal use.</p>
+
+      <h3>Changes to Terms</h3>
+      <p>We may update these terms from time to time. Continued use of the app after changes constitutes acceptance of the new terms.</p>
+
+      <h3>Contact</h3>
+      <p>Questions about these terms? Reach us at <a href="mailto:hello@verityn.news" style="color:var(--red)">hello@verityn.news</a>.</p>
+    `,
+    cookies: `
+      <h2>Cookie Policy</h2>
+      <div class="legal-date">Last updated: April 2026</div>
+      <p>Verityn is a mobile application and does not use browser cookies. This policy covers data storage on your device and our website.</p>
+
+      <h3>Mobile App</h3>
+      <p>The Verityn app uses AsyncStorage (local device storage) to save your preferences, cached briefings, and reading streak data. This data stays on your device and is deleted when you uninstall the app.</p>
+
+      <h3>Website (verityn.news)</h3>
+      <p>Our landing page does not use tracking cookies, analytics cookies, or advertising cookies. We do not use Google Analytics, Facebook Pixel, or any third-party tracking scripts on our website.</p>
+
+      <h3>Contact</h3>
+      <p>For questions about data storage, contact us at <a href="mailto:hello@verityn.news" style="color:var(--red)">hello@verityn.news</a>.</p>
+    `
+  };
+
+  function openLegal(page) {
+    document.getElementById('legalContent').innerHTML = legalPages[page];
+    document.getElementById('legalModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLegal() {
+    document.getElementById('legalModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('legalModal').addEventListener('click', e => { if (e.target === document.getElementById('legalModal')) closeLegal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.getElementById('legalModal').classList.contains('open')) closeLegal(); });
+
+  // ═══ 3D INTERACTIONS ═══
+
+  // 1. Phone follows cursor in 3D
+  const phone = document.querySelector('.phone');
+  const heroPhone = document.querySelector('.hero-phone');
+  if (phone && heroPhone) {
+    const maxTilt = 18;
+    let phoneRect = null;
+    let rafId = null;
+    let targetRx = 2, targetRy = -6;
+    let currentRx = 2, currentRy = -6;
+
+    heroPhone.addEventListener('mouseenter', () => {
+      phone.classList.add('tilt-active');
+      phoneRect = heroPhone.getBoundingClientRect();
+    });
+
+    heroPhone.addEventListener('mousemove', (e) => {
+      if (!phoneRect) phoneRect = heroPhone.getBoundingClientRect();
+      const x = (e.clientX - phoneRect.left) / phoneRect.width;
+      const y = (e.clientY - phoneRect.top) / phoneRect.height;
+      targetRy = (x - 0.5) * maxTilt;
+      targetRx = -(y - 0.5) * maxTilt;
+      if (!rafId) rafId = requestAnimationFrame(animatePhone);
+    });
+
+    heroPhone.addEventListener('mouseleave', () => {
+      phone.classList.remove('tilt-active');
+      targetRx = 2; targetRy = -6;
+      if (!rafId) rafId = requestAnimationFrame(animatePhone);
+    });
+
+    function animatePhone() {
+      currentRx += (targetRx - currentRx) * 0.08;
+      currentRy += (targetRy - currentRy) * 0.08;
+      phone.style.transform = `rotateX(${currentRx}deg) rotateY(${currentRy}deg)`;
+      if (Math.abs(targetRx - currentRx) > 0.05 || Math.abs(targetRy - currentRy) > 0.05) {
+        rafId = requestAnimationFrame(animatePhone);
+      } else {
+        rafId = null;
+      }
+    }
+  }
+
+  // 2. Feature cards 3D tilt on hover
+  document.querySelectorAll('.how-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      const tiltX = (y - 0.5) * -10;
+      const tiltY = (x - 0.5) * 10;
+      card.style.transform = `perspective(600px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(600px) rotateX(0) rotateY(0) translateY(0)';
+    });
+  });
+
+  // 3. Brief card 3D tilt on hover
+  const bCard = document.querySelector('.b-card');
+  if (bCard) {
+    bCard.addEventListener('mousemove', (e) => {
+      const rect = bCard.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      bCard.style.transform = `perspective(600px) rotateX(${(y-0.5)*-8}deg) rotateY(${(x-0.5)*8}deg) translateY(-6px)`;
+      bCard.style.animation = 'none';
+    });
+    bCard.addEventListener('mouseleave', () => {
+      bCard.style.transform = '';
+      bCard.style.animation = '';
+    });
+  }
+
+  // 4. Scroll-driven parallax + phone scroll transform
+  let lastScroll = 0;
+  const heroSection = document.querySelector('.hero');
+  const heroGrid = document.querySelector('.hero-grid');
+  const fbadges = document.querySelectorAll('.fbadge');
+  const heroContent = document.querySelector('.hero-content');
+
+  window.addEventListener('scroll', () => {
+    const sy = window.scrollY;
+    const wh = window.innerHeight;
+
+    // Phone scroll transform — rotate away as you scroll past hero
+    if (phone && heroSection) {
+      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+      const progress = Math.max(0, Math.min(1, (sy - heroSection.offsetTop) / (heroBottom - heroSection.offsetTop)));
+      if (progress > 0.1) {
+        const scrollRx = 2 + progress * 15;
+        const scrollScale = 1 - progress * 0.15;
+        phone.style.transform = `rotateX(${scrollRx}deg) rotateY(-6deg) scale(${scrollScale})`;
+      }
+    }
+
+    // Hero grid parallax
+    if (heroGrid) {
+      heroGrid.style.transform = `perspective(1000px) rotateX(1deg) translateY(${sy * 0.15}px)`;
+    }
+
+    // Floating badges parallax (different speeds)
+    fbadges.forEach((b, i) => {
+      const speed = i === 0 ? 0.08 : 0.12;
+      b.style.transform = `translateY(${sy * speed}px)`;
+    });
+
+    // Hero text parallax
+    if (heroContent) {
+      heroContent.style.transform = `translateY(${sy * 0.05}px)`;
+    }
+
+    lastScroll = sy;
+  }, { passive: true });
+
+  // 5. Number counter animation
+  const numItems = document.querySelectorAll('.num-item');
+  const numObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const valEl = entry.target.querySelector('.num-val');
+        if (!valEl || entry.target.classList.contains('counted')) return;
+        entry.target.classList.add('counted');
+        const text = valEl.textContent;
+        const match = text.match(/(\d+)/);
+        if (match) {
+          const target = parseInt(match[1]);
+          const prefix = text.substring(0, text.indexOf(match[1]));
+          const suffix = text.substring(text.indexOf(match[1]) + match[1].length);
+          let current = 0;
+          const step = Math.ceil(target / 40);
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) { current = target; clearInterval(timer); }
+            valEl.innerHTML = prefix + current + suffix.replace(/</g,'&lt;').replace('<', '<span>').replace('span>&lt;', 'span><').replace('+', '<span>+</span>');
+            // Reconstruct with spans
+            if (suffix.includes('+')) valEl.innerHTML = current + '<span>+</span>';
+            else if (suffix.includes('<')) valEl.innerHTML = '<span>&lt;</span>' + current + 'm';
+            else valEl.innerHTML = current + '<span>+</span>';
+          }, 30);
+        }
+        numObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  numItems.forEach(n => numObs.observe(n));
+</script>
+</body>
+</html>
