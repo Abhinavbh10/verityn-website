@@ -982,7 +982,7 @@
       <div class="ft-links">
         <div class="ft-col"><h4>Product</h4><a href="#how">Features</a><a href="#brief">AI Brief</a><a href="#about">Sources</a></div>
         <div class="ft-col"><h4>Legal</h4><a href="#" onclick="openLegal('privacy');return false">Privacy Policy</a><a href="#" onclick="openLegal('terms');return false">Terms & Conditions</a><a href="#" onclick="openLegal('cookies');return false">Cookie Policy</a></div>
-        <div class="ft-col"><h4>Contact</h4><a href="/cdn-cgi/l/email-protection#9cf4f9f0f0f3dceaf9eef5e8e5f2b2f2f9ebef"><span class="__cf_email__" data-cfemail="deb6bbb2b2b19ea8bbacb7aaa7b0f0b0bba9ad">[email&#160;protected]</span></a></div>
+        <div class="ft-col"><h4>Contact</h4><a class="eml" href="#">loading...</a></div>
       </div>
     </div>
     <div class="ft-div"></div>
@@ -1085,7 +1085,7 @@
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('pre').classList.add('done')},1100)});
   window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>30)});
   const obs=new IntersectionObserver(e=>{e.forEach((x,i)=>{if(x.isIntersecting){setTimeout(()=>x.target.classList.add('vis'),i*60);obs.unobserve(x.target)}})},{threshold:0.12,rootMargin:'0px 0px -30px 0px'});
@@ -1144,7 +1144,7 @@
       <p>You can delete all your data at any time by going to Settings within the app. You can change your country and interest preferences at any time. If you uninstall the app, your locally stored data is automatically removed.</p>
 
       <h3>Contact</h3>
-      <p>For any privacy-related questions, contact us at <a href="mailto:hello@verityn.news" style="color:var(--red)">hello@verityn.news</a>.</p>
+      <p>For any privacy-related questions, contact us at <a href="#" class="eml" style="color:var(--red)">loading...</a>.</p>
     `,
     terms: `
       <h2>Terms & Conditions</h2>
@@ -1173,7 +1173,7 @@
       <p>We may update these terms from time to time. Continued use of the app after changes constitutes acceptance of the new terms.</p>
 
       <h3>Contact</h3>
-      <p>Questions about these terms? Reach us at <a href="mailto:hello@verityn.news" style="color:var(--red)">hello@verityn.news</a>.</p>
+      <p>Questions about these terms? Reach us at <a href="#" class="eml" style="color:var(--red)">loading...</a>.</p>
     `,
     cookies: `
       <h2>Cookie Policy</h2>
@@ -1187,7 +1187,7 @@
       <p>Our landing page does not use tracking cookies, analytics cookies, or advertising cookies. We do not use Google Analytics, Facebook Pixel, or any third-party tracking scripts on our website.</p>
 
       <h3>Contact</h3>
-      <p>For questions about data storage, contact us at <a href="mailto:hello@verityn.news" style="color:var(--red)">hello@verityn.news</a>.</p>
+      <p>For questions about data storage, contact us at <a href="#" class="eml" style="color:var(--red)">loading...</a>.</p>
     `
   };
 
@@ -1202,6 +1202,10 @@
   }
   document.getElementById('legalModal').addEventListener('click', e => { if (e.target === document.getElementById('legalModal')) closeLegal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.getElementById('legalModal').classList.contains('open')) closeLegal(); });
+
+  // Render emails via JS to prevent Cloudflare obfuscation
+  const eu = ['hello','verityn.news'].join('@');
+  document.querySelectorAll('.eml').forEach(a => { a.href = 'mail' + 'to:' + eu; a.textContent = eu; });
 
   // ═══ 3D INTERACTIONS ═══
 
