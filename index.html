@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23FFFFFF'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='24' fill='%23C0392B'%3EV%3C/text%3E%3C/svg%3E">
 <title>Verityn — 7 Stories. Why They Matter to You.</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -1144,7 +1145,7 @@
       <div class="ft-brand"><a href="#" class="n-logo"><span class="n-v">V</span><span class="n-word">erityn</span></a><div class="ft-tag">Not a news feed — a news companion.</div></div>
       <div class="ft-links">
         <div class="ft-col"><h4>Product</h4><a href="#how">Features</a><a href="#brief">AI Brief</a><a href="#about">Sources</a></div>
-        <div class="ft-col"><h4>Legal</h4><a href="#" onclick="openLegal('privacy');return false">Privacy Policy</a><a href="#" onclick="openLegal('terms');return false">Terms & Conditions</a><a href="#" onclick="openLegal('cookies');return false">Cookie Policy</a></div>
+        <div class="ft-col"><h4>Legal</h4><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><a href="#" onclick="openLegal('cookies');return false">Cookie Policy</a></div>
         <div class="ft-col"><h4>Contact</h4><a class="eml" href="#">loading...</a></div>
       </div>
     </div>
@@ -1275,87 +1276,90 @@
     privacy: `
       <h2>Privacy Policy</h2>
       <div class="legal-date">Last updated: April 2026</div>
-      <p>Verityn ("we", "our", "us") is committed to protecting your privacy. This policy explains how we collect, use, and safeguard your information when you use our mobile application.</p>
+      <p>Verityn ("we", "our", "us") takes your privacy seriously. Here's what we collect, why, and what we don't do.</p>
 
-      <h3>Information We Collect</h3>
-      <p>We collect minimal information needed to personalise your news experience:</p>
+      <h3>What we collect</h3>
+      <p>We keep it minimal:</p>
       <ul>
-        <li><strong>Preferences:</strong> Countries you select, topics you follow, and interests you choose during onboarding. These are stored locally on your device and on our servers to generate your personalised briefing.</li>
-        <li><strong>Device identifier:</strong> An anonymous device ID generated on first launch, used to associate your preferences with your briefing. We do not collect your name, email, phone number, or any personally identifiable information unless you choose to create an account.</li>
-        <li><strong>Usage data:</strong> We may collect anonymised usage statistics (screens viewed, features used) to improve the app. This data cannot be traced back to you.</li>
+        <li><strong>Your preferences:</strong> The countries you pick, topics you follow, and interests you choose when you set up the app. These are stored on your device and on our servers so we can build your daily briefing.</li>
+        <li><strong>A device ID:</strong> An anonymous identifier created when you first open the app. It connects your preferences to your briefing. We don't collect your name, email, phone number, or anything that identifies you personally — unless you sign up for the waitlist or create an account.</li>
+        <li><strong>Basic usage stats:</strong> We may collect anonymous data about which screens you visit and features you use. This helps us make the app better. It can't be traced back to you.</li>
       </ul>
 
-      <h3>How We Use Your Information</h3>
+      <h3>What we do with it</h3>
       <ul>
-        <li>To generate your personalised 7-story briefing based on your selected countries and interests</li>
-        <li>To provide AI-generated "why it matters to you" context on each story</li>
-        <li>To improve the quality and relevance of our news curation</li>
+        <li>Build your 7-story briefing based on the countries and interests you chose</li>
+        <li>Write the "why it matters to you" line on each story</li>
+        <li>Make the app better over time</li>
       </ul>
 
-      <h3>What We Do Not Do</h3>
+      <h3>What we don't do</h3>
       <ul>
-        <li>We do not sell your data to third parties</li>
-        <li>We do not create advertising profiles based on your reading habits</li>
-        <li>We do not share your preferences with advertisers or data brokers</li>
-        <li>We do not track your browsing activity outside the Verityn app</li>
+        <li>We don't sell your data to anyone</li>
+        <li>We don't build advertising profiles from your reading habits</li>
+        <li>We don't share your preferences with advertisers or data brokers</li>
+        <li>We don't track what you do outside the Verityn app</li>
       </ul>
 
-      <h3>Data Storage</h3>
-      <p>Your preferences and briefing data are stored on Supabase servers. AI processing is handled through Anthropic (Claude) and OpenAI APIs. News content is sourced from third-party providers including GNews, The New York Times, and The Guardian. We do not store the full text of articles — only headlines, summaries, and metadata needed for your briefing.</p>
+      <h3>Where your data lives</h3>
+      <p>Your preferences and briefing data are stored on Supabase servers. The briefing is written using Anthropic (Claude) and OpenAI. News comes from third-party sources including GNews, The New York Times, and The Guardian. We don't store full articles — just headlines, summaries, and what's needed for your briefing.</p>
 
-      <h3>Your Rights</h3>
-      <p>You can delete all your data at any time by going to Settings within the app. You can change your country and interest preferences at any time. If you uninstall the app, your locally stored data is automatically removed.</p>
+      <h3>Your control</h3>
+      <p>You can delete all your data anytime from Settings in the app. You can change your countries and interests whenever you want. Uninstall the app and your local data is automatically removed.</p>
 
       <h3>Contact</h3>
-      <p>For any privacy-related questions, contact us at <a href="#" class="eml" style="color:var(--red)">loading...</a>.</p>
+      <p>Questions about your privacy? Email us at <a href="#" class="eml" style="color:var(--red)">loading...</a>.</p>
     `,
     terms: `
       <h2>Terms & Conditions</h2>
       <div class="legal-date">Last updated: April 2026</div>
-      <p>By downloading or using Verityn, you agree to these terms. Please read them carefully.</p>
+      <p>By using Verityn, you agree to these terms.</p>
 
-      <h3>The Service</h3>
-      <p>Verityn is a news intelligence application that curates and summarises news from third-party sources using artificial intelligence. We do not create original news content. All news articles are sourced from established publishers and news agencies.</p>
+      <h3>What Verityn is</h3>
+      <p>Verityn is a news app that picks and summarises stories from other publishers. We don't write original news. All articles come from established newsrooms and news agencies.</p>
 
-      <h3>AI-Generated Content</h3>
-      <p>The "why it matters to you" lines, daily briefings, and Deep Dive reports are generated by AI (powered by Anthropic Claude). While we strive for accuracy, AI-generated content may occasionally contain errors or inaccuracies. Verityn is not a substitute for reading original source material, and we encourage users to tap "Read" to access the full article from the original publisher.</p>
+      <h3>About the summaries</h3>
+      <p>The "why it matters to you" lines, daily briefings, and Deep Dive reports are written by AI (Anthropic Claude). We do our best to be accurate, but AI can get things wrong sometimes. Verityn isn't a replacement for reading the original article — we always link to the source so you can read the full story.</p>
 
-      <h3>No Financial or Legal Advice</h3>
-      <p>Nothing in Verityn constitutes financial, legal, medical, or professional advice. News summaries and AI-generated context are for informational purposes only. Always consult qualified professionals for decisions affecting your finances, health, or legal matters.</p>
+      <h3>Not advice</h3>
+      <p>Nothing in Verityn is financial, legal, medical, or professional advice. Our summaries are for information only. For decisions that matter, talk to a qualified professional.</p>
 
-      <h3>Intellectual Property</h3>
-      <p>News headlines and article content belong to their respective publishers. Verityn's AI-generated summaries, briefings, and the app interface are the property of Verityn. You may not reproduce, distribute, or commercially exploit any content from the app without permission.</p>
+      <h3>Who owns what</h3>
+      <p>News headlines and articles belong to their publishers. Verityn's summaries, briefings, and the app itself belong to us. Please don't reproduce or commercially use content from the app without permission.</p>
 
       <h3>Availability</h3>
-      <p>We aim to keep Verityn available at all times but do not guarantee uninterrupted service. News feeds depend on third-party APIs that may experience downtime. We reserve the right to modify, suspend, or discontinue any feature at any time.</p>
+      <p>We try to keep Verityn running smoothly, but we can't promise zero downtime. News feeds come from third-party APIs that sometimes go down. We may change, pause, or remove features at any time.</p>
 
-      <h3>User Conduct</h3>
-      <p>You agree not to reverse-engineer, decompile, or attempt to extract the source code of the application. You agree not to use automated systems to access the app in a manner that exceeds reasonable personal use.</p>
+      <h3>Fair use</h3>
+      <p>Don't reverse-engineer or decompile the app. Don't use bots or automated tools to access it beyond normal personal use.</p>
 
-      <h3>Changes to Terms</h3>
-      <p>We may update these terms from time to time. Continued use of the app after changes constitutes acceptance of the new terms.</p>
+      <h3>Changes</h3>
+      <p>We may update these terms. If you keep using the app after a change, that counts as accepting the new terms.</p>
 
       <h3>Contact</h3>
-      <p>Questions about these terms? Reach us at <a href="#" class="eml" style="color:var(--red)">loading...</a>.</p>
+      <p>Questions? Email us at <a href="#" class="eml" style="color:var(--red)">loading...</a>.</p>
     `,
     cookies: `
       <h2>Cookie Policy</h2>
       <div class="legal-date">Last updated: April 2026</div>
-      <p>Verityn is a mobile application and does not use browser cookies. This policy covers data storage on your device and our website.</p>
+      <p>Verityn is a mobile app. We don't use browser cookies. Here's what we do store:</p>
 
-      <h3>Mobile App</h3>
-      <p>The Verityn app uses AsyncStorage (local device storage) to save your preferences, cached briefings, and reading streak data. This data stays on your device and is deleted when you uninstall the app.</p>
+      <h3>On your phone</h3>
+      <p>The app saves your preferences, cached briefings, and reading streak to your device's local storage (AsyncStorage). This data stays on your phone and gets deleted when you uninstall the app.</p>
 
-      <h3>Website (verityn.news)</h3>
-      <p>Our landing page does not use tracking cookies, analytics cookies, or advertising cookies. We do not use Google Analytics, Facebook Pixel, or any third-party tracking scripts on our website.</p>
+      <h3>On this website</h3>
+      <p>This landing page doesn't use tracking cookies, analytics cookies, or advertising cookies. No Google Analytics, no Facebook Pixel, no third-party tracking scripts. The waitlist form stores your email on our server — that's it.</p>
 
       <h3>Contact</h3>
-      <p>For questions about data storage, contact us at <a href="#" class="eml" style="color:var(--red)">loading...</a>.</p>
+      <p>Questions about data storage? Email us at <a href="#" class="eml" style="color:var(--red)">loading...</a>.</p>
     `
   };
 
   function openLegal(page) {
     document.getElementById('legalContent').innerHTML = legalPages[page];
+    // Re-render email links inside modal
+    const eu = ['hello','verityn.news'].join('@');
+    document.querySelectorAll('#legalContent .eml').forEach(a => { a.href = 'mail' + 'to:' + eu; a.textContent = eu; });
     document.getElementById('legalModal').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
