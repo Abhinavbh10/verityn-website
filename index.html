@@ -906,10 +906,10 @@
       </div>
       <div class="phone">
         <div class="phone-notch"></div>
-        <div class="phone-scr" style="overflow:hidden">
-          <div style="flex:1;overflow:hidden;display:flex;flex-direction:column">
-          <!-- Header — compact -->
-          <div class="ps-hdr ps-anim" style="padding:36px 14px 6px">
+        <div class="phone-scr" style="overflow:hidden;display:flex;flex-direction:column">
+
+          <!-- Header -->
+          <div class="ps-hdr ps-anim" style="padding:36px 16px 6px;flex-shrink:0">
             <div>
               <div class="ps-date">Mon 13 April</div>
               <div class="ps-logo"><span class="ps-v">V</span><span class="ps-logotxt">erityn</span></div>
@@ -917,108 +917,98 @@
             <div class="ps-brieflink">Today's Briefing</div>
           </div>
 
-          <!-- Today in Brief dark bar — compact -->
-          <div class="ps-tib ps-anim" style="padding:8px 14px 7px">
+          <!-- Mood bar -->
+          <div class="ps-tib ps-anim" style="padding:9px 16px 8px;flex-shrink:0">
             <div class="ps-tib-label">TODAY IN BRIEF</div>
-            <div class="ps-tib-quote" style="font-size:.48rem">"Trade tensions, rate decisions, and AI regulation dominate a pivotal week."</div>
+            <div class="ps-tib-quote">"Trade tensions, rate decisions, and AI regulation dominate a pivotal week."</div>
             <div class="ps-tib-sub">7 Stories · Curated for you</div>
           </div>
 
-          <!-- 01 Lead Story -->
-          <div class="ps-lead ps-anim" style="padding:8px 14px 7px">
-            <div class="ps-lead-tag">01 · LEAD STORY</div>
-            <div class="ps-lead-hl" style="font-size:.6rem;margin-bottom:3px">US-China trade talks enter critical phase as tariff deadline looms</div>
-            <div class="ps-lead-why" style="font-size:.36rem;margin-bottom:5px;color:#3D2B1F">For finance professionals: semiconductor supply chains could reprice by Q3 — watch Taiwan Semiconductor and ASML this week.</div>
-            <div class="ps-lead-foot">
-              <div><span class="ps-src">Reuters</span> <span class="ps-time">38m</span></div>
-              <div class="ps-lead-btns">
-                <span class="ps-btn-read" style="font-size:.3rem;padding:2px 7px">Read ↗</span>
-                <span class="ps-btn-dive" style="font-size:.3rem;padding:2px 7px">Deep Dive →</span>
+          <!-- Stories — flex:1 fills remaining height, space-between distributes rows -->
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden">
+
+            <!-- 01 Lead -->
+            <div class="ps-lead ps-anim" style="padding:8px 16px 6px;border-bottom:1px solid var(--app-border);flex-shrink:0">
+              <div class="ps-lead-tag">01 · LEAD STORY</div>
+              <div class="ps-lead-hl">US-China trade talks enter critical phase as tariff deadline looms</div>
+              <div style="font-size:.42rem;color:#3D2B1F;line-height:1.35;margin:3px 0 5px">Semiconductor supply chains could reprice by Q3 — watch Taiwan Semiconductor and ASML.</div>
+              <div class="ps-lead-foot">
+                <div><span class="ps-src">Reuters</span> <span class="ps-time">38m</span></div>
+                <div class="ps-lead-btns">
+                  <span class="ps-btn-read">Read ↗</span>
+                  <span class="ps-btn-dive">Deep Dive →</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- ALSO TODAY divider -->
-          <div style="display:flex;align-items:center;gap:6px;padding:4px 14px 3px">
-            <div style="font-size:.28rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--app-muted);white-space:nowrap">Also Today</div>
-            <div style="flex:1;height:1px;background:var(--app-border)"></div>
-          </div>
+            <!-- ALSO TODAY -->
+            <div style="display:flex;align-items:center;gap:6px;padding:3px 16px 2px;flex-shrink:0">
+              <div style="font-size:.3rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--app-muted)">Also Today</div>
+              <div style="flex:1;height:1px;background:var(--app-border)"></div>
+            </div>
 
-          <!-- 02 -->
-          <div style="display:flex;gap:6px;padding:5px 14px;border-bottom:1px solid var(--app-border);align-items:center">
-            <div style="flex:1">
-              <div style="display:flex;align-items:center;gap:4px;margin-bottom:1px">
-                <span style="font-size:.26rem;font-weight:700;color:var(--app-muted)">02</span>
-                <span style="font-size:.26rem;font-weight:800;text-transform:uppercase;color:var(--red)">Bloomberg</span>
+            <!-- 02 -->
+            <div style="display:flex;gap:8px;padding:4px 16px;border-bottom:1px solid var(--app-border);align-items:center;flex-shrink:0">
+              <div style="flex:1">
+                <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:2px"><span style="font-size:.28rem;font-weight:700;color:var(--app-muted)">02</span><span style="font-size:.3rem;font-weight:800;text-transform:uppercase;color:var(--red)">Bloomberg</span></div>
+                <div style="font-family:Georgia,serif;font-size:.44rem;font-weight:700;line-height:1.2;color:var(--app-text);margin-bottom:2px">ECB holds — first Bundesbank dissent in 4 years</div>
+                <div style="font-size:.32rem;color:#3D2B1F;line-height:1.3">German mortgage renewals track ECB with 6-week lag.</div>
               </div>
-              <div style="font-family:Georgia,serif;font-size:.38rem;font-weight:700;line-height:1.15;color:var(--app-text);margin-bottom:1px">ECB holds rates — first Bundesbank dissent in 4 years</div>
-              <div style="font-size:.3rem;color:#3D2B1F;line-height:1.3">German mortgage renewals track ECB with 6-week lag.</div>
+              <div style="width:30px;height:30px;border-radius:5px;background:linear-gradient(135deg,#1a2a3a,#2a4a6a);flex-shrink:0"></div>
             </div>
-            <div style="width:26px;height:26px;border-radius:4px;background:linear-gradient(135deg,#1a2a3a,#2a4a6a);flex-shrink:0"></div>
-          </div>
 
-          <!-- 03 -->
-          <div style="display:flex;gap:6px;padding:5px 14px;border-bottom:1px solid var(--app-border);align-items:center">
-            <div style="flex:1">
-              <div style="display:flex;align-items:center;gap:4px;margin-bottom:1px">
-                <span style="font-size:.26rem;font-weight:700;color:var(--app-muted)">03</span>
-                <span style="font-size:.26rem;font-weight:800;text-transform:uppercase;color:var(--red)">FT</span>
+            <!-- 03 -->
+            <div style="display:flex;gap:8px;padding:4px 16px;border-bottom:1px solid var(--app-border);align-items:center;flex-shrink:0">
+              <div style="flex:1">
+                <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:2px"><span style="font-size:.28rem;font-weight:700;color:var(--app-muted)">03</span><span style="font-size:.3rem;font-weight:800;text-transform:uppercase;color:var(--red)">FT</span></div>
+                <div style="font-family:Georgia,serif;font-size:.44rem;font-weight:700;line-height:1.2;color:var(--app-text);margin-bottom:2px">EU passes landmark AI governance framework</div>
+                <div style="font-size:.32rem;color:#3D2B1F;line-height:1.3">Tech professionals face mandatory compliance from 2027.</div>
               </div>
-              <div style="font-family:Georgia,serif;font-size:.38rem;font-weight:700;line-height:1.15;color:var(--app-text);margin-bottom:1px">EU passes landmark AI governance framework</div>
-              <div style="font-size:.3rem;color:#3D2B1F;line-height:1.3">Tech professionals face mandatory compliance from 2027.</div>
+              <div style="width:30px;height:30px;border-radius:5px;background:linear-gradient(135deg,#4a6070,#6a8898);flex-shrink:0"></div>
             </div>
-            <div style="width:26px;height:26px;border-radius:4px;background:linear-gradient(135deg,#4a6070,#6a8898);flex-shrink:0"></div>
-          </div>
 
-          <!-- 04 -->
-          <div style="display:flex;gap:6px;padding:5px 14px;border-bottom:1px solid var(--app-border);align-items:center">
-            <div style="flex:1">
-              <div style="display:flex;align-items:center;gap:4px;margin-bottom:1px">
-                <span style="font-size:.26rem;font-weight:700;color:var(--app-muted)">04</span>
-                <span style="font-size:.26rem;font-weight:800;text-transform:uppercase;color:var(--red)">Nikkei Asia</span>
+            <!-- 04 -->
+            <div style="display:flex;gap:8px;padding:4px 16px;border-bottom:1px solid var(--app-border);align-items:center;flex-shrink:0">
+              <div style="flex:1">
+                <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:2px"><span style="font-size:.28rem;font-weight:700;color:var(--app-muted)">04</span><span style="font-size:.3rem;font-weight:800;text-transform:uppercase;color:var(--red)">Nikkei Asia</span></div>
+                <div style="font-family:Georgia,serif;font-size:.44rem;font-weight:700;line-height:1.2;color:var(--app-text);margin-bottom:2px">Oil hits $96 as Iran closes Hormuz strait</div>
+                <div style="font-size:.32rem;color:#3D2B1F;line-height:1.3">European diesel follows within 10 days.</div>
               </div>
-              <div style="font-family:Georgia,serif;font-size:.38rem;font-weight:700;line-height:1.15;color:var(--app-text);margin-bottom:1px">Oil hits $96 as Iran closes Hormuz strait</div>
-              <div style="font-size:.3rem;color:#3D2B1F;line-height:1.3">European diesel follows within 10 days.</div>
+              <div style="width:30px;height:30px;border-radius:5px;background:linear-gradient(135deg,#3a1a0a,#6a2a1a);flex-shrink:0"></div>
             </div>
-            <div style="width:26px;height:26px;border-radius:4px;background:linear-gradient(135deg,#3a1a0a,#6a2a1a);flex-shrink:0"></div>
-          </div>
 
-          <!-- WORTH KNOWING divider -->
-          <div style="display:flex;align-items:center;gap:6px;padding:4px 14px 3px">
-            <div style="font-size:.28rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--app-muted);white-space:nowrap">Worth Knowing</div>
-            <div style="flex:1;height:1px;background:var(--app-border)"></div>
-          </div>
+            <!-- WORTH KNOWING -->
+            <div style="display:flex;align-items:center;gap:6px;padding:3px 16px 2px;flex-shrink:0">
+              <div style="font-size:.3rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--app-muted)">Worth Knowing</div>
+              <div style="flex:1;height:1px;background:var(--app-border)"></div>
+            </div>
 
-          <!-- 05 06 07 — minimal, ghost numbers -->
-          <div style="display:flex;gap:6px;padding:6px 14px;border-bottom:1px solid var(--app-border);align-items:center">
-            <span style="font-size:.75rem;font-weight:900;color:rgba(0,0,0,.06);font-family:Georgia,serif;line-height:1;flex-shrink:0">5</span>
-            <div>
-              <div style="font-size:.34rem;font-weight:600;color:var(--app-text);line-height:1.2">Nvidia loses $40B in Chinese contracts after chip ban</div>
-              <div style="font-size:.28rem;color:var(--app-muted);margin-top:1px">Watch semiconductor ETFs Monday.</div>
+            <!-- 05 -->
+            <div style="display:flex;gap:8px;padding:4px 16px;border-bottom:1px solid var(--app-border);align-items:center;flex-shrink:0">
+              <span style="font-size:.9rem;font-weight:900;color:rgba(0,0,0,.05);font-family:Georgia,serif;line-height:1;width:14px;flex-shrink:0;text-align:center">5</span>
+              <div><div style="font-size:.38rem;font-weight:600;color:var(--app-text);line-height:1.2">Nvidia loses $40B in Chinese contracts after chip ban</div><div style="font-size:.3rem;color:var(--app-muted);margin-top:1px">Watch semiconductor ETFs Monday.</div></div>
             </div>
-          </div>
-          <div style="display:flex;gap:6px;padding:6px 14px;border-bottom:1px solid var(--app-border);align-items:center">
-            <span style="font-size:.75rem;font-weight:900;color:rgba(0,0,0,.06);font-family:Georgia,serif;line-height:1;flex-shrink:0">6</span>
-            <div>
-              <div style="font-size:.34rem;font-weight:600;color:var(--app-text);line-height:1.2">UK tech sector adds 50,000 jobs in Q1</div>
-              <div style="font-size:.28rem;color:var(--app-muted);margin-top:1px">First growth quarter since 2022.</div>
-            </div>
-          </div>
-          <div style="display:flex;gap:6px;padding:6px 14px 4px;align-items:center">
-            <span style="font-size:.75rem;font-weight:900;color:rgba(0,0,0,.06);font-family:Georgia,serif;line-height:1;flex-shrink:0">7</span>
-            <div>
-              <div style="font-size:.34rem;font-weight:600;color:var(--app-text);line-height:1.2">India RBI signals August rate cut if oil stabilises</div>
-              <div style="font-size:.28rem;color:var(--app-muted);margin-top:1px">Conditional on Hormuz resolution.</div>
-            </div>
-          </div>
 
-          </div><!-- end story wrapper -->
-          <!-- 4-tab bottom nav -->
-          <div class="ps-nav5 ps-anim">
+            <!-- 06 -->
+            <div style="display:flex;gap:8px;padding:4px 16px;border-bottom:1px solid var(--app-border);align-items:center;flex-shrink:0">
+              <span style="font-size:.9rem;font-weight:900;color:rgba(0,0,0,.05);font-family:Georgia,serif;line-height:1;width:14px;flex-shrink:0;text-align:center">6</span>
+              <div><div style="font-size:.38rem;font-weight:600;color:var(--app-text);line-height:1.2">UK tech sector adds 50,000 jobs in Q1</div><div style="font-size:.3rem;color:var(--app-muted);margin-top:1px">First growth quarter since 2022.</div></div>
+            </div>
+
+            <!-- 07 -->
+            <div style="display:flex;gap:8px;padding:4px 16px;align-items:center;flex-shrink:0">
+              <span style="font-size:.9rem;font-weight:900;color:rgba(0,0,0,.05);font-family:Georgia,serif;line-height:1;width:14px;flex-shrink:0;text-align:center">7</span>
+              <div><div style="font-size:.38rem;font-weight:600;color:var(--app-text);line-height:1.2">India RBI signals August rate cut if oil stabilises</div><div style="font-size:.3rem;color:var(--app-muted);margin-top:1px">Conditional on Hormuz resolution.</div></div>
+            </div>
+
+          </div><!-- end stories -->
+
+          <!-- 4-tab nav — sticks to bottom via flex -->
+          <div class="ps-nav5 ps-anim" style="flex-shrink:0">
             <div class="ps-nav5-item"><svg class="ps-nav5-svg on" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/></svg><div class="ps-nav5-lb on">Today</div></div>
             <div class="ps-nav5-item"><svg class="ps-nav5-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg><div class="ps-nav5-lb">Topics</div></div>
             <div class="ps-nav5-item"><svg class="ps-nav5-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg><div class="ps-nav5-lb">Search</div></div>
-            <div class="ps-nav5-item"><svg class="ps-nav5-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><div class="ps-nav5-lb">Settings</div></div>
+            <div class="ps-nav5-item"><svg class="ps-nav5-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l-.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><div class="ps-nav5-lb">Settings</div></div>
           </div>
         </div>
       </div>
