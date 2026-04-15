@@ -107,16 +107,17 @@
   }
   .n-cta:hover { background: var(--red) !important; transform: translateY(-1px); }
 
-  /* ═══ HERO ═══ */
+  /* ═══ HERO — SCROLL-DRIVEN 3D CONTAINER ═══ */
   .hero {
-    min-height: 100vh; display: flex; align-items: center;
-    padding: 160px 0 100px; position: relative;
+    min-height: 160vh; display: flex; align-items: flex-start;
+    padding: 140px 0 200px; position: relative;
   }
   .hero .w {
-    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center;
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: start;
+    position: sticky; top: 80px;
   }
 
-  .hero-content { position: relative; padding-top: 20px; }
+  .hero-content { position: relative; padding-top: 40px; }
 
   .h-issue {
     font-family: 'IBM Plex Mono', monospace;
@@ -154,32 +155,40 @@
   }
   .h-cta:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(192,57,43,0.25); }
 
-  /* ═══ PHONE MOCKUP ═══ */
+  /* ═══ PHONE MOCKUP — 3D SCROLL CONTAINER ═══ */
   .hero-phone {
     position: relative; display: flex; justify-content: center;
     opacity: 0; animation: fadeUp 0.9s 1.4s ease forwards;
     perspective: 1200px;
   }
+  .phone-3d-wrap {
+    transform-style: preserve-3d;
+    will-change: transform;
+    /* Initial state: tilted back 20deg — dramatic reveal on scroll */
+    transform: perspective(1200px) rotateX(20deg) scale(0.92);
+    transition: box-shadow 0.5s ease;
+  }
   .phone {
     width: 290px; height: 600px;
     background: #1A1A1A; border-radius: 42px; padding: 11px;
     position: relative;
-    box-shadow: 0 60px 120px rgba(0,0,0,0.12), 0 20px 40px rgba(0,0,0,0.08);
+    box-shadow:
+      0 0 #0000004d,
+      0 9px 20px #0000004a,
+      0 37px 37px #00000042,
+      0 84px 50px #00000026,
+      0 149px 60px #0000000a,
+      0 233px 65px #00000003;
     transform-style: preserve-3d;
-    transform: rotateY(-6deg) rotateX(2deg);
-    transition: transform 0.15s ease-out, box-shadow 0.3s ease;
-    will-change: transform;
-  }
-  .phone.tilt-active {
-    box-shadow: 0 80px 160px rgba(0,0,0,0.18), 0 30px 60px rgba(0,0,0,0.1);
   }
   /* Reflection/shine layer */
   .phone::after {
     content: ''; position: absolute; inset: 0;
     border-radius: 42px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.03) 100%);
+    background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 35%, transparent 65%, rgba(255,255,255,0.04) 100%);
     pointer-events: none; z-index: 10;
-    transition: opacity 0.3s;
+    opacity: 0.6;
+    transition: opacity 0.5s;
   }
   .phone-notch {
     position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
@@ -189,7 +198,6 @@
   .phone-scr {
     width: 100%; height: 100%; background: var(--app-bg);
     border-radius: 32px; overflow: hidden; position: relative;
-    display: flex; flex-direction: column;
   }
 
   /* ── In-phone UI matching actual app ── */
@@ -229,7 +237,7 @@
   .ps-also-why { font-size: 0.38rem; color: var(--app-text); line-height: 1.35; opacity: 0.65; }
   .ps-also-thumb { width: 52px; height: 52px; border-radius: 6px; flex-shrink: 0; background: linear-gradient(135deg, #1a2030, #2a3545); }
 
-  .ps-nav5 { background: var(--white); border-top: 1px solid var(--app-border); display: flex; align-items: center; padding: 6px 4px 8px; flex-shrink: 0; margin-top: auto; }
+  .ps-nav5 { position: absolute; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 1px solid var(--app-border); display: flex; align-items: center; padding: 6px 4px 8px; }
   .ps-nav5-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; }
   .ps-nav5-svg { color: var(--app-muted); }
   .ps-nav5-svg.on { color: var(--red); }
@@ -835,9 +843,11 @@
 
   /* ═══ RESPONSIVE ═══ */
   @media (max-width: 1024px) {
-    .hero .w { grid-template-columns: 1fr; gap: 50px; }
+    .hero { min-height: auto; padding: 120px 0 80px; }
+    .hero .w { grid-template-columns: 1fr; gap: 50px; position: static; }
     .hero-phone { order: -1; perspective: none; }
-    .phone { transform: none !important; width: 260px; height: 530px; }
+    .phone-3d-wrap { transform: none !important; }
+    .phone { width: 260px; height: 530px; }
     .fbadge { display: none; }
     .how .w { grid-template-columns: 1fr; gap: 40px; }
     .how-left { position: static; }
@@ -904,115 +914,70 @@
         <div class="fbadge-ic g"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
         <div><div style="font-size:.58rem;color:var(--ink-50)">Your summary</div><div style="font-size:.74rem;font-weight:700">Daily Brief</div></div>
       </div>
-      <div class="phone">
-        <div class="phone-notch"></div>
-        <div class="phone-scr" style="overflow:hidden;display:flex;flex-direction:column">
-
-          <!-- Header -->
-          <div class="ps-hdr ps-anim" style="padding:36px 16px 6px;flex-shrink:0">
-            <div>
-              <div class="ps-date">Mon 13 April</div>
-              <div class="ps-logo"><span class="ps-v">V</span><span class="ps-logotxt">erityn</span></div>
+      <div class="phone-3d-wrap" id="phone3d">
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="phone-scr">
+            <!-- Header -->
+            <div class="ps-hdr ps-anim">
+              <div>
+                <div class="ps-date">Sun 12 April</div>
+                <div class="ps-logo"><span class="ps-v">V</span><span class="ps-logotxt">erityn</span></div>
+              </div>
+              <div class="ps-brieflink">Today's Briefing</div>
             </div>
-            <div class="ps-brieflink">Today's Briefing</div>
-          </div>
-
-          <!-- Mood bar -->
-          <div class="ps-tib ps-anim" style="padding:9px 16px 8px;flex-shrink:0">
-            <div class="ps-tib-label">TODAY IN BRIEF</div>
-            <div class="ps-tib-quote">"Trade tensions, rate decisions, and AI regulation dominate a pivotal week."</div>
-            <div class="ps-tib-sub">7 Stories · Curated for you</div>
-          </div>
-
-          <!-- Stories — flex:1 fills remaining height, space-between distributes rows -->
-          <div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden">
-
-            <!-- 01 Lead -->
-            <div class="ps-lead ps-anim" style="padding:8px 16px 6px;border-bottom:1px solid var(--app-border);flex-shrink:0">
-              <div class="ps-lead-tag">01 · LEAD STORY</div>
+            <!-- Today in Brief dark bar -->
+            <div class="ps-tib ps-anim">
+              <div class="ps-tib-label">Today in Brief</div>
+              <div class="ps-tib-quote">"Trade tensions, rate decisions, and AI regulation dominate a pivotal week for global markets."</div>
+              <div class="ps-tib-sub">7 Stories · Curated for you</div>
+            </div>
+            <!-- Tier 1: Lead Story -->
+            <div class="ps-lead ps-anim">
+              <div class="ps-lead-tag">01 · Lead Story</div>
               <div class="ps-lead-hl">US-China trade talks enter critical phase as tariff deadline looms</div>
-              <div style="font-size:.42rem;color:#3D2B1F;line-height:1.35;margin:3px 0 5px">Semiconductor supply chains could reprice by Q3 — watch Taiwan Semiconductor and ASML.</div>
+              <div class="ps-lead-why">Both sides signalling willingness to cut semiconductor tariffs — could reshape global supply chains by Q3...</div>
               <div class="ps-lead-foot">
-                <div><span class="ps-src">Reuters</span> <span class="ps-time">38m</span></div>
+                <div><span class="ps-src">Reuters</span><br><span class="ps-time">38m ago</span></div>
                 <div class="ps-lead-btns">
                   <span class="ps-btn-read">Read ↗</span>
                   <span class="ps-btn-dive">Deep Dive →</span>
                 </div>
               </div>
             </div>
-
-            <!-- ALSO TODAY -->
-            <div style="display:flex;align-items:center;gap:6px;padding:3px 16px 2px;flex-shrink:0">
-              <div style="font-size:.3rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--app-muted)">Also Today</div>
-              <div style="flex:1;height:1px;background:var(--app-border)"></div>
-            </div>
-
-            <!-- 02 -->
-            <div style="display:flex;gap:8px;padding:4px 16px;border-bottom:1px solid var(--app-border);align-items:center;flex-shrink:0">
-              <div style="flex:1">
-                <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:2px"><span style="font-size:.28rem;font-weight:700;color:var(--app-muted)">02</span><span style="font-size:.3rem;font-weight:800;text-transform:uppercase;color:var(--red)">Bloomberg</span></div>
-                <div style="font-family:Georgia,serif;font-size:.44rem;font-weight:700;line-height:1.2;color:var(--app-text);margin-bottom:2px">ECB holds — first Bundesbank dissent in 4 years</div>
-                <div style="font-size:.32rem;color:#3D2B1F;line-height:1.3">German mortgage renewals track ECB with 6-week lag.</div>
+            <div style="height:1px;background:var(--app-border);margin:0 16px"></div>
+            <!-- Tier 2: Also Today -->
+            <div class="ps-also ps-anim">
+              <div class="ps-also-label">Also Today</div>
+              <div class="ps-also-item">
+                <div class="ps-also-text">
+                  <div class="ps-also-num">02</div>
+                  <div class="ps-src" style="font-size:.34rem">Bloomberg</div>
+                  <div class="ps-also-hl">ECB holds rates steady amid eurozone inflation concerns</div>
+                </div>
+                <div class="ps-also-thumb" style="background:linear-gradient(135deg,#2d4a3a,#3d6a50)"></div>
               </div>
-              <div style="width:30px;height:30px;border-radius:5px;background:linear-gradient(135deg,#1a2a3a,#2a4a6a);flex-shrink:0"></div>
-            </div>
-
-            <!-- 03 -->
-            <div style="display:flex;gap:8px;padding:4px 16px;border-bottom:1px solid var(--app-border);align-items:center;flex-shrink:0">
-              <div style="flex:1">
-                <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:2px"><span style="font-size:.28rem;font-weight:700;color:var(--app-muted)">03</span><span style="font-size:.3rem;font-weight:800;text-transform:uppercase;color:var(--red)">FT</span></div>
-                <div style="font-family:Georgia,serif;font-size:.44rem;font-weight:700;line-height:1.2;color:var(--app-text);margin-bottom:2px">EU passes landmark AI governance framework</div>
-                <div style="font-size:.32rem;color:#3D2B1F;line-height:1.3">Tech professionals face mandatory compliance from 2027.</div>
+              <div style="height:1px;background:var(--app-border);margin:4px 0"></div>
+              <div class="ps-also-item">
+                <div class="ps-also-text">
+                  <div class="ps-also-num">03</div>
+                  <div class="ps-src" style="font-size:.34rem">FT</div>
+                  <div class="ps-also-hl">EU passes new rules for AI companies</div>
+                </div>
+                <div class="ps-also-thumb" style="background:linear-gradient(135deg,#4a6070,#6a8898)"></div>
               </div>
-              <div style="width:30px;height:30px;border-radius:5px;background:linear-gradient(135deg,#4a6070,#6a8898);flex-shrink:0"></div>
             </div>
-
-            <!-- 04 -->
-            <div style="display:flex;gap:8px;padding:4px 16px;border-bottom:1px solid var(--app-border);align-items:center;flex-shrink:0">
-              <div style="flex:1">
-                <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:2px"><span style="font-size:.28rem;font-weight:700;color:var(--app-muted)">04</span><span style="font-size:.3rem;font-weight:800;text-transform:uppercase;color:var(--red)">Nikkei Asia</span></div>
-                <div style="font-family:Georgia,serif;font-size:.44rem;font-weight:700;line-height:1.2;color:var(--app-text);margin-bottom:2px">Oil hits $96 as Iran closes Hormuz strait</div>
-                <div style="font-size:.32rem;color:#3D2B1F;line-height:1.3">European diesel follows within 10 days.</div>
-              </div>
-              <div style="width:30px;height:30px;border-radius:5px;background:linear-gradient(135deg,#3a1a0a,#6a2a1a);flex-shrink:0"></div>
+            <!-- 5-tab bottom nav -->
+            <div class="ps-nav5 ps-anim">
+              <div class="ps-nav5-item"><svg class="ps-nav5-svg on" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/></svg><div class="ps-nav5-lb on">Today</div></div>
+              <div class="ps-nav5-item"><svg class="ps-nav5-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg><div class="ps-nav5-lb">My Topics</div></div>
+              <div class="ps-nav5-item"><svg class="ps-nav5-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><div class="ps-nav5-lb">Digest</div></div>
+              <div class="ps-nav5-item"><svg class="ps-nav5-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg><div class="ps-nav5-lb">Search</div></div>
+              <div class="ps-nav5-item"><svg class="ps-nav5-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><div class="ps-nav5-lb">Settings</div></div>
             </div>
-
-            <!-- WORTH KNOWING -->
-            <div style="display:flex;align-items:center;gap:6px;padding:3px 16px 2px;flex-shrink:0">
-              <div style="font-size:.3rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--app-muted)">Worth Knowing</div>
-              <div style="flex:1;height:1px;background:var(--app-border)"></div>
-            </div>
-
-            <!-- 05 -->
-            <div style="display:flex;gap:8px;padding:4px 16px;border-bottom:1px solid var(--app-border);align-items:center;flex-shrink:0">
-              <span style="font-size:.9rem;font-weight:900;color:rgba(0,0,0,.05);font-family:Georgia,serif;line-height:1;width:14px;flex-shrink:0;text-align:center">5</span>
-              <div><div style="font-size:.38rem;font-weight:600;color:var(--app-text);line-height:1.2">Nvidia loses $40B in Chinese contracts after chip ban</div><div style="font-size:.3rem;color:var(--app-muted);margin-top:1px">Watch semiconductor ETFs Monday.</div></div>
-            </div>
-
-            <!-- 06 -->
-            <div style="display:flex;gap:8px;padding:4px 16px;border-bottom:1px solid var(--app-border);align-items:center;flex-shrink:0">
-              <span style="font-size:.9rem;font-weight:900;color:rgba(0,0,0,.05);font-family:Georgia,serif;line-height:1;width:14px;flex-shrink:0;text-align:center">6</span>
-              <div><div style="font-size:.38rem;font-weight:600;color:var(--app-text);line-height:1.2">UK tech sector adds 50,000 jobs in Q1</div><div style="font-size:.3rem;color:var(--app-muted);margin-top:1px">First growth quarter since 2022.</div></div>
-            </div>
-
-            <!-- 07 -->
-            <div style="display:flex;gap:8px;padding:4px 16px;align-items:center;flex-shrink:0">
-              <span style="font-size:.9rem;font-weight:900;color:rgba(0,0,0,.05);font-family:Georgia,serif;line-height:1;width:14px;flex-shrink:0;text-align:center">7</span>
-              <div><div style="font-size:.38rem;font-weight:600;color:var(--app-text);line-height:1.2">India RBI signals August rate cut if oil stabilises</div><div style="font-size:.3rem;color:var(--app-muted);margin-top:1px">Conditional on Hormuz resolution.</div></div>
-            </div>
-
-          </div><!-- end stories -->
-
-          <!-- 4-tab nav — sticks to bottom via flex -->
-          <div class="ps-nav5 ps-anim" style="flex-shrink:0">
-            <div class="ps-nav5-item"><svg class="ps-nav5-svg on" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/></svg><div class="ps-nav5-lb on">Today</div></div>
-            <div class="ps-nav5-item"><svg class="ps-nav5-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg><div class="ps-nav5-lb">Topics</div></div>
-            <div class="ps-nav5-item"><svg class="ps-nav5-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg><div class="ps-nav5-lb">Search</div></div>
-            <div class="ps-nav5-item"><svg class="ps-nav5-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l-.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><div class="ps-nav5-lb">Settings</div></div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1164,7 +1129,7 @@
       <div class="ft-brand"><a href="#" class="n-logo"><span class="n-v">V</span><span class="n-word">erityn</span></a><div class="ft-tag">Not a news feed — a news companion.</div></div>
       <div class="ft-links">
         <div class="ft-col"><h4>Product</h4><a href="#how">Features</a><a href="#brief">Daily Brief</a><a href="#about">Sources</a></div>
-        <div class="ft-col"><h4>Legal</h4><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="#" onclick="openLegal('cookies');return false">Cookie Policy</a></div>
+        <div class="ft-col"><h4>Legal</h4><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a><a href="#" onclick="openLegal('cookies');return false">Cookie Policy</a></div>
         <div class="ft-col"><h4>Contact</h4><a class="eml" href="#">loading...</a></div>
       </div>
     </div>
@@ -1205,12 +1170,12 @@
           <div style="padding:1px 0;border-bottom:1px solid var(--app-border);display:flex;gap:5px;align-items:center"><span style="font-size:.36rem;font-weight:700;color:rgba(0,0,0,.05);font-family:Georgia,serif">06</span><span style="font-size:.3rem;font-weight:600;color:var(--app-text);line-height:1.1">UK tech sector adds 50,000 jobs in Q1</span></div>
           <div style="padding:1px 0;display:flex;gap:5px;align-items:center"><span style="font-size:.36rem;font-weight:700;color:rgba(0,0,0,.05);font-family:Georgia,serif">07</span><span style="font-size:.3rem;font-weight:600;color:var(--app-text);line-height:1.1">Berlin climate summit enters day two</span></div>
         </div>
-        <div class="ds-nav5"><div class="ds-nav5-i on"><span style="font-size:.5rem">⌂</span><div class="ds-nav5-l on">Today</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◉</span><div class="ds-nav5-l">Topics</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◎</span><div class="ds-nav5-l">Search</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">⚙</span><div class="ds-nav5-l">Settings</div></div></div>
+        <div class="ds-nav5"><div class="ds-nav5-i on"><span style="font-size:.5rem">⌂</span><div class="ds-nav5-l on">Today</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◉</span><div class="ds-nav5-l">Topics</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◇</span><div class="ds-nav5-l">Digest</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◎</span><div class="ds-nav5-l">Search</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">⚙</span><div class="ds-nav5-l">Settings</div></div></div>
       </div>
 
       <!-- Slide 2: Follow the threads -->
       <div class="d-slide" data-s="1">
-        <div class="ds-hdr"><div><div class="ds-date">Sun 12 April</div><div class="ds-logo"><span style="font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:var(--red)">V</span><span class="ds-logotxt">erityn</span></div></div><span style="font-size:.36rem;color:var(--app-muted)">Topics</span></div>
+        <div class="ds-hdr"><div><div class="ds-date">Sun 12 April</div><div class="ds-logo"><span style="font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:var(--red)">V</span><span class="ds-logotxt">erityn</span></div></div><span style="font-size:.36rem;color:var(--app-muted)">My Topics</span></div>
         <div class="ds-feed" style="padding:7px 11px">
           <div style="font-size:.26rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--app-muted);margin-bottom:5px">Trending Topics</div>
           <div style="background:white;border-radius:6px;padding:7px 9px;margin-bottom:4px;border:1px solid var(--app-border)">
@@ -1222,12 +1187,12 @@
           <div style="background:white;border-radius:6px;padding:7px 9px;margin-bottom:4px;border:1px solid var(--app-border)"><div style="display:flex;justify-content:space-between;margin-bottom:2px"><span style="font-size:.26rem;font-weight:700;text-transform:uppercase;color:var(--red)">Global Climate</span><span style="font-size:.22rem;color:var(--app-muted)">11 stories</span></div><div style="font-family:Georgia,serif;font-size:.38rem;font-weight:700;color:var(--app-text);line-height:1.1">COP30 negotiations stall on carbon credit rules</div></div>
           <div style="background:white;border-radius:6px;padding:7px 9px;border:1px solid var(--app-border)"><div style="display:flex;justify-content:space-between;margin-bottom:2px"><span style="font-size:.26rem;font-weight:700;text-transform:uppercase;color:var(--red)">ECB Policy</span><span style="font-size:.22rem;color:var(--app-muted)">6 stories</span></div><div style="font-family:Georgia,serif;font-size:.38rem;font-weight:700;color:var(--app-text);line-height:1.1">Rates held amid eurozone inflation</div></div>
         </div>
-        <div class="ds-nav5"><div class="ds-nav5-i"><span style="font-size:.5rem">⌂</span><div class="ds-nav5-l">Today</div></div><div class="ds-nav5-i on"><span style="font-size:.5rem">◉</span><div class="ds-nav5-l on">Topics</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◎</span><div class="ds-nav5-l">Search</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">⚙</span><div class="ds-nav5-l">Settings</div></div></div>
+        <div class="ds-nav5"><div class="ds-nav5-i"><span style="font-size:.5rem">⌂</span><div class="ds-nav5-l">Today</div></div><div class="ds-nav5-i on"><span style="font-size:.5rem">◉</span><div class="ds-nav5-l on">Topics</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◇</span><div class="ds-nav5-l">Digest</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◎</span><div class="ds-nav5-l">Search</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">⚙</span><div class="ds-nav5-l">Settings</div></div></div>
       </div>
 
       <!-- Slide 3: Deep Dive -->
       <div class="d-slide" data-s="2">
-        <div class="ds-hdr" style="border-bottom:1px solid var(--app-border)"><div><div style="font-size:.26rem;color:var(--red);font-weight:700;letter-spacing:.02em">← Today</div><div style="font-size:.38rem;font-weight:700;color:var(--app-text)">Deep Dive</div></div><span style="font-size:.26rem;font-weight:700;color:var(--app-muted)">✦ AI · Not advice</span></div>
+        <div class="ds-hdr"><div><div class="ds-date">Sun 12 April</div><div class="ds-logo"><span style="font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:var(--red)">V</span><span class="ds-logotxt">erityn</span></div></div><span style="font-size:.36rem;color:var(--app-muted)">Deep Dive</span></div>
         <div style="padding:8px 12px">
           <div style="font-family:Georgia,serif;font-size:.52rem;font-weight:700;line-height:1.12;color:var(--app-text);margin-bottom:6px">US-China Trade Talks: What's Actually Happening</div>
           <div style="font-size:.28rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--red);margin:6px 0 3px">The situation</div>
@@ -1242,7 +1207,7 @@
           <div style="font-size:.28rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gold);margin:5px 0 3px">What to watch</div>
           <div style="font-size:.34rem;color:var(--app-secondary);line-height:1.45">Thursday's tariff deadline. If talks stall, markets react fast.</div>
         </div>
-                <div class="ds-nav5"><div class="ds-nav5-i on"><span style="font-size:.5rem">⌂</span><div class="ds-nav5-l on">Today</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◉</span><div class="ds-nav5-l">Topics</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◎</span><div class="ds-nav5-l">Search</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">⚙</span><div class="ds-nav5-l">Settings</div></div></div>
+                <div class="ds-nav5"><div class="ds-nav5-i"><span style="font-size:.5rem">⌂</span><div class="ds-nav5-l">Today</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◉</span><div class="ds-nav5-l">Topics</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◇</span><div class="ds-nav5-l">Digest</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◎</span><div class="ds-nav5-l">Search</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">⚙</span><div class="ds-nav5-l">Settings</div></div></div>
       </div>
 
       <!-- Slide 4: Two countries, 7 stories blended -->
@@ -1263,7 +1228,7 @@
           <div style="padding:1px 0;border-bottom:1px solid var(--app-border);display:flex;gap:4px;align-items:center"><span style="font-size:.34rem;font-weight:700;color:rgba(0,0,0,.04);font-family:Georgia,serif">06</span><span style="font-size:.28rem;font-weight:600;color:var(--app-text);line-height:1.1">🇮🇳 Delhi Metro Phase IV breaks ground</span></div>
           <div style="padding:1px 0;display:flex;gap:4px;align-items:center"><span style="font-size:.34rem;font-weight:700;color:rgba(0,0,0,.04);font-family:Georgia,serif">07</span><span style="font-size:.28rem;font-weight:600;color:var(--app-text);line-height:1.1">🇮🇳 Sensex crosses 82,000 on optimism</span></div>
         </div>
-        <div class="ds-nav5"><div class="ds-nav5-i on"><span style="font-size:.5rem">⌂</span><div class="ds-nav5-l on">Today</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◉</span><div class="ds-nav5-l">Topics</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◎</span><div class="ds-nav5-l">Search</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">⚙</span><div class="ds-nav5-l">Settings</div></div></div>
+        <div class="ds-nav5"><div class="ds-nav5-i on"><span style="font-size:.5rem">⌂</span><div class="ds-nav5-l on">Today</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◉</span><div class="ds-nav5-l">Topics</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◇</span><div class="ds-nav5-l">Digest</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">◎</span><div class="ds-nav5-l">Search</div></div><div class="ds-nav5-i"><span style="font-size:.5rem">⚙</span><div class="ds-nav5-l">Settings</div></div></div>
       </div>
 
     </div></div>
@@ -1526,68 +1491,80 @@
     if (e.key === 'Enter') submitWaitlist();
   });
 
-  // ═══ 3D INTERACTIONS ═══
+  // ═══ 3D SCROLL ANIMATION (Aceternity-style) ═══
 
-  // 1. Phone follows cursor in 3D
-  const phone = document.querySelector('.phone');
-  const heroPhone = document.querySelector('.hero-phone');
-  if (phone && heroPhone) {
-    const maxTilt = 18;
-    let phoneRect = null;
-    let rafId = null;
-    let targetRx = 2, targetRy = -6;
-    let currentRx = 2, currentRy = -6;
+  const phone3d = document.getElementById('phone3d');
+  const heroSection = document.querySelector('.hero');
+  const heroGrid = document.querySelector('.hero-grid');
+  const fbadges = document.querySelectorAll('.fbadge');
+  const heroContent = document.querySelector('.hero-content');
+  const isMobile = window.innerWidth <= 1024;
 
-    heroPhone.addEventListener('mouseenter', () => {
-      phone.classList.add('tilt-active');
-      phoneRect = heroPhone.getBoundingClientRect();
-    });
+  // 1. Scroll-driven phone reveal — starts tilted, flattens on scroll
+  if (phone3d && heroSection && !isMobile) {
+    const update = () => {
+      const rect = heroSection.getBoundingClientRect();
+      const totalScroll = heroSection.offsetHeight - window.innerHeight;
+      const scrolled = -rect.top;
+      const progress = Math.max(0, Math.min(1, scrolled / totalScroll));
 
-    heroPhone.addEventListener('mousemove', (e) => {
-      if (!phoneRect) phoneRect = heroPhone.getBoundingClientRect();
-      const x = (e.clientX - phoneRect.left) / phoneRect.width;
-      const y = (e.clientY - phoneRect.top) / phoneRect.height;
-      targetRy = (x - 0.5) * maxTilt;
-      targetRx = -(y - 0.5) * maxTilt;
-      if (!rafId) rafId = requestAnimationFrame(animatePhone);
-    });
+      // rotateX: 20deg → 0deg
+      const rotateX = 20 * (1 - progress);
+      // scale: 0.92 → 1
+      const scale = 0.92 + (0.08 * progress);
+      // translateY: 40px → 0
+      const translateY = 40 * (1 - progress);
 
-    heroPhone.addEventListener('mouseleave', () => {
-      phone.classList.remove('tilt-active');
-      targetRx = 2; targetRy = -6;
-      if (!rafId) rafId = requestAnimationFrame(animatePhone);
-    });
+      phone3d.style.transform = `perspective(1200px) rotateX(${rotateX}deg) scale(${scale}) translateY(${translateY}px)`;
 
-    function animatePhone() {
-      currentRx += (targetRx - currentRx) * 0.08;
-      currentRy += (targetRy - currentRy) * 0.08;
-      phone.style.transform = `rotateX(${currentRx}deg) rotateY(${currentRy}deg)`;
-      if (Math.abs(targetRx - currentRx) > 0.05 || Math.abs(targetRy - currentRy) > 0.05) {
-        rafId = requestAnimationFrame(animatePhone);
-      } else {
-        rafId = null;
+      // Dynamic shadow — gets more dramatic as phone flattens
+      const shadowOpacity = 0.15 + progress * 0.1;
+      phone3d.style.boxShadow = progress < 0.5
+        ? `0 0 #0000004d, 0 9px 20px rgba(0,0,0,${shadowOpacity}), 0 37px 37px rgba(0,0,0,${shadowOpacity * 0.9}), 0 84px 50px rgba(0,0,0,${shadowOpacity * 0.5})`
+        : `0 ${30 + progress * 30}px ${60 + progress * 60}px rgba(0,0,0,${0.08 + progress * 0.06})`;
+
+      // Parallax: hero grid
+      if (heroGrid) {
+        heroGrid.style.transform = `perspective(1000px) rotateX(1deg) translateY(${scrolled * 0.15}px)`;
       }
-    }
+
+      // Parallax: floating badges (different speeds)
+      fbadges.forEach((b, i) => {
+        const speed = i === 0 ? 0.08 : 0.12;
+        b.style.transform = `translateY(${scrolled * speed}px)`;
+      });
+
+      // Parallax: hero text slides up slightly
+      if (heroContent) {
+        const textY = Math.min(scrolled * 0.08, 60);
+        heroContent.style.transform = `translateY(-${textY}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', update, { passive: true });
+    update(); // Set initial state
   }
 
   // 2. Feature cards 3D tilt on hover
-  document.querySelectorAll('.how-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = (e.clientY - rect.top) / rect.height;
-      const tiltX = (y - 0.5) * -10;
-      const tiltY = (x - 0.5) * 10;
-      card.style.transform = `perspective(600px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-4px)`;
+  if (!isMobile) {
+    document.querySelectorAll('.how-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        const tiltX = (y - 0.5) * -10;
+        const tiltY = (x - 0.5) * 10;
+        card.style.transform = `perspective(600px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(600px) rotateX(0) rotateY(0) translateY(0)';
+      });
     });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(600px) rotateX(0) rotateY(0) translateY(0)';
-    });
-  });
+  }
 
   // 3. Brief card 3D tilt on hover
   const bCard = document.querySelector('.b-card');
-  if (bCard) {
+  if (bCard && !isMobile) {
     bCard.addEventListener('mousemove', (e) => {
       const rect = bCard.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width;
@@ -1601,48 +1578,7 @@
     });
   }
 
-  // 4. Scroll-driven parallax + phone scroll transform
-  let lastScroll = 0;
-  const heroSection = document.querySelector('.hero');
-  const heroGrid = document.querySelector('.hero-grid');
-  const fbadges = document.querySelectorAll('.fbadge');
-  const heroContent = document.querySelector('.hero-content');
-
-  window.addEventListener('scroll', () => {
-    const sy = window.scrollY;
-    const wh = window.innerHeight;
-
-    // Phone scroll transform — rotate away as you scroll past hero
-    if (phone && heroSection) {
-      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-      const progress = Math.max(0, Math.min(1, (sy - heroSection.offsetTop) / (heroBottom - heroSection.offsetTop)));
-      if (progress > 0.1) {
-        const scrollRx = 2 + progress * 15;
-        const scrollScale = 1 - progress * 0.15;
-        phone.style.transform = `rotateX(${scrollRx}deg) rotateY(-6deg) scale(${scrollScale})`;
-      }
-    }
-
-    // Hero grid parallax
-    if (heroGrid) {
-      heroGrid.style.transform = `perspective(1000px) rotateX(1deg) translateY(${sy * 0.15}px)`;
-    }
-
-    // Floating badges parallax (different speeds)
-    fbadges.forEach((b, i) => {
-      const speed = i === 0 ? 0.08 : 0.12;
-      b.style.transform = `translateY(${sy * speed}px)`;
-    });
-
-    // Hero text parallax
-    if (heroContent) {
-      heroContent.style.transform = `translateY(${sy * 0.05}px)`;
-    }
-
-    lastScroll = sy;
-  }, { passive: true });
-
-  // 5. Number counter animation
+  // 4. Number counter animation
   const numItems = document.querySelectorAll('.num-item');
   const numObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1654,18 +1590,14 @@
         const match = text.match(/(\d+)/);
         if (match) {
           const target = parseInt(match[1]);
-          const prefix = text.substring(0, text.indexOf(match[1]));
-          const suffix = text.substring(text.indexOf(match[1]) + match[1].length);
           let current = 0;
           const step = Math.ceil(target / 40);
           const timer = setInterval(() => {
             current += step;
             if (current >= target) { current = target; clearInterval(timer); }
-            valEl.innerHTML = prefix + current + suffix.replace(/</g,'&lt;').replace('<', '<span>').replace('span>&lt;', 'span><').replace('+', '<span>+</span>');
-            // Reconstruct with spans
-            if (suffix.includes('+')) valEl.innerHTML = current + '<span>+</span>';
-            else if (suffix.includes('<')) valEl.innerHTML = '<span>&lt;</span>' + current + 'm';
-            else valEl.innerHTML = current + '<span>+</span>';
+            if (text.includes('+')) valEl.innerHTML = current + '<span>+</span>';
+            else if (text.includes('<') || text.includes('m')) valEl.innerHTML = '<span>&lt;</span>' + current + 'm';
+            else valEl.innerHTML = String(current);
           }, 30);
         }
         numObs.unobserve(entry.target);
