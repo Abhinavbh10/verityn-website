@@ -5,18 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Verityn — 7 Stories. Why They Matter to You.</title>
 <meta name="description" content="Verityn reads 100+ newsrooms and delivers 7 stories every morning — each one explained for your profession and where you live. Done in 4 minutes.">
-<meta name="keywords" content="news briefing, personalised news, AI news, daily briefing, news intelligence, morning brief, expat news, professional news">
+<meta name="keywords" content="news briefing, personalised news, AI news, daily briefing, news intelligence, morning brief, expat news, professional news, news app, curated news, news for professionals">
+<meta name="author" content="Verityn">
+<meta name="theme-color" content="#FAF8F4">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Verityn">
 <link rel="canonical" href="https://verityn.news/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23FAF8F4'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='22' fill='%23C0392B'%3EV%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta property="og:title" content="Verityn — 7 Stories. Why They Matter to You.">
 <meta property="og:description" content="Every morning, 7 stories explained for your profession and where you live. Done before your second coffee.">
+<meta property="og:image" content="https://verityn.news/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://verityn.news/">
 <meta property="og:site_name" content="Verityn">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Verityn — 7 Stories. Why They Matter to You.">
 <meta name="twitter:description" content="Stop scrolling. Start knowing. 7 stories, each explained for your life.">
+<meta name="twitter:image" content="https://verityn.news/og-image.png">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23FAF8F4'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='22' fill='%23C0392B'%3EV%3C/text%3E%3C/svg%3E">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Verityn","applicationCategory":"NewsApplication","operatingSystem":"Android, iOS","description":"Personalised daily news briefing — 7 stories explained for your profession and where you live.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Verityn","url":"https://verityn.news"}}
@@ -176,8 +191,7 @@ footer{background:var(--ink-2);color:rgba(245,240,232,0.7);border-top:1px solid 
     <div class="n-links">
       <a href="#how">How it works</a>
       <a href="#brief">The brief</a>
-      <a href="#newsletter">Newsletter</a>
-      <a href="#join" class="n-cta">Join waitlist</a>
+      <a href="#newsletter" class="n-cta">Get the daily brief</a>
     </div>
   </div>
 </nav>
@@ -186,7 +200,7 @@ footer{background:var(--ink-2);color:rgba(245,240,232,0.7);border-top:1px solid 
 <div class="hero-split">
   <div class="hero-headline">
     <h1>Stop scrolling.<br>Start knowing.</h1>
-    <p>Other apps give you headlines. Verityn tells you why each one matters to YOUR life.</p>
+    <p>Other apps give you headlines. Verityn tells you why each one matters to your actual life.</p>
   </div>
 
   <div class="split-grid">
@@ -266,18 +280,9 @@ footer{background:var(--ink-2);color:rgba(245,240,232,0.7);border-top:1px solid 
     </div>
   </div>
 
-  <div class="hero-cta" id="join">
-    <div id="wlForm">
-      <div class="wl-wrap">
-        <input type="email" class="wl-input" id="wlEmail" placeholder="your@email.com" required>
-        <button class="wl-btn" id="wlBtn" onclick="submitWaitlist()">Get early access</button>
-      </div>
-      <div class="wl-error" id="wlError" style="display:none"></div>
-    </div>
-    <div id="wlSuccess" style="display:none">
-      <div class="wl-success">You're in. We'll send the daily brief on launch day.</div>
-    </div>
-    <div class="wl-note">Join the waitlist. Get the daily brief in your inbox when we launch.</div>
+  <div class="hero-cta">
+    <a href="#newsletter" style="display:inline-block;background:var(--red);color:white;padding:16px 32px;border-radius:8px;font-size:0.92rem;font-weight:700;text-decoration:none;transition:background 0.2s">Get the daily brief →</a>
+    <div class="wl-note">7 stories in your inbox every morning. Plus early app access.</div>
   </div>
 </div>
 </section>
@@ -309,13 +314,13 @@ footer{background:var(--ink-2);color:rgba(245,240,232,0.7);border-top:1px solid 
       <div class="how-eyebrow">How it works</div>
       <h2 class="how-title">Four things that<br>make it different.</h2>
     </div>
-    <p class="how-desc-right">Most news apps show you what's happening. Verityn tells you why it matters — specifically to your profession, your location, your life.</p>
+    <p class="how-desc-right">Most news apps show you what happened. Verityn tells you what it means for someone with your job, in your city.</p>
   </div>
   <div class="how-grid">
     <div class="how-card rv"><div class="how-n">01</div><h3><em>Why it matters</em> to you</h3><p>Every headline has a line written for your life. A finance professional in Berlin reads the same story differently than a lawyer in Mumbai. Verityn writes both versions.</p></div>
-    <div class="how-card rv"><div class="how-n">02</div><h3>Seven stories. <em>Equal weight.</em></h3><p>No lead story, no tiers, no hierarchy. All seven are curated for you — each one with a full-bleed image, headline, and a personalised why-line. Scroll through them like a reel.</p></div>
-    <div class="how-card rv"><div class="how-n">03</div><h3>Go <em>deeper</em> on anything.</h3><p>Tap Deep Dive on any story. Verityn writes you a full breakdown — situation, background, different perspectives, what to watch next. Instant briefing on demand.</p></div>
-    <div class="how-card rv"><div class="how-n">04</div><h3>Follow <em>the thread.</em></h3><p>Big stories span days. Verityn clusters related events into threads — ECB Rates, US-China Trade, EU AI Policy — so you never lose the thread between updates.</p></div>
+    <div class="how-card rv"><div class="how-n">02</div><h3>Seven stories. <em>Equal weight.</em></h3><p>No lead story, no hierarchy. All seven are picked for you, each with an image, a headline, and a line that says why you should care. Scroll through them like a reel.</p></div>
+    <div class="how-card rv"><div class="how-n">03</div><h3>Go <em>deeper</em> on anything.</h3><p>Tap Deep Dive on any story. Verityn writes you a full breakdown: what happened, why it happened, what different sides think, and what to watch next.</p></div>
+    <div class="how-card rv"><div class="how-n">04</div><h3>Follow <em>the thread.</em></h3><p>Big stories span days. Verityn clusters related events into threads (ECB Rates, US-China Trade, EU AI Policy) so you never lose track between updates.</p></div>
   </div>
 </section>
 
@@ -325,10 +330,10 @@ footer{background:var(--ink-2);color:rgba(245,240,232,0.7);border-top:1px solid 
       <div class="rv">
         <div class="dual-eyebrow">Two ways to read</div>
         <h2 class="dual-title">App for depth.<br>Newsletter for speed.</h2>
-        <p class="dual-body">Your 7 stories arrive two ways. Pick the one that fits your morning — or use both.</p>
+        <p class="dual-body">Your 7 stories arrive two ways. Pick the one that fits your morning, or use both.</p>
         <div class="channel">
           <div class="channel-icon" style="background:rgba(192,57,43,0.08)">📱</div>
-          <div><h4>The app</h4><p>Full-bleed images, Deep Dive reports, Topics you can follow, AI search. The complete experience.</p></div>
+          <div><h4>The app</h4><p>Images, Deep Dive reports, Topics you can follow over time, and AI search. Everything in one place.</p></div>
         </div>
         <div class="channel">
           <div class="channel-icon" style="background:rgba(184,150,62,0.08)">✉️</div>
@@ -366,11 +371,11 @@ footer{background:var(--ink-2);color:rgba(245,240,232,0.7);border-top:1px solid 
     <div class="nl-inner rv">
       <div class="nl-eyebrow">Daily brief · App + Newsletter</div>
       <h2 class="nl-title">Your morning<br>starts here.</h2>
-      <p class="nl-desc">Leave your email. You'll get the daily brief in your inbox when we launch — 7 stories, each one explained for your life. Plus early access to the app.</p>
+      <p class="nl-desc">Drop your email. When we launch, you'll get 7 stories in your inbox every morning, each one written for where you live and what you do. Plus early access to the app.</p>
       <div id="wlForm2">
         <div class="wl-wrap">
           <input type="email" class="wl-input" id="wlEmail2" placeholder="your@email.com" required>
-          <button class="wl-btn" id="wlBtn2" onclick="submitWaitlist2()">Get the daily brief</button>
+          <button class="wl-btn" id="wlBtn2" onclick="submitWaitlist()">Get the daily brief</button>
         </div>
         <div class="wl-error" id="wlError2" style="display:none"></div>
       </div>
@@ -385,7 +390,7 @@ footer{background:var(--ink-2);color:rgba(245,240,232,0.7);border-top:1px solid 
     <div class="ft-top">
       <div>
         <a href="#" style="text-decoration:none;display:inline-flex;align-items:baseline"><span class="ft-n-v">V</span><span class="ft-n-word">erityn</span></a>
-        <div class="ft-tag">Not a news feed. A news companion.</div>
+        <div class="ft-tag">7 stories. Done before your second coffee.</div>
       </div>
       <div class="ft-links">
         <div class="ft-col"><h4>Product</h4><a href="#how">How it works</a><a href="#brief">The brief</a><a href="#newsletter">Newsletter</a></div>
@@ -408,17 +413,6 @@ const rvObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isInters
 document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
 
 async function submitWaitlist(){
-  const email=document.getElementById('wlEmail').value.trim();const btn=document.getElementById('wlBtn');const err=document.getElementById('wlError');
-  err.style.display='none';
-  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent='Enter a valid email.';err.style.display='block';return}
-  btn.disabled=true;btn.textContent='Joining...';
-  try{const r=await fetch(BACKEND+'/api/waitlist',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});const d=await r.json();
-  if(r.ok){document.getElementById('wlForm').style.display='none';document.getElementById('wlSuccess').style.display='block'}
-  else{err.textContent=d.error||'Something went wrong.';err.style.display='block';btn.disabled=false;btn.textContent='Get early access'}}
-  catch(e){err.textContent='Could not connect.';err.style.display='block';btn.disabled=false;btn.textContent='Get early access'}}
-document.getElementById('wlEmail')?.addEventListener('keydown',e=>{if(e.key==='Enter')submitWaitlist()});
-
-async function submitWaitlist2(){
   const email=document.getElementById('wlEmail2').value.trim();const btn=document.getElementById('wlBtn2');const err=document.getElementById('wlError2');
   err.style.display='none';
   if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.textContent='Enter a valid email.';err.style.display='block';return}
@@ -427,7 +421,7 @@ async function submitWaitlist2(){
   if(r.ok){document.getElementById('wlForm2').style.display='none';document.getElementById('wlSuccess2').style.display='block'}
   else{err.textContent=d.error||'Something went wrong.';err.style.display='block';btn.disabled=false;btn.textContent='Get the daily brief'}}
   catch(e){err.textContent='Could not connect.';err.style.display='block';btn.disabled=false;btn.textContent='Get the daily brief'}}
-document.getElementById('wlEmail2')?.addEventListener('keydown',e=>{if(e.key==='Enter')submitWaitlist2()});
+document.getElementById('wlEmail2')?.addEventListener('keydown',e=>{if(e.key==='Enter')submitWaitlist()});
 
 const numObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const v=e.target.querySelector('.num-val');if(!v||e.target.classList.contains('counted'))return;e.target.classList.add('counted');const t=v.textContent,m=t.match(/(\d+)/);if(m){const tgt=parseInt(m[1]);let c=0;const s=Math.ceil(tgt/40);const tm=setInterval(()=>{c=Math.min(c+s,tgt);if(t.includes('+'))v.innerHTML=c+'<span>+</span>';else if(t.includes('<')||t.includes('m'))v.innerHTML='<span>&lt;</span>'+c+'m';else v.innerHTML=String(c);if(c>=tgt)clearInterval(tm)},30)}numObs.unobserve(e.target)}})},{threshold:0.5});
 document.querySelectorAll('.num-item').forEach(n=>numObs.observe(n));
