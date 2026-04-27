@@ -451,6 +451,17 @@ function showTab(idx) {
     });
 }
 
+function getRegion() {
+    try {
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (/Europe|Africa/.test(tz)) return 'eu';
+        if (/America/.test(tz)) return 'us';
+        if (/Asia\/(Kolkata|Calcutta|Mumbai|Delhi|Chennai|Colombo|Dhaka|Karachi)/.test(tz)) return 'india';
+        if (/Asia/.test(tz)) return 'asia';
+        return 'global';
+    } catch (e) { return 'global'; }
+}
+
 async function subscribe(pos) {
     var input = document.getElementById('email-' + pos);
     var msg = document.getElementById('msg-' + pos);
@@ -463,11 +474,13 @@ async function subscribe(pos) {
     var btn = input.parentElement.querySelector('button');
     btn.disabled = true;
     btn.textContent = 'One sec...';
+    var tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch(e) {}
+    var region = getRegion();
     try {
         var r = await fetch('https://verityn-backend-ten.vercel.app/api/newsletter?action=subscribe', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email })
+            body: JSON.stringify({ email: email, timezone: tz, region: region })
         });
         var d = await r.json();
         if (d.ok) {
