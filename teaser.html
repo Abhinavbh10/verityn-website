@@ -2,106 +2,116 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Verityn Teaser</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#FAF8F4;overflow:hidden;font-family:'DM Sans',sans-serif}
+html,body{height:100%;overflow:hidden}
+body{background:#FAF8F4;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center}
 
-.frame{width:390px;height:844px;margin:0 auto;position:relative;overflow:hidden;background:#FAF8F4}
+.frame{width:100vw;height:100vh;max-width:430px;max-height:932px;position:relative;overflow:hidden;background:#FAF8F4}
 
-/* Scene 1: Noise */
-.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;padding:32px}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;padding:0 36px;text-align:center}
 
-.s1{animation:s1 4s ease forwards}
-@keyframes s1{0%{opacity:0}5%{opacity:1}70%{opacity:1}100%{opacity:0}}
+/* ── Scene 1: Noise ── */
+.s1{animation:s1 5s ease forwards}
+@keyframes s1{0%{opacity:0}4%{opacity:1}75%{opacity:1}100%{opacity:0}}
 
-.headlines{position:relative;width:100%;height:500px}
-.hl{position:absolute;font-size:0.72rem;color:#bbb;font-weight:500;line-height:1.3;padding:6px 12px;background:white;border-radius:6px;border:1px solid rgba(0,0,0,0.05);animation:drift 4s ease-in-out forwards;white-space:nowrap;overflow:hidden;max-width:280px;text-overflow:ellipsis}
-@keyframes drift{0%{opacity:0;transform:translateY(10px)}15%{opacity:0.7;transform:translateY(0)}50%{opacity:0.7}85%{opacity:0.15;transform:translateY(-20px) scale(0.9)}100%{opacity:0}}
+.hl-grid{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:48px}
+.hl{font-size:0.7rem;color:#ccc;font-weight:500;padding:8px 16px;background:white;border-radius:8px;border:1px solid rgba(0,0,0,0.04);text-align:center;max-width:320px;opacity:0;transform:translateY(8px)}
 
-.s1-text{position:absolute;bottom:80px;left:0;right:0;text-align:center}
-.s1-text p{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:600;color:#1a1a1c;opacity:0;animation:fadeUp 1.5s 1.5s ease forwards}
-.s1-text span{display:block;font-family:'DM Sans',sans-serif;font-size:0.82rem;color:#999;margin-top:6px;opacity:0;animation:fadeUp 1.5s 2s ease forwards}
+.hl:nth-child(1){animation:hlIn 0.4s 0.3s ease forwards}
+.hl:nth-child(2){animation:hlIn 0.4s 0.5s ease forwards}
+.hl:nth-child(3){animation:hlIn 0.4s 0.7s ease forwards}
+.hl:nth-child(4){animation:hlIn 0.4s 0.9s ease forwards}
+.hl:nth-child(5){animation:hlIn 0.4s 1.1s ease forwards}
+.hl:nth-child(6){animation:hlIn 0.4s 1.3s ease forwards}
+.hl:nth-child(7){animation:hlIn 0.4s 1.5s ease forwards}
+.hl:nth-child(8){animation:hlIn 0.4s 1.7s ease forwards}
+.hl:nth-child(9){animation:hlIn 0.4s 1.9s ease forwards}
+.hl:nth-child(10){animation:hlIn 0.4s 2.1s ease forwards}
 
-/* Scene 2: 7 stories */
-.s2{animation:s2 4s 3.5s ease forwards}
-@keyframes s2{0%{opacity:0}8%{opacity:1}75%{opacity:1}100%{opacity:0}}
+@keyframes hlIn{0%{opacity:0;transform:translateY(8px)}100%{opacity:0.6;transform:translateY(0)}}
 
-.big-7{font-family:'Cormorant Garamond',Georgia,serif;font-size:12rem;font-weight:700;color:#C0392B;line-height:0.85;opacity:0;animation:pop 0.6s 4.2s cubic-bezier(0.34,1.56,0.64,1) forwards}
-@keyframes pop{0%{opacity:0;transform:scale(0.5)}100%{opacity:1;transform:scale(1)}}
+.hl-grid{animation:hlOut 0.8s 3.5s ease forwards}
+@keyframes hlOut{to{opacity:0;transform:scale(0.95)}}
 
-.s2-sub{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:600;color:#1a1a1c;text-align:center;margin-top:8px;opacity:0;animation:fadeUp 0.8s 4.8s ease forwards}
+.s1-text{text-align:center;opacity:0;animation:fadeUp 0.8s 2.5s ease forwards}
+.s1-text h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:600;color:#1a1a1c;margin-bottom:6px}
+.s1-text p{font-size:0.85rem;color:#999}
 
-/* Scene 3: Story card */
-.s3{animation:s3 5s 7s ease forwards}
-@keyframes s3{0%{opacity:0}6%{opacity:1}80%{opacity:1}100%{opacity:0}}
+/* ── Scene 2: The 7 ── */
+.s2{animation:s2 4s 4.5s ease forwards}
+@keyframes s2{0%{opacity:0}8%{opacity:1}78%{opacity:1}100%{opacity:0}}
 
-.s3-label{font-size:0.62rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#aaa;margin-bottom:20px;opacity:0;animation:fadeUp 0.6s 7.5s ease forwards}
+.big-7{font-family:'Cormorant Garamond',Georgia,serif;font-size:14rem;font-weight:700;color:#C0392B;line-height:0.8;opacity:0;animation:pop7 0.5s 5s cubic-bezier(0.34,1.56,0.64,1) forwards}
+@keyframes pop7{0%{opacity:0;transform:scale(0.4)}100%{opacity:1;transform:scale(1)}}
 
-.demo-card{background:white;border-radius:14px;padding:20px;width:100%;box-shadow:0 4px 20px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);opacity:0;animation:slideUp 0.8s 7.8s ease forwards}
-@keyframes slideUp{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+.s2-sub{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:600;color:#1a1a1c;text-align:center;margin-top:4px;opacity:0;animation:fadeUp 0.6s 5.6s ease forwards}
 
-.dc-top{display:flex;align-items:center;gap:8px;margin-bottom:10px}
-.dc-badge{width:22px;height:22px;background:#C0392B;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:white}
-.dc-src{font-size:0.62rem;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:0.3px}
-.dc-hl{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;font-weight:700;line-height:1.25;margin-bottom:12px;color:#1a1a1c}
+/* ── Scene 3: Card ── */
+.s3{animation:s3 5.5s 8s ease forwards}
+@keyframes s3{0%{opacity:0}5%{opacity:1}82%{opacity:1}100%{opacity:0}}
 
-.dc-why{background:rgba(192,57,43,0.05);border-left:3px solid #C0392B;border-radius:0 8px 8px 0;padding:12px 14px;opacity:0;animation:whyReveal 0.8s 9s ease forwards}
-@keyframes whyReveal{0%{opacity:0;transform:translateX(-10px)}100%{opacity:1;transform:translateX(0)}}
+.s3-label{font-size:0.6rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#bbb;margin-bottom:24px;text-align:center;opacity:0;animation:fadeUp 0.5s 8.4s ease forwards}
 
-.dc-why-label{font-size:0.55rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#C0392B;margin-bottom:4px}
-.dc-why p{font-size:0.82rem;color:#5C3A1E;line-height:1.5}
+.card{background:white;border-radius:16px;padding:22px;width:100%;max-width:360px;box-shadow:0 6px 24px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);opacity:0;animation:cardIn 0.7s 8.7s ease forwards;text-align:left}
+@keyframes cardIn{0%{opacity:0;transform:translateY(24px)}100%{opacity:1;transform:translateY(0)}}
 
-.s3-arrow{font-size:0.75rem;color:#C0392B;font-weight:600;margin-top:16px;opacity:0;animation:fadeUp 0.6s 9.8s ease forwards}
+.c-top{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.c-badge{width:24px;height:24px;background:#C0392B;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:white;flex-shrink:0}
+.c-src{font-size:0.6rem;font-weight:600;color:#bbb;text-transform:uppercase;letter-spacing:0.4px}
+.c-hl{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:700;line-height:1.25;color:#1a1a1c;margin-bottom:14px}
 
-/* Scene 4: Finale */
-.s4{animation:s4 5s 11.5s ease forwards}
-@keyframes s4{0%{opacity:0}10%{opacity:1}100%{opacity:1}}
+.c-why{background:rgba(192,57,43,0.04);border-left:3px solid #C0392B;border-radius:0 10px 10px 0;padding:14px 16px;opacity:0;transform:translateX(-8px);animation:whyIn 0.6s 10s ease forwards}
+@keyframes whyIn{to{opacity:1;transform:translateX(0)}}
 
-.logo-v{font-family:'Cormorant Garamond',Georgia,serif;font-size:3.2rem;font-weight:700;color:#C0392B}
-.logo-w{font-size:2rem;font-weight:700;color:#1a1a1c;letter-spacing:-0.03em}
-.s4-logo{opacity:0;animation:fadeUp 0.8s 12s ease forwards;display:flex;align-items:baseline;margin-bottom:16px}
+.c-why-label{font-size:0.55rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#C0392B;margin-bottom:5px}
+.c-why p{font-size:0.84rem;color:#5C3A1E;line-height:1.55}
 
-.s4-tag{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-style:italic;color:#999;opacity:0;animation:fadeUp 0.8s 12.6s ease forwards;margin-bottom:40px}
+.s3-hint{font-size:0.78rem;color:#C0392B;font-weight:600;margin-top:18px;text-align:center;opacity:0;animation:fadeUp 0.5s 11s ease forwards}
 
-.s4-cta{opacity:0;animation:fadeUp 0.8s 13.2s ease forwards;text-align:center}
-.s4-url{font-size:1.1rem;font-weight:700;color:#C0392B;letter-spacing:-0.02em}
-.s4-sub{font-size:0.72rem;color:#aaa;margin-top:8px}
+/* ── Scene 4: CTA ── */
+.s4{animation:s4 6s 13s ease forwards}
+@keyframes s4{0%{opacity:0}8%{opacity:1}100%{opacity:1}}
 
-.s4-formats{display:flex;gap:20px;margin-top:32px;opacity:0;animation:fadeUp 0.8s 13.8s ease forwards}
-.s4-fmt{text-align:center}
-.s4-fmt-icon{font-size:1.6rem;margin-bottom:4px}
-.s4-fmt-label{font-size:0.65rem;color:#999;font-weight:500}
+.s4-logo{display:flex;align-items:baseline;opacity:0;animation:fadeUp 0.7s 13.4s ease forwards;margin-bottom:14px}
+.lv{font-family:'Cormorant Garamond',Georgia,serif;font-size:3.4rem;font-weight:700;color:#C0392B}
+.lw{font-size:2.2rem;font-weight:700;color:#1a1a1c;letter-spacing:-0.03em}
 
-/* Shared */
-@keyframes fadeUp{0%{opacity:0;transform:translateY(12px)}100%{opacity:1;transform:translateY(0)}}
+.s4-tag{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;font-style:italic;color:#aaa;opacity:0;animation:fadeUp 0.6s 14s ease forwards;margin-bottom:44px}
+
+.s4-url{font-size:1.2rem;font-weight:700;color:#C0392B;opacity:0;animation:fadeUp 0.6s 14.6s ease forwards;letter-spacing:-0.01em}
+.s4-free{font-size:0.75rem;color:#aaa;margin-top:8px;opacity:0;animation:fadeUp 0.5s 15s ease forwards}
+
+.s4-row{display:flex;gap:12px;margin-top:36px;opacity:0;animation:fadeUp 0.6s 15.5s ease forwards}
+.s4-pill{padding:10px 22px;border-radius:20px;font-size:0.72rem;font-weight:600;color:white;background:#1a1a1c}
+
+/* ── Shared ── */
+@keyframes fadeUp{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
 <div class="frame">
 
-    <!-- Scene 1: The noise -->
+    <!-- Scene 1: Noise -->
     <div class="scene s1">
-        <div class="headlines">
-            <div class="hl" style="top:20px;left:10px;animation-delay:0.2s">Fed signals cautious approach to rate cuts</div>
-            <div class="hl" style="top:60px;left:140px;animation-delay:0.4s">Oil prices surge amid Middle East tensions</div>
-            <div class="hl" style="top:110px;left:20px;animation-delay:0.6s">EU passes AI regulation framework</div>
-            <div class="hl" style="top:150px;left:100px;animation-delay:0.3s">Bitcoin hits new all-time high above $100k</div>
-            <div class="hl" style="top:200px;left:5px;animation-delay:0.7s">India GDP growth beats expectations at 7.2%</div>
-            <div class="hl" style="top:240px;left:130px;animation-delay:0.5s">Tech layoffs continue across Silicon Valley</div>
-            <div class="hl" style="top:290px;left:30px;animation-delay:0.8s">Germany coalition faces confidence vote</div>
-            <div class="hl" style="top:330px;left:90px;animation-delay:0.2s">RBI holds repo rate steady at 6%</div>
-            <div class="hl" style="top:370px;left:15px;animation-delay:0.9s">Apple unveils new AI features at WWDC</div>
-            <div class="hl" style="top:410px;left:120px;animation-delay:0.4s">UK inflation falls to 2.1%, lowest in 3 years</div>
-            <div class="hl" style="top:450px;left:40px;animation-delay:0.6s">China exports drop 8% amid global slowdown</div>
-            <div class="hl" style="top:60px;left:30px;animation-delay:1.0s">SpaceX launches largest satellite constellation</div>
-            <div class="hl" style="top:490px;left:80px;animation-delay:0.3s">NVIDIA quarterly revenue surges 240%</div>
+        <div class="hl-grid">
+            <div class="hl">Fed signals cautious approach to rate cuts</div>
+            <div class="hl">Oil prices surge amid Middle East tensions</div>
+            <div class="hl">EU passes landmark AI regulation framework</div>
+            <div class="hl">Bitcoin hits new all-time high above $100k</div>
+            <div class="hl">India GDP growth beats expectations at 7.2%</div>
+            <div class="hl">Tech layoffs continue across Silicon Valley</div>
+            <div class="hl">Germany coalition faces confidence vote</div>
+            <div class="hl">RBI holds repo rate steady at 6%</div>
+            <div class="hl">Apple unveils new AI features at WWDC</div>
+            <div class="hl">UK inflation falls to 2.1%, lowest in 3 years</div>
         </div>
         <div class="s1-text">
-            <p>This is your morning.</p>
-            <span>100+ headlines. Zero context.</span>
+            <h2>This is your morning.</h2>
+            <p>100+ headlines. Zero context.</p>
         </div>
     </div>
 
@@ -111,42 +121,32 @@ body{background:#FAF8F4;overflow:hidden;font-family:'DM Sans',sans-serif}
         <div class="s2-sub">stories. That's all you need.</div>
     </div>
 
-    <!-- Scene 3: The why-line -->
+    <!-- Scene 3: The card -->
     <div class="scene s3">
         <div class="s3-label">From this morning's briefing</div>
-        <div class="demo-card">
-            <div class="dc-top">
-                <div class="dc-badge">1</div>
-                <span class="dc-src">Reuters · 38 min ago</span>
+        <div class="card">
+            <div class="c-top">
+                <div class="c-badge">1</div>
+                <span class="c-src">Reuters · 38 min ago</span>
             </div>
-            <div class="dc-hl">ECB holds rates amid first Bundesbank dissent in 4 years</div>
-            <div class="dc-why">
-                <div class="dc-why-label">Why this matters to you</div>
+            <div class="c-hl">ECB holds rates amid first Bundesbank dissent in 4 years</div>
+            <div class="c-why">
+                <div class="c-why-label">Why this matters to you</div>
                 <p>Your mortgage rate follows ECB with a 6-week lag. Check fixed-rate options before July.</p>
             </div>
         </div>
-        <div class="s3-arrow">↑ That's the why-line.</div>
+        <div class="s3-hint">↑ That's the why-line.</div>
     </div>
 
     <!-- Scene 4: CTA -->
     <div class="scene s4">
-        <div class="s4-logo">
-            <span class="logo-v">V</span><span class="logo-w">erityn</span>
-        </div>
+        <div class="s4-logo"><span class="lv">V</span><span class="lw">erityn</span></div>
         <div class="s4-tag">News that knows you.</div>
-        <div class="s4-cta">
-            <div class="s4-url">verityn.news</div>
-            <div class="s4-sub">Free · Every morning at 7 AM</div>
-        </div>
-        <div class="s4-formats">
-            <div class="s4-fmt">
-                <div class="s4-fmt-icon">📧</div>
-                <div class="s4-fmt-label">Newsletter</div>
-            </div>
-            <div class="s4-fmt">
-                <div class="s4-fmt-icon">📱</div>
-                <div class="s4-fmt-label">iOS & Android</div>
-            </div>
+        <div class="s4-url">verityn.news</div>
+        <div class="s4-free">Free · Every morning at 7 AM</div>
+        <div class="s4-row">
+            <div class="s4-pill">Newsletter</div>
+            <div class="s4-pill">iOS + Android</div>
         </div>
     </div>
 
