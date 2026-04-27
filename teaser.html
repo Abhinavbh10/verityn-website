@@ -4,89 +4,106 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Verityn Teaser</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden}
-body{background:#FAF8F4;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center}
+body{background:#0D0D0D;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center}
 
-.frame{width:100vw;height:100vh;max-width:430px;max-height:932px;position:relative;overflow:hidden;background:#FAF8F4}
+.frame{width:100vw;height:100vh;max-width:430px;max-height:932px;position:relative;overflow:hidden;background:#0D0D0D}
 
-.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;padding:0 36px;text-align:center}
+/* Subtle grain texture */
+.frame::after{content:'';position:absolute;inset:0;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;z-index:10}
+
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;padding:0 36px;text-align:center;z-index:1}
+
+/* ── Accent line that persists ── */
+.accent-line{position:absolute;left:50%;top:0;width:2px;height:0;background:linear-gradient(180deg,transparent,#C0392B,transparent);z-index:2;transform:translateX(-50%);animation:lineGrow 1s 0.5s ease forwards,lineFade 0.5s 4s ease forwards}
+@keyframes lineGrow{to{height:100%}}
+@keyframes lineFade{to{opacity:0}}
 
 /* ── Scene 1: Noise ── */
 .s1{animation:s1 5s ease forwards}
-@keyframes s1{0%{opacity:0}4%{opacity:1}75%{opacity:1}100%{opacity:0}}
+@keyframes s1{0%{opacity:0}6%{opacity:1}72%{opacity:1}100%{opacity:0}}
 
-.hl-grid{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:48px}
-.hl{font-size:0.7rem;color:#ccc;font-weight:500;padding:8px 16px;background:white;border-radius:8px;border:1px solid rgba(0,0,0,0.04);text-align:center;max-width:320px;opacity:0;transform:translateY(8px)}
+.noise-grid{position:relative;width:100%;height:420px;margin-bottom:40px}
+.hl{position:absolute;font-size:0.68rem;color:rgba(255,255,255,0.18);font-weight:500;padding:7px 14px;background:rgba(255,255,255,0.03);border-radius:6px;border:1px solid rgba(255,255,255,0.04);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:280px;opacity:0}
 
-.hl:nth-child(1){animation:hlIn 0.4s 0.3s ease forwards}
-.hl:nth-child(2){animation:hlIn 0.4s 0.5s ease forwards}
-.hl:nth-child(3){animation:hlIn 0.4s 0.7s ease forwards}
-.hl:nth-child(4){animation:hlIn 0.4s 0.9s ease forwards}
-.hl:nth-child(5){animation:hlIn 0.4s 1.1s ease forwards}
-.hl:nth-child(6){animation:hlIn 0.4s 1.3s ease forwards}
-.hl:nth-child(7){animation:hlIn 0.4s 1.5s ease forwards}
-.hl:nth-child(8){animation:hlIn 0.4s 1.7s ease forwards}
-.hl:nth-child(9){animation:hlIn 0.4s 1.9s ease forwards}
-.hl:nth-child(10){animation:hlIn 0.4s 2.1s ease forwards}
+.hl:nth-child(1){top:8px;left:10%;animation:hlDrift 3.5s 0.2s ease forwards}
+.hl:nth-child(2){top:52px;left:40%;animation:hlDrift 3.5s 0.35s ease forwards}
+.hl:nth-child(3){top:96px;left:5%;animation:hlDrift 3.5s 0.5s ease forwards}
+.hl:nth-child(4){top:140px;left:30%;animation:hlDrift 3.5s 0.65s ease forwards}
+.hl:nth-child(5){top:184px;left:8%;animation:hlDrift 3.5s 0.8s ease forwards}
+.hl:nth-child(6){top:228px;left:35%;animation:hlDrift 3.5s 0.95s ease forwards}
+.hl:nth-child(7){top:272px;left:12%;animation:hlDrift 3.5s 1.1s ease forwards}
+.hl:nth-child(8){top:316px;left:25%;animation:hlDrift 3.5s 1.25s ease forwards}
+.hl:nth-child(9){top:360px;left:6%;animation:hlDrift 3.5s 1.4s ease forwards}
+.hl:nth-child(10){top:404px;left:32%;animation:hlDrift 3.5s 1.55s ease forwards}
 
-@keyframes hlIn{0%{opacity:0;transform:translateY(8px)}100%{opacity:0.6;transform:translateY(0)}}
+@keyframes hlDrift{
+    0%{opacity:0;transform:translateY(6px)}
+    20%{opacity:1}
+    70%{opacity:1}
+    100%{opacity:0;transform:translateY(-10px)}
+}
 
-.hl-grid{animation:hlOut 0.8s 3.5s ease forwards}
-@keyframes hlOut{to{opacity:0;transform:scale(0.95)}}
-
-.s1-text{text-align:center;opacity:0;animation:fadeUp 0.8s 2.5s ease forwards}
-.s1-text h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:600;color:#1a1a1c;margin-bottom:6px}
-.s1-text p{font-size:0.85rem;color:#999}
+.s1-text{text-align:center;opacity:0;animation:fadeUp 0.8s 2.2s ease forwards}
+.s1-text h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;font-weight:600;color:white;margin-bottom:8px}
+.s1-text p{font-size:0.85rem;color:rgba(255,255,255,0.35)}
 
 /* ── Scene 2: The 7 ── */
 .s2{animation:s2 4s 4.5s ease forwards}
-@keyframes s2{0%{opacity:0}8%{opacity:1}78%{opacity:1}100%{opacity:0}}
+@keyframes s2{0%{opacity:0}8%{opacity:1}75%{opacity:1}100%{opacity:0}}
 
-.big-7{font-family:'Cormorant Garamond',Georgia,serif;font-size:14rem;font-weight:700;color:#C0392B;line-height:0.8;opacity:0;animation:pop7 0.5s 5s cubic-bezier(0.34,1.56,0.64,1) forwards}
-@keyframes pop7{0%{opacity:0;transform:scale(0.4)}100%{opacity:1;transform:scale(1)}}
+.seven-wrap{display:flex;flex-direction:column;align-items:center;gap:0}
+.big-7{font-family:'Cormorant Garamond',Georgia,serif;font-size:12rem;font-weight:700;color:#C0392B;line-height:1;margin-bottom:16px;opacity:0;animation:pop7 0.5s 5s cubic-bezier(0.34,1.56,0.64,1) forwards}
+@keyframes pop7{0%{opacity:0;transform:scale(0.3)}100%{opacity:1;transform:scale(1)}}
 
-.s2-sub{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:600;color:#1a1a1c;text-align:center;margin-top:4px;opacity:0;animation:fadeUp 0.6s 5.6s ease forwards}
+.s2-sub{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.5rem;font-weight:600;color:white;opacity:0;animation:fadeUp 0.6s 5.7s ease forwards}
+
+.s2-dots{display:flex;gap:8px;margin-top:20px;opacity:0;animation:fadeUp 0.4s 6.2s ease forwards}
+.s2-dot{width:8px;height:8px;border-radius:4px;background:rgba(255,255,255,0.12)}
+.s2-dot.active{background:#C0392B}
 
 /* ── Scene 3: Card ── */
 .s3{animation:s3 5.5s 8s ease forwards}
 @keyframes s3{0%{opacity:0}5%{opacity:1}82%{opacity:1}100%{opacity:0}}
 
-.s3-label{font-size:0.6rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#bbb;margin-bottom:24px;text-align:center;opacity:0;animation:fadeUp 0.5s 8.4s ease forwards}
+.s3-label{font-family:'DM Mono',monospace;font-size:0.58rem;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:24px;opacity:0;animation:fadeUp 0.5s 8.3s ease forwards}
 
-.card{background:white;border-radius:16px;padding:22px;width:100%;max-width:360px;box-shadow:0 6px 24px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04);opacity:0;animation:cardIn 0.7s 8.7s ease forwards;text-align:left}
-@keyframes cardIn{0%{opacity:0;transform:translateY(24px)}100%{opacity:1;transform:translateY(0)}}
+.card{background:#FAF8F4;border-radius:20px;padding:24px;width:100%;max-width:350px;box-shadow:0 12px 40px rgba(0,0,0,0.4);opacity:0;animation:cardIn 0.8s 8.6s cubic-bezier(0.16,1,0.3,1) forwards}
+@keyframes cardIn{0%{opacity:0;transform:translateY(40px) scale(0.96)}100%{opacity:1;transform:translateY(0) scale(1)}}
 
-.c-top{display:flex;align-items:center;gap:8px;margin-bottom:12px}
-.c-badge{width:24px;height:24px;background:#C0392B;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:white;flex-shrink:0}
-.c-src{font-size:0.6rem;font-weight:600;color:#bbb;text-transform:uppercase;letter-spacing:0.4px}
-.c-hl{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:700;line-height:1.25;color:#1a1a1c;margin-bottom:14px}
+.c-top{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.c-badge{width:26px;height:26px;background:#C0392B;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:white;flex-shrink:0}
+.c-src{font-size:0.6rem;font-weight:600;color:#bbb;text-transform:uppercase;letter-spacing:0.5px}
+.c-hl{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;font-weight:700;line-height:1.25;color:#1a1a1c;margin-bottom:16px;text-align:left}
 
-.c-why{background:rgba(192,57,43,0.04);border-left:3px solid #C0392B;border-radius:0 10px 10px 0;padding:14px 16px;opacity:0;transform:translateX(-8px);animation:whyIn 0.6s 10s ease forwards}
-@keyframes whyIn{to{opacity:1;transform:translateX(0)}}
+.c-why{background:rgba(192,57,43,0.05);border-left:3px solid #C0392B;border-radius:0 10px 10px 0;padding:14px 16px;text-align:left;opacity:0;transform:scaleY(0);transform-origin:top;animation:whyIn 0.5s 10s cubic-bezier(0.16,1,0.3,1) forwards}
+@keyframes whyIn{to{opacity:1;transform:scaleY(1)}}
 
-.c-why-label{font-size:0.55rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#C0392B;margin-bottom:5px}
+.c-why-label{font-size:0.52rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C0392B;margin-bottom:5px}
 .c-why p{font-size:0.84rem;color:#5C3A1E;line-height:1.55}
 
-.s3-hint{font-size:0.78rem;color:#C0392B;font-weight:600;margin-top:18px;text-align:center;opacity:0;animation:fadeUp 0.5s 11s ease forwards}
+.s3-hint{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;color:#C0392B;font-weight:600;margin-top:20px;opacity:0;animation:fadeUp 0.4s 10.8s ease forwards;background:rgba(192,57,43,0.08);padding:8px 16px;border-radius:20px}
 
 /* ── Scene 4: CTA ── */
 .s4{animation:s4 6s 13s ease forwards}
-@keyframes s4{0%{opacity:0}8%{opacity:1}100%{opacity:1}}
+@keyframes s4{0%{opacity:0}10%{opacity:1}100%{opacity:1}}
 
-.s4-logo{display:flex;align-items:baseline;opacity:0;animation:fadeUp 0.7s 13.4s ease forwards;margin-bottom:14px}
-.lv{font-family:'Cormorant Garamond',Georgia,serif;font-size:3.4rem;font-weight:700;color:#C0392B}
-.lw{font-size:2.2rem;font-weight:700;color:#1a1a1c;letter-spacing:-0.03em}
+.s4-logo{display:flex;align-items:baseline;opacity:0;animation:fadeUp 0.7s 13.3s ease forwards;margin-bottom:12px}
+.lv{font-family:'Cormorant Garamond',Georgia,serif;font-size:3.6rem;font-weight:700;color:#C0392B}
+.lw{font-size:2.2rem;font-weight:700;color:white;letter-spacing:-0.03em}
 
-.s4-tag{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;font-style:italic;color:#aaa;opacity:0;animation:fadeUp 0.6s 14s ease forwards;margin-bottom:44px}
+.s4-tag{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;font-style:italic;color:rgba(255,255,255,0.3);opacity:0;animation:fadeUp 0.6s 13.9s ease forwards;margin-bottom:48px}
 
-.s4-url{font-size:1.2rem;font-weight:700;color:#C0392B;opacity:0;animation:fadeUp 0.6s 14.6s ease forwards;letter-spacing:-0.01em}
-.s4-free{font-size:0.75rem;color:#aaa;margin-top:8px;opacity:0;animation:fadeUp 0.5s 15s ease forwards}
+.s4-url{font-size:1.3rem;font-weight:700;color:#C0392B;opacity:0;animation:fadeUp 0.6s 14.5s ease forwards;letter-spacing:-0.01em}
+.s4-free{font-size:0.72rem;color:rgba(255,255,255,0.25);margin-top:8px;opacity:0;animation:fadeUp 0.4s 14.9s ease forwards}
 
-.s4-row{display:flex;gap:12px;margin-top:36px;opacity:0;animation:fadeUp 0.6s 15.5s ease forwards}
-.s4-pill{padding:10px 22px;border-radius:20px;font-size:0.72rem;font-weight:600;color:white;background:#1a1a1c}
+.s4-row{display:flex;gap:10px;margin-top:40px;opacity:0;animation:fadeUp 0.5s 15.4s ease forwards}
+.s4-pill{padding:10px 22px;border-radius:20px;font-size:0.72rem;font-weight:600}
+.pill-light{color:white;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1)}
+.pill-red{color:white;background:#C0392B}
 
 /* ── Shared ── */
 @keyframes fadeUp{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:translateY(0)}}
@@ -95,9 +112,12 @@ body{background:#FAF8F4;font-family:'DM Sans',sans-serif;display:flex;align-item
 <body>
 <div class="frame">
 
+    <!-- Accent line -->
+    <div class="accent-line"></div>
+
     <!-- Scene 1: Noise -->
     <div class="scene s1">
-        <div class="hl-grid">
+        <div class="noise-grid">
             <div class="hl">Fed signals cautious approach to rate cuts</div>
             <div class="hl">Oil prices surge amid Middle East tensions</div>
             <div class="hl">EU passes landmark AI regulation framework</div>
@@ -117,8 +137,19 @@ body{background:#FAF8F4;font-family:'DM Sans',sans-serif;display:flex;align-item
 
     <!-- Scene 2: The number -->
     <div class="scene s2">
-        <div class="big-7">7</div>
-        <div class="s2-sub">stories. That's all you need.</div>
+        <div class="seven-wrap">
+            <div class="big-7">7</div>
+            <div class="s2-sub">stories. That's all you need.</div>
+            <div class="s2-dots">
+                <div class="s2-dot active"></div>
+                <div class="s2-dot"></div>
+                <div class="s2-dot"></div>
+                <div class="s2-dot"></div>
+                <div class="s2-dot"></div>
+                <div class="s2-dot"></div>
+                <div class="s2-dot"></div>
+            </div>
+        </div>
     </div>
 
     <!-- Scene 3: The card -->
@@ -135,7 +166,7 @@ body{background:#FAF8F4;font-family:'DM Sans',sans-serif;display:flex;align-item
                 <p>Your mortgage rate follows ECB with a 6-week lag. Check fixed-rate options before July.</p>
             </div>
         </div>
-        <div class="s3-hint">↑ That's the why-line.</div>
+        <div class="s3-hint">↑ The why-line</div>
     </div>
 
     <!-- Scene 4: CTA -->
@@ -145,8 +176,8 @@ body{background:#FAF8F4;font-family:'DM Sans',sans-serif;display:flex;align-item
         <div class="s4-url">verityn.news</div>
         <div class="s4-free">Free · Every morning at 7 AM</div>
         <div class="s4-row">
-            <div class="s4-pill">Newsletter</div>
-            <div class="s4-pill">iOS + Android</div>
+            <div class="s4-pill pill-red">Newsletter</div>
+            <div class="s4-pill pill-light">iOS + Android</div>
         </div>
     </div>
 
