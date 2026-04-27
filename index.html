@@ -88,24 +88,23 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,0.9);backdrop-
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── Why-line section ── */
-.whyline{padding:80px 0}
-.whyline-top{text-align:center;margin-bottom:40px;padding:0 32px}
+.whyline{padding:80px 32px}
+.whyline-top{text-align:center;margin-bottom:40px}
 .whyline-top h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:10px}
 .whyline-top p{font-size:0.92rem;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.65}
-
-/* Horizontal scroller */
-.scroll-wrap{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 32px 20px}
-.scroll-wrap::-webkit-scrollbar{display:none}
-.scroll-track{display:flex;gap:20px;width:max-content;animation:autoscroll 12s ease-in-out infinite alternate}
-.scroll-wrap:hover .scroll-track,.scroll-wrap:active .scroll-track{animation-play-state:paused}
-@keyframes autoscroll{0%,15%{transform:translateX(0)}85%,100%{transform:translateX(-500px)}}
-.scroll-card{width:380px;flex-shrink:0}
-.scroll-card .why-card{background:white;border-radius:14px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.05)}
-.scroll-card .why-card-top{display:flex;align-items:center;gap:8px;margin-bottom:10px}
-.angle-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-.angle-pair .angle{background:white;border-radius:10px;padding:14px;border:1px solid rgba(0,0,0,0.05)}
+.why-demo{max-width:580px;margin:0 auto}
+.tab-bar{display:flex;gap:4px;background:var(--warm);border-radius:10px;padding:4px;margin-bottom:20px}
+.tab{flex:1;padding:10px 0;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;color:var(--muted);cursor:pointer;border-radius:7px;transition:all 0.2s}
+.tab.active{background:white;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,0.06)}
+.tab:hover:not(.active){color:var(--ink)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.why-card{background:white;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.05);margin-bottom:12px}
+.why-card-top{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.angle-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.angle{background:white;border-radius:10px;padding:16px;border:1px solid rgba(0,0,0,0.05)}
 .angle-who{font-size:0.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--light);margin-bottom:6px}
-.angle p{font-size:0.8rem;color:#5C3A1E;line-height:1.5}
+.angle p{font-size:0.82rem;color:#5C3A1E;line-height:1.5}
 
 /* ── Features ── */
 .features{background:var(--ink-2);color:var(--cream);padding:80px 32px}
@@ -156,6 +155,7 @@ footer a{color:var(--light);text-decoration:underline}
     .feat-grid{grid-template-columns:1fr}
     .num-grid{grid-template-columns:repeat(2,1fr);gap:20px}
     .angle-grid{grid-template-columns:1fr}
+    .angle-row{grid-template-columns:1fr}
     .cta-choices{flex-direction:column;align-items:center}
     .nav-r a:not(.nav-cta){display:none}
 }
@@ -276,68 +276,72 @@ footer a{color:var(--light);text-decoration:underline}
     <h2>The part most news skips.</h2>
     <p>You read a headline. So what? What does it mean for your rent, your portfolio, your next hiring decision? That's what the why-line answers — and it changes depending on who's reading.</p>
 </div>
-<div class="scroll-wrap">
-    <div class="scroll-track">
-        <!-- EU story -->
-        <div class="scroll-card">
-            <div class="why-card">
-                <div class="why-card-top">
-                    <div class="hc-badge">1</div>
-                    <span class="hc-src">Reuters · 38 min ago</span>
-                </div>
-                <div class="hc-hl" style="font-size:1.15rem">ECB holds rates amid first Bundesbank dissent in 4 years</div>
+<div class="why-demo">
+    <div class="tab-bar">
+        <button class="tab active" onclick="showTab(0)">Europe</button>
+        <button class="tab" onclick="showTab(1)">United States</button>
+        <button class="tab" onclick="showTab(2)">India</button>
+    </div>
+
+    <!-- EU -->
+    <div class="tab-panel active" data-tab="0">
+        <div class="why-card">
+            <div class="why-card-top">
+                <div class="hc-badge">1</div>
+                <span class="hc-src">Reuters · 38 min ago</span>
             </div>
-            <div class="angle-pair">
-                <div class="angle">
-                    <div class="angle-who">Berlin · Finance professional</div>
-                    <p>Your mortgage rate follows ECB with a 6-week lag. Check fixed-rate options before July.</p>
-                </div>
-                <div class="angle">
-                    <div class="angle-who">Mumbai · Tech founder</div>
-                    <p>Your euro-denominated funding round just got cheaper. The hold keeps EUR/INR favorable through Q3.</p>
-                </div>
+            <div class="hc-hl" style="font-size:1.2rem">ECB holds rates amid first Bundesbank dissent in 4 years</div>
+        </div>
+        <div class="angle-row">
+            <div class="angle">
+                <div class="angle-who">Berlin · Finance professional</div>
+                <p>Your mortgage rate follows ECB with a 6-week lag. Check fixed-rate options before July.</p>
+            </div>
+            <div class="angle">
+                <div class="angle-who">Mumbai · Tech founder</div>
+                <p>Your euro-denominated funding round just got cheaper. The hold keeps EUR/INR favorable through Q3.</p>
             </div>
         </div>
+    </div>
 
-        <!-- US story -->
-        <div class="scroll-card">
-            <div class="why-card">
-                <div class="why-card-top">
-                    <div class="hc-badge">2</div>
-                    <span class="hc-src">New York Times · 1h ago</span>
-                </div>
-                <div class="hc-hl" style="font-size:1.15rem">US proposes 25% tariff on semiconductor imports from China</div>
+    <!-- US -->
+    <div class="tab-panel" data-tab="1">
+        <div class="why-card">
+            <div class="why-card-top">
+                <div class="hc-badge">2</div>
+                <span class="hc-src">New York Times · 1h ago</span>
             </div>
-            <div class="angle-pair">
-                <div class="angle">
-                    <div class="angle-who">San Francisco · Hardware startup</div>
-                    <p>Your BOM cost jumps 8-12% by Q4. Talk to your contract manufacturer about locking in current pricing now.</p>
-                </div>
-                <div class="angle">
-                    <div class="angle-who">Bangalore · IT services</div>
-                    <p>Your US clients will delay hardware purchases. Expect slower deal cycles in Q3 but more demand for software-only solutions.</p>
-                </div>
+            <div class="hc-hl" style="font-size:1.2rem">US proposes 25% tariff on semiconductor imports from China</div>
+        </div>
+        <div class="angle-row">
+            <div class="angle">
+                <div class="angle-who">San Francisco · Hardware startup</div>
+                <p>Your BOM cost jumps 8-12% by Q4. Talk to your contract manufacturer about locking in current pricing now.</p>
+            </div>
+            <div class="angle">
+                <div class="angle-who">Bangalore · IT services</div>
+                <p>Your US clients will delay hardware purchases. Expect slower deal cycles but more demand for software-only solutions.</p>
             </div>
         </div>
+    </div>
 
-        <!-- India story -->
-        <div class="scroll-card">
-            <div class="why-card">
-                <div class="why-card-top">
-                    <div class="hc-badge">3</div>
-                    <span class="hc-src">Economic Times · 2h ago</span>
-                </div>
-                <div class="hc-hl" style="font-size:1.15rem">RBI keeps repo rate at 6% as monsoon forecast stays normal</div>
+    <!-- India -->
+    <div class="tab-panel" data-tab="2">
+        <div class="why-card">
+            <div class="why-card-top">
+                <div class="hc-badge">3</div>
+                <span class="hc-src">Economic Times · 2h ago</span>
             </div>
-            <div class="angle-pair">
-                <div class="angle">
-                    <div class="angle-who">Delhi · Home buyer</div>
-                    <p>Your EMI stays the same through September. If you've been waiting to lock in a home loan, rates won't go lower this cycle.</p>
-                </div>
-                <div class="angle">
-                    <div class="angle-who">London · India fund manager</div>
-                    <p>Rate stability keeps Indian equities attractive for carry trade. The rupee holds steady, which protects your USD-denominated returns.</p>
-                </div>
+            <div class="hc-hl" style="font-size:1.2rem">RBI keeps repo rate at 6% as monsoon forecast stays normal</div>
+        </div>
+        <div class="angle-row">
+            <div class="angle">
+                <div class="angle-who">Delhi · Home buyer</div>
+                <p>Your EMI stays the same through September. If you've been waiting to lock in a home loan, rates won't go lower this cycle.</p>
+            </div>
+            <div class="angle">
+                <div class="angle-who">London · India fund manager</div>
+                <p>Rate stability keeps Indian equities attractive for carry trade. The rupee holds steady, protecting your USD-denominated returns.</p>
             </div>
         </div>
     </div>
@@ -438,6 +442,15 @@ footer a{color:var(--light);text-decoration:underline}
 </footer>
 
 <script>
+function showTab(idx) {
+    document.querySelectorAll('.tab').forEach(function(t, i) {
+        t.classList.toggle('active', i === idx);
+    });
+    document.querySelectorAll('.tab-panel').forEach(function(p) {
+        p.classList.toggle('active', p.getAttribute('data-tab') == idx);
+    });
+}
+
 async function subscribe(pos) {
     var input = document.getElementById('email-' + pos);
     var msg = document.getElementById('msg-' + pos);
