@@ -88,22 +88,24 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,0.9);backdrop-
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── Why-line section ── */
-.whyline{max-width:1060px;margin:0 auto;padding:80px 32px}
-.whyline-top{text-align:center;margin-bottom:48px}
+.whyline{padding:80px 0}
+.whyline-top{text-align:center;margin-bottom:40px;padding:0 32px}
 .whyline-top h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:10px}
-.whyline-top p{font-size:0.92rem;color:var(--muted);max-width:500px;margin:0 auto;line-height:1.65}
-.why-demo{max-width:600px;margin:0 auto}
-.why-card{background:white;border-radius:14px;padding:22px;box-shadow:0 2px 12px rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.05);margin-bottom:16px}
-.why-card-top{display:flex;align-items:center;gap:8px;margin-bottom:10px}
-.why-card .hc-hl{font-size:1.2rem;margin-bottom:12px}
-.why-box{border-left:3px solid var(--red);background:var(--red-soft);border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:0}
-.why-box-label{font-size:0.58rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
-.why-box p{font-size:0.88rem;color:#5C3A1E;line-height:1.55}
-.angle-label{font-size:0.82rem;color:var(--muted);text-align:center;margin:20px 0 14px;font-weight:500}
-.angle-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:600px;margin:0 auto}
-.angle{background:white;border-radius:10px;padding:16px;border:1px solid rgba(0,0,0,0.05)}
+.whyline-top p{font-size:0.92rem;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.65}
+
+/* Horizontal scroller */
+.scroll-wrap{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 32px 20px}
+.scroll-wrap::-webkit-scrollbar{display:none}
+.scroll-track{display:flex;gap:20px;width:max-content;animation:autoscroll 12s ease-in-out infinite alternate}
+.scroll-wrap:hover .scroll-track,.scroll-wrap:active .scroll-track{animation-play-state:paused}
+@keyframes autoscroll{0%,15%{transform:translateX(0)}85%,100%{transform:translateX(-500px)}}
+.scroll-card{width:380px;flex-shrink:0}
+.scroll-card .why-card{background:white;border-radius:14px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.05)}
+.scroll-card .why-card-top{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.angle-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.angle-pair .angle{background:white;border-radius:10px;padding:14px;border:1px solid rgba(0,0,0,0.05)}
 .angle-who{font-size:0.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--light);margin-bottom:6px}
-.angle p{font-size:0.82rem;color:#5C3A1E;line-height:1.5}
+.angle p{font-size:0.8rem;color:#5C3A1E;line-height:1.5}
 
 /* ── Features ── */
 .features{background:var(--ink-2);color:var(--cream);padding:80px 32px}
@@ -206,7 +208,7 @@ footer a{color:var(--light);text-decoration:underline}
     <div class="hero-card-bg"></div>
     <div class="hero-card">
         <div class="hc-header">
-            <span class="hc-greeting">Good morning, Abhinav</span>
+            <span class="hc-greeting">Good morning, Alex</span>
             <span class="hc-date">Today, 7:00 AM</span>
         </div>
         <div class="hc-meta">7 stories · 4 min read</div>
@@ -272,57 +274,71 @@ footer a{color:var(--light);text-decoration:underline}
 <section class="whyline">
 <div class="whyline-top">
     <h2>The part most news skips.</h2>
-    <p>You read a headline. So what? What does it mean for your rent, your portfolio, your next hiring decision? That's what the why-line answers.</p>
+    <p>You read a headline. So what? What does it mean for your rent, your portfolio, your next hiring decision? That's what the why-line answers — and it changes depending on who's reading.</p>
 </div>
-<div class="why-demo">
-    <!-- EU story -->
-    <div class="why-card">
-        <div class="why-card-top">
-            <div class="hc-badge">1</div>
-            <span class="hc-src">Reuters · 38 min ago</span>
+<div class="scroll-wrap">
+    <div class="scroll-track">
+        <!-- EU story -->
+        <div class="scroll-card">
+            <div class="why-card">
+                <div class="why-card-top">
+                    <div class="hc-badge">1</div>
+                    <span class="hc-src">Reuters · 38 min ago</span>
+                </div>
+                <div class="hc-hl" style="font-size:1.15rem">ECB holds rates amid first Bundesbank dissent in 4 years</div>
+            </div>
+            <div class="angle-pair">
+                <div class="angle">
+                    <div class="angle-who">Berlin · Finance professional</div>
+                    <p>Your mortgage rate follows ECB with a 6-week lag. Check fixed-rate options before July.</p>
+                </div>
+                <div class="angle">
+                    <div class="angle-who">Mumbai · Tech founder</div>
+                    <p>Your euro-denominated funding round just got cheaper. The hold keeps EUR/INR favorable through Q3.</p>
+                </div>
+            </div>
         </div>
-        <div class="hc-hl" style="font-size:1.2rem">ECB holds rates amid first Bundesbank dissent in 4 years</div>
-        <div class="why-box">
-            <div class="why-box-label">Why this matters to you</div>
-            <p>Your mortgage rate follows ECB with a 6-week lag. If you're on a variable rate, check fixed options before July.</p>
-        </div>
-    </div>
 
-    <!-- US story -->
-    <div class="why-card" style="margin-top:12px">
-        <div class="why-card-top">
-            <div class="hc-badge">2</div>
-            <span class="hc-src">New York Times · 1h ago</span>
+        <!-- US story -->
+        <div class="scroll-card">
+            <div class="why-card">
+                <div class="why-card-top">
+                    <div class="hc-badge">2</div>
+                    <span class="hc-src">New York Times · 1h ago</span>
+                </div>
+                <div class="hc-hl" style="font-size:1.15rem">US proposes 25% tariff on semiconductor imports from China</div>
+            </div>
+            <div class="angle-pair">
+                <div class="angle">
+                    <div class="angle-who">San Francisco · Hardware startup</div>
+                    <p>Your BOM cost jumps 8-12% by Q4. Talk to your contract manufacturer about locking in current pricing now.</p>
+                </div>
+                <div class="angle">
+                    <div class="angle-who">Bangalore · IT services</div>
+                    <p>Your US clients will delay hardware purchases. Expect slower deal cycles in Q3 but more demand for software-only solutions.</p>
+                </div>
+            </div>
         </div>
-        <div class="hc-hl" style="font-size:1.2rem">US proposes 25% tariff on semiconductor imports from China</div>
-        <div class="why-box">
-            <div class="why-box-label">Why this matters to you</div>
-            <p>If you buy electronics or run hardware-dependent products, expect 8-12% price increases by Q4. Stock up on critical components now.</p>
-        </div>
-    </div>
 
-    <!-- India story -->
-    <div class="why-card" style="margin-top:12px">
-        <div class="why-card-top">
-            <div class="hc-badge">3</div>
-            <span class="hc-src">Economic Times · 2h ago</span>
-        </div>
-        <div class="hc-hl" style="font-size:1.2rem">RBI keeps repo rate at 6% as monsoon forecast stays normal</div>
-        <div class="why-box">
-            <div class="why-box-label">Why this matters to you</div>
-            <p>Your EMI stays the same through September. If you've been waiting to lock in a home loan, rates won't go lower this cycle.</p>
-        </div>
-    </div>
-
-    <p class="angle-label">The why-line changes depending on who's reading.</p>
-    <div class="angle-grid">
-        <div class="angle">
-            <div class="angle-who">Berlin · Finance</div>
-            <p>Your mortgage rate follows ECB with a 6-week lag. Check fixed-rate options before July.</p>
-        </div>
-        <div class="angle">
-            <div class="angle-who">Mumbai · Tech founder</div>
-            <p>Your euro-denominated funding round just got cheaper. The hold keeps EUR/INR favorable through Q3.</p>
+        <!-- India story -->
+        <div class="scroll-card">
+            <div class="why-card">
+                <div class="why-card-top">
+                    <div class="hc-badge">3</div>
+                    <span class="hc-src">Economic Times · 2h ago</span>
+                </div>
+                <div class="hc-hl" style="font-size:1.15rem">RBI keeps repo rate at 6% as monsoon forecast stays normal</div>
+            </div>
+            <div class="angle-pair">
+                <div class="angle">
+                    <div class="angle-who">Delhi · Home buyer</div>
+                    <p>Your EMI stays the same through September. If you've been waiting to lock in a home loan, rates won't go lower this cycle.</p>
+                </div>
+                <div class="angle">
+                    <div class="angle-who">London · India fund manager</div>
+                    <p>Rate stability keeps Indian equities attractive for carry trade. The rupee holds steady, which protects your USD-denominated returns.</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
