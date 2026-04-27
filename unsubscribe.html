@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unsubscribe — Verityn</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#FAF8F4;color:#111;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
+.box{max-width:400px;text-align:center}
+.logo{margin-bottom:32px}
+.logo-v{font-family:Georgia,serif;font-size:2rem;font-weight:700;color:#C0392B}
+.logo-w{font-size:1.2rem;font-weight:700;color:#111}
+h1{font-size:1.3rem;font-weight:600;margin-bottom:8px}
+p{font-size:0.9rem;color:#888;margin-bottom:24px;line-height:1.6}
+.btn{display:inline-block;padding:14px 32px;background:#C0392B;color:white;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.2s}
+.btn:hover{background:#A93226}
+.msg{margin-top:16px;font-size:0.9rem;font-weight:500}
+.back{margin-top:24px;font-size:0.8rem;color:#888}
+.back a{color:#888}
+</style>
+</head>
+<body>
+<div class="box">
+    <div class="logo">
+        <span class="logo-v">V</span><span class="logo-w">erityn</span>
+    </div>
+    <h1>Unsubscribe</h1>
+    <p>We'll stop sending your daily briefing. You can resubscribe anytime at verityn.news.</p>
+    <button class="btn" id="unsub-btn" onclick="unsubscribe()">Unsubscribe me</button>
+    <p class="msg" id="msg"></p>
+    <p class="back"><a href="https://verityn.news">← Back to Verityn</a></p>
+</div>
+<script>
+function getParam(name) {
+    var url = new URL(window.location.href);
+    return url.searchParams.get(name) || '';
+}
+async function unsubscribe() {
+    var email = getParam('email');
+    var btn = document.getElementById('unsub-btn');
+    var msg = document.getElementById('msg');
+    if (!email) {
+        msg.textContent = 'No email found. Contact hello@verityn.news.';
+        return;
+    }
+    btn.disabled = true;
+    btn.textContent = 'Unsubscribing...';
+    try {
+        var r = await fetch('https://verityn-backend-ten.vercel.app/api/newsletter?action=unsubscribe&email=' + encodeURIComponent(email));
+        var d = await r.json();
+        if (d.ok) {
+            msg.textContent = "Done. You won't receive any more emails.";
+            btn.style.display = 'none';
+        } else {
+            msg.textContent = 'Something went wrong. Email hello@verityn.news.';
+        }
+    } catch (e) {
+        msg.textContent = 'Connection error. Try again.';
+    }
+    btn.disabled = false;
+    btn.textContent = 'Unsubscribe me';
+}
+</script>
+</body>
+</html>
