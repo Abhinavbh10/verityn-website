@@ -3,501 +3,487 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verityn — 7 stories. Why they matter to you.</title>
-<meta name="description" content="Verityn reads 100+ sources and picks 7 stories every morning. Each one tells you why it matters to your life. Free newsletter + app.">
+<title>Verityn | Germany news for English speakers</title>
+<meta name="description" content="7 stories about Germany, every morning, in English. Each one tells you why it matters to your life here. Made for expats, immigrants, and internationals.">
+<meta name="keywords" content="Germany news English, expat Germany news, English news Germany, Berlin news English, German news briefing, expat newsletter Germany, Krankenkasse, Mietpreisbremse, Blue Card Germany, BVG, Anmeldung">
+<meta name="author" content="Verityn">
+<meta name="robots" content="index, follow">
 <meta name="theme-color" content="#FAF8F4">
-<link rel="canonical" href="https://verityn.news/">
+<link rel="canonical" href="https://verityn.news">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23FAF8F4'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='22' fill='%23C0392B'%3EV%3C/text%3E%3C/svg%3E">
-<meta property="og:title" content="Verityn — 7 stories. Why they matter to you.">
-<meta property="og:description" content="Every morning, 7 stories from 100+ sources. Each one tells you why it matters to your life.">
-<meta property="og:image" content="https://verityn.news/og-image.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:title" content="Verityn | Germany news for English speakers">
+<meta property="og:description" content="7 stories about Germany, every morning, in English. Each one tells you why it matters to your life here.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://verityn.news/">
+<meta property="og:url" content="https://verityn.news">
+<meta property="og:image" content="https://verityn.news/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Verityn: Germany news, briefed daily for English speakers">
+<meta property="og:site_name" content="Verityn">
+<meta property="og:locale" content="en_DE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Verityn — 7 stories. Why they matter to you.">
-<meta name="twitter:description" content="7 stories every morning. Each one tells you why it matters.">
+<meta name="twitter:title" content="Verityn | Germany news for English speakers">
+<meta name="twitter:description" content="7 stories about Germany, every morning, in English.">
 <meta name="twitter:image" content="https://verityn.news/og-image.png">
+<meta name="twitter:site" content="@verityn_news">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Verityn","url":"https://verityn.news","description":"Germany news briefed daily for English speakers","applicationCategory":"NewsApplication","operatingSystem":"iOS, Android","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Organization","name":"Verityn","url":"https://verityn.news"},"inLanguage":"en","countryOfOrigin":{"@type":"Country","name":"Germany"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Verityn","url":"https://verityn.news","description":"Germany news for English speakers","potentialAction":{"@type":"SearchAction","target":"https://verityn.news/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Libre+Franklin:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#1a1a1c;--ink-2:#111;--cream:#FAF8F4;--warm:#F2EDE5;--warm-2:#E8E2D8;--warm-3:#DBD4C8;--red:#C0392B;--red-2:#A93226;--red-soft:rgba(192,57,43,0.06);--muted:#777;--light:#aaa;--faint:#ccc;--border:rgba(0,0,0,0.07)}
+:root {
+  --cream: #FAF8F4; --cream-dark: #EDE7DB;
+  --ink: #111111; --ink-80: #3D3D3D; --ink-50: #7A7A7A; --ink-30: #ABABAB; --ink-10: #E0DCD5;
+  --red: #C0392B; --red-hover: #A93226;
+  --white: #FFFFFF; --gold: #B8963E;
+  --dark: #0D1117; --dark-surface: #161B22;
+  --why: #3D2B1F;
+}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-::selection{background:var(--red);color:white}
+body{font-family:'Libre Franklin',system-ui,sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-/* ── Nav ── */
-nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,0.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:1060px;margin:0 auto;padding:14px 32px;display:flex;justify-content:space-between;align-items:center}
-.n-logo{display:inline-flex;align-items:baseline;text-decoration:none;gap:1px}
-.n-v{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.7rem;font-weight:700;color:var(--red)}
-.n-w{font-size:1.05rem;font-weight:700;color:var(--ink);letter-spacing:-0.03em}
-.nav-r{display:flex;align-items:center;gap:24px}
-.nav-r a{font-size:0.78rem;color:var(--muted);text-decoration:none;font-weight:500;transition:color 0.2s}
-.nav-r a:hover{color:var(--ink)}
-.nav-cta{background:var(--red)!important;color:white!important;padding:8px 18px!important;border-radius:6px;font-weight:600!important;transition:background 0.2s!important}
-.nav-cta:hover{background:var(--red-2)!important}
+/* Grain */
+body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.018;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:180px}
 
-/* ── Hero ── */
-.hero{max-width:1060px;margin:0 auto;padding:72px 32px 56px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.hero-text h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.4rem,4.2vw,3.6rem);font-weight:600;line-height:1.1;letter-spacing:-0.03em;margin-bottom:18px}
-.hero-text h1 em{font-style:italic;color:var(--red)}
-.hero-p{font-size:0.95rem;color:var(--muted);line-height:1.75;margin-bottom:28px;max-width:420px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.hero-email{display:flex;border:1.5px solid var(--warm-2);border-radius:8px;overflow:hidden;background:white;transition:border-color 0.25s;flex:1;min-width:240px;max-width:340px}
-.hero-email:focus-within{border-color:var(--red)}
-.hero-email input{flex:1;border:none;padding:12px 14px;font-size:0.88rem;background:transparent;outline:none;font-family:'DM Sans',sans-serif;color:var(--ink);min-width:0}
-.hero-email input::placeholder{color:var(--faint)}
-.hero-email button{padding:12px 20px;background:var(--red);color:white;border:none;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:background 0.2s}
-.hero-email button:hover{background:var(--red-2)}
-.hero-email button:disabled{background:#ccc;cursor:not-allowed}
-.hero-or{font-size:0.72rem;color:var(--light);font-weight:500}
-.app-dl{display:flex;gap:10px;align-items:center}
-.app-dl a{display:inline-block;line-height:0}
-.hero-note{font-size:0.68rem;color:var(--light);margin-top:10px}
-.form-msg{font-size:0.85rem;margin-top:8px;font-weight:500}
-.form-msg.ok{color:var(--ink)}
-.form-msg.err{color:var(--red)}
+.w{max-width:1200px;margin:0 auto;padding:0 48px}
 
-/* ── Hero card ── */
-.hero-card-wrap{position:relative}
-.hero-card-bg{position:absolute;inset:-12px;background:var(--warm);border-radius:20px;transform:rotate(2deg);z-index:0}
-.hero-card{position:relative;z-index:1;background:white;border-radius:16px;padding:24px;box-shadow:0 8px 32px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.04)}
-.hc-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
-.hc-greeting{font-family:'Cormorant Garamond',Georgia,serif;font-size:1rem;font-weight:700;color:var(--ink)}
-.hc-date{font-size:0.62rem;color:var(--light)}
-.hc-meta{font-size:0.65rem;color:var(--light);margin-bottom:10px}
-.hc-dots{display:flex;gap:5px;justify-content:center;margin-bottom:14px}
-.hc-dot{width:7px;height:7px;border-radius:4px}
-.hc-story{background:var(--cream);border-radius:12px;padding:16px;margin-bottom:10px;border:1px solid var(--border)}
-.hc-story-top{display:flex;align-items:center;gap:7px;margin-bottom:8px}
-.hc-badge{width:20px;height:20px;background:var(--red);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:white}
-.hc-src{font-size:0.6rem;font-weight:600;color:var(--light);text-transform:uppercase;letter-spacing:0.3px}
-.hc-hl{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.05rem;font-weight:700;line-height:1.25;margin-bottom:8px}
-.hc-why{background:var(--red-soft);border-radius:6px;padding:8px 10px}
-.hc-why p{font-size:0.75rem;color:#5C3A1E;line-height:1.5}
-.hc-story-2{background:var(--cream);border-radius:12px;padding:14px;border:1px solid var(--border);opacity:0.7}
-.hc-hl-2{font-family:'Cormorant Garamond',Georgia,serif;font-size:0.9rem;font-weight:600;line-height:1.25;color:var(--muted)}
+/* ═══ NAV ═══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:background .35s,box-shadow .35s,backdrop-filter .35s}
+nav.scrolled{background:rgba(250,248,244,.92);backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(0,0,0,.05)}
+nav .w{display:flex;align-items:center;justify-content:space-between}
+.n-logo{display:inline-flex;align-items:baseline;text-decoration:none;gap:0}
+.n-v{font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:var(--red)}
+.n-word{font-family:'Libre Franklin',sans-serif;font-size:1.1rem;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.n-links{display:flex;gap:28px;align-items:center}
+.n-links a{text-decoration:none;color:var(--ink-50);font-size:.82rem;font-weight:500;transition:color .2s}
+.n-links a:hover{color:var(--ink)}
+.n-cta{background:var(--ink)!important;color:var(--cream)!important;padding:9px 20px!important;border-radius:6px;font-weight:700!important;font-size:.72rem!important;letter-spacing:.05em!important;text-transform:uppercase;transition:background .25s!important}
+.n-cta:hover{background:var(--red)!important}
 
-/* ── Source ticker ── */
-.ticker{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 0;overflow:hidden;background:white}
-.ticker-track{display:flex;gap:40px;white-space:nowrap;animation:scroll 40s linear infinite}
-.ticker-item{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--light);display:flex;align-items:center;gap:10px;flex-shrink:0}
+/* ═══ HERO — "THE SPLIT" ═══ */
+.hero{padding:140px 0 80px;position:relative}
+.hero .w{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.hero-left{padding-top:20px}
+.hero-label{font-family:'IBM Plex Mono',monospace;font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:24px;opacity:0;animation:up .6s .2s ease forwards}
+.hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.6rem,4.5vw,3.8rem);font-weight:600;line-height:1;letter-spacing:-.04em;color:var(--ink);margin-bottom:20px;opacity:0;animation:up .6s .35s ease forwards}
+.hero h1 em{font-style:italic;color:var(--red);font-weight:500}
+.hero-desc{font-size:.95rem;line-height:1.7;color:var(--ink-80);max-width:420px;margin-bottom:32px;opacity:0;animation:up .6s .5s ease forwards}
+.hero-cta{display:inline-flex;padding:13px 28px;background:var(--red);color:var(--cream);border-radius:8px;text-decoration:none;font-weight:700;font-size:.85rem;border:none;cursor:pointer;transition:all .25s;opacity:0;animation:up .6s .65s ease forwards}
+.hero-cta:hover{background:var(--red-hover);transform:translateY(-2px);box-shadow:0 8px 24px rgba(192,57,43,.2)}
+.hero-sub{font-size:.72rem;color:var(--ink-50);margin-top:14px;opacity:0;animation:up .6s .75s ease forwards}
+
+/* The split: left chaos, right clean */
+.hero-right{position:relative;opacity:0;animation:up .7s .5s ease forwards}
+.split-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;perspective:800px}
+
+/* LEFT: Chaos feed */
+.chaos{background:var(--white);border:1px solid var(--ink-10);border-radius:12px;padding:14px;font-size:.62rem;line-height:1.5;color:var(--ink-50);position:relative;overflow:hidden;opacity:.5;filter:blur(.4px)}
+.chaos::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,var(--white));pointer-events:none}
+.chaos-item{padding:7px 0;border-bottom:1px solid rgba(0,0,0,.04)}
+.chaos-item:last-child{border-bottom:none}
+.chaos-src{font-weight:700;font-size:.5rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-30);margin-bottom:2px}
+.chaos-hl{color:var(--ink-50);font-weight:600}
+.chaos-top{font-size:.5rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-30);margin-bottom:8px}
+
+/* RIGHT: Verityn reel — full readable size */
+.reel{background:var(--cream);border:1px solid var(--ink-10);border-radius:12px;padding:16px;position:relative}
+.reel-logo{display:flex;align-items:baseline;margin-bottom:3px}
+.reel-v{font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:var(--red)}
+.reel-word{font-family:'Libre Franklin',sans-serif;font-size:.65rem;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+.reel-date{font-size:.42rem;color:var(--ink-50);margin-bottom:8px}
+.reel-tib{background:#1C1C1E;border-radius:8px;padding:8px 10px;margin-bottom:10px}
+.reel-tib-label{font-size:.36rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(250,248,244,.3)}
+.reel-tib-mood{font-family:'Cormorant Garamond',Georgia,serif;font-size:.48rem;font-style:italic;color:rgba(250,248,244,.6);line-height:1.3;margin-top:2px}
+.reel-tag{font-size:.38rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--red);margin-bottom:3px}
+.reel-hl{font-family:Georgia,serif;font-size:.62rem;font-weight:700;line-height:1.15;color:var(--ink);margin-bottom:3px}
+.reel-why{font-size:.44rem;color:var(--why);line-height:1.4;margin-bottom:5px}
+.reel-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.reel-src{font-size:.36rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--red)}
+.reel-time{font-size:.34rem;color:var(--ink-50)}
+.reel-btns{display:flex;gap:3px}
+.reel-btn-read{font-size:.34rem;font-weight:700;background:var(--ink);color:var(--white);padding:2px 7px;border-radius:3px}
+.reel-btn-dive{font-size:.34rem;font-weight:700;color:var(--red);padding:2px 7px;border-radius:3px;border:1px solid rgba(192,57,43,.15)}
+.reel-div{height:1px;background:var(--ink-10);margin:6px 0}
+.reel-also-label{font-size:.34rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-50);margin-bottom:4px}
+.reel-also-item{display:flex;gap:5px;padding:3px 0}
+.reel-also-hl{font-family:Georgia,serif;font-size:.46rem;font-weight:700;line-height:1.15;color:var(--ink)}
+.reel-also-src{font-size:.3rem;font-weight:700;text-transform:uppercase;color:var(--red);margin-bottom:1px}
+.reel-wk-label{font-size:.32rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-50);margin:4px 0 3px}
+.reel-wk-item{font-size:.38rem;font-weight:600;color:var(--ink);padding:2px 0;border-bottom:1px solid rgba(0,0,0,.04);line-height:1.2}
+.reel-wk-item:last-child{border-bottom:none}
+.reel-wk-num{font-family:Georgia,serif;font-weight:700;color:rgba(0,0,0,.04);margin-right:3px}
+.reel-nav{display:flex;justify-content:space-around;padding:5px 0 0;border-top:1px solid var(--ink-10);margin-top:6px}
+.reel-nav-item{font-size:.3rem;font-weight:600;color:var(--ink-50);text-align:center}
+.reel-nav-item.on{color:var(--red)}
+.split-label{position:absolute;font-family:'IBM Plex Mono',monospace;font-size:.52rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;top:-22px}
+.split-label.left{left:0;color:var(--ink-30)}
+.split-label.right{right:0;color:var(--red)}
+
+/* ═══ TICKER ═══ */
+.ticker{border-top:3px solid var(--red);background:var(--ink);padding:14px 0;overflow:hidden}
+.ticker-track{display:flex;gap:40px;white-space:nowrap;animation:scroll 26s linear infinite}
+.ticker-item{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:rgba(250,248,244,.3);display:flex;align-items:center;gap:8px;flex-shrink:0}
 .ticker-dot{width:4px;height:4px;background:var(--red);border-radius:50%}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ── Why-line section ── */
-.whyline{padding:80px 32px}
-.whyline-top{text-align:center;margin-bottom:40px}
-.whyline-top h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:10px}
-.whyline-top p{font-size:0.92rem;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.65}
-.why-demo{max-width:580px;margin:0 auto}
-.tab-bar{display:flex;gap:4px;background:var(--warm);border-radius:10px;padding:4px;margin-bottom:20px}
-.tab{flex:1;padding:10px 0;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;color:var(--muted);cursor:pointer;border-radius:7px;transition:all 0.2s}
-.tab.active{background:white;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,0.06)}
-.tab:hover:not(.active){color:var(--ink)}
-.tab-panel{display:none}
-.tab-panel.active{display:block}
-.why-card{background:white;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.05);margin-bottom:12px}
-.why-card-top{display:flex;align-items:center;gap:8px;margin-bottom:10px}
-.angle-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.angle{background:white;border-radius:10px;padding:16px;border:1px solid rgba(0,0,0,0.05)}
-.angle-who{font-size:0.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--light);margin-bottom:6px}
-.angle p{font-size:0.82rem;color:#5C3A1E;line-height:1.5}
+/* ═══ HOW IT WORKS ═══ */
+.how{padding:100px 0}
+.section-label{font-family:'IBM Plex Mono',monospace;font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+.section-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:600;line-height:1.05;letter-spacing:-.03em;margin-bottom:48px;max-width:500px}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.feat{background:var(--white);border:1px solid var(--ink-10);border-radius:14px;padding:32px 28px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.feat:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.05)}
+.feat.wide{grid-column:1/-1}
+.feat-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:3rem;font-weight:700;color:var(--ink);opacity:.03;position:absolute;top:8px;right:20px}
+.feat h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:600;margin-bottom:8px}
+.feat h3 span{color:var(--red)}
+.feat p{font-size:.85rem;line-height:1.65;color:var(--ink-80)}
 
-/* ── Features ── */
-.features{background:var(--ink-2);color:var(--cream);padding:80px 32px}
-.features-inner{max-width:1060px;margin:0 auto}
-.features h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:600;text-align:center;margin-bottom:12px;color:var(--cream)}
-.features-inner>p{text-align:center;font-size:0.9rem;color:rgba(245,240,232,0.4);margin-bottom:56px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.6}
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-.feat{padding:28px;background:rgba(255,255,255,0.04);border-radius:14px;border:1px solid rgba(255,255,255,0.06)}
-.feat-icon{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:500;color:var(--red);letter-spacing:0.05em;margin-bottom:12px}
-.feat h3{font-size:0.95rem;font-weight:600;margin-bottom:8px;color:var(--cream)}
-.feat p{font-size:0.82rem;color:rgba(245,240,232,0.45);line-height:1.65}
+/* ═══ TWO WAYS ═══ */
+.ways{padding:100px 0;background:var(--dark);color:var(--cream)}
+.ways .section-title{color:var(--cream)}
+.ways .w{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.way-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 24px}
+.way-icon{font-size:1.4rem;margin-bottom:12px}
+.way-card h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:600;margin-bottom:8px;color:var(--cream)}
+.way-card p{font-size:.85rem;line-height:1.65;color:rgba(250,248,244,.45)}
 
-/* ── How numbers ── */
-.numbers{padding:72px 32px;max-width:800px;margin:0 auto}
-.numbers h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;font-weight:600;text-align:center;margin-bottom:48px;letter-spacing:-0.02em}
-.num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
-.num-item .big{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.8rem;font-weight:700;color:var(--red);line-height:1}
-.num-item .label{font-size:0.78rem;color:var(--muted);margin-top:6px;font-weight:500}
+/* ═══ NUMBERS ═══ */
+.nums{padding:72px 0;border-bottom:1px solid var(--ink-10)}
+.nums .w{display:flex;justify-content:space-between}
+.num-item{text-align:center;flex:1}
+.num-val{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.2rem,3.5vw,3rem);font-weight:700;letter-spacing:-.03em}
+.num-val span{color:var(--red)}
+.num-lbl{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--ink-50);letter-spacing:.04em;margin-top:4px}
 
-/* ── CTA ── */
-.cta-section{padding:72px 32px;text-align:center;max-width:640px;margin:0 auto}
-.cta-section h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:600;margin-bottom:8px;letter-spacing:-0.02em}
-.cta-section>p{font-size:0.9rem;color:var(--muted);margin-bottom:12px}
-.cta-choices{display:flex;gap:16px;justify-content:center;align-items:stretch;flex-wrap:wrap;margin-top:28px}
-.cta-box{flex:1;min-width:240px;max-width:300px;background:white;border-radius:14px;padding:28px 24px;border:1px solid var(--border);text-align:center;display:flex;flex-direction:column;justify-content:center}
-.cta-box h3{font-size:0.95rem;font-weight:600;margin-bottom:4px}
-.cta-box .sub{font-size:0.78rem;color:var(--muted);margin-bottom:16px}
-.cta-box .form-row-s{display:flex;border:1.5px solid var(--warm-2);border-radius:8px;overflow:hidden;transition:border-color 0.25s}
-.cta-box .form-row-s:focus-within{border-color:var(--red)}
-.cta-box .form-row-s input{flex:1;border:none;padding:11px 12px;font-size:0.85rem;background:transparent;outline:none;font-family:'DM Sans',sans-serif;color:var(--ink);min-width:0}
-.cta-box .form-row-s input::placeholder{color:var(--faint)}
-.cta-box .form-row-s button{padding:11px 16px;background:var(--red);color:white;border:none;font-family:'DM Sans',sans-serif;font-size:0.76rem;font-weight:600;cursor:pointer;white-space:nowrap}
-.cta-box .app-links-col{display:flex;flex-direction:column;gap:8px}
-.cta-box .app-link-b{display:block;padding:11px;background:var(--ink-2);color:white;border-radius:8px;font-size:0.78rem;font-weight:600;text-decoration:none;text-align:center;transition:opacity 0.2s}
-.cta-box .app-link-b:hover{opacity:0.85}
+/* ═══ CTA ═══ */
+.cta-s{padding:100px 0;background:var(--cream-dark);position:relative}
+.cta-s .w{max-width:560px;text-align:center}
+.cta-s .section-title{margin-left:auto;margin-right:auto;max-width:none}
+.cta-desc{font-size:.95rem;line-height:1.7;color:var(--ink-80);margin-bottom:32px}
+.wl-form{display:flex;max-width:440px;margin:0 auto;border-radius:8px;overflow:hidden;border:2px solid var(--ink-10);transition:border-color .25s}
+.wl-form:focus-within{border-color:var(--red)}
+.wl-input{flex:1;padding:14px 18px;font-family:'Libre Franklin',sans-serif;font-size:.88rem;color:var(--ink);border:none;outline:none;background:var(--white)}
+.wl-input::placeholder{color:var(--ink-30)}
+.wl-btn{padding:14px 24px;background:var(--red);color:var(--cream);font-family:'Libre Franklin',sans-serif;font-size:.78rem;font-weight:700;border:none;cursor:pointer;transition:background .2s;white-space:nowrap}
+.wl-btn:hover{background:var(--red-hover)}
+.wl-note{font-size:.68rem;color:var(--ink-50);margin-top:12px}
+.wl-success{font-size:.88rem;font-weight:600;color:#16A34A;padding:14px 0}
+.wl-error{font-size:.78rem;color:var(--red);margin-top:8px}
 
-/* ── Footer ── */
-footer{border-top:1px solid var(--border);padding:32px;text-align:center;font-size:0.7rem;color:var(--light)}
-footer a{color:var(--light);text-decoration:underline}
+/* ═══ FOOTER ═══ */
+footer{background:var(--dark);color:var(--cream);padding:44px 0 20px}
+.ft-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px}
+.ft-tag{font-family:'Cormorant Garamond',Georgia,serif;font-size:.82rem;color:rgba(250,248,244,.25);margin-top:6px;font-style:italic}
+.ft-links{display:flex;gap:36px}
+.ft-col h4{font-family:'IBM Plex Mono',monospace;font-size:.55rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,248,244,.18);margin-bottom:10px}
+.ft-col a{display:block;font-size:.78rem;color:rgba(250,248,244,.4);text-decoration:none;margin-bottom:7px;transition:color .2s}
+.ft-col a:hover{color:var(--cream)}
+.ft-div{height:1px;background:rgba(250,248,244,.05);margin-bottom:16px}
+.ft-bot{display:flex;justify-content:space-between;font-size:.65rem;color:rgba(250,248,244,.15);font-family:'IBM Plex Mono',monospace}
 
-/* ── Responsive ── */
-@media(max-width:768px){
-    .hero{grid-template-columns:1fr;gap:36px;padding:48px 20px 40px}
-    .hero-card-wrap{max-width:400px;margin:0 auto}
-    .hero-actions{flex-direction:column;align-items:stretch}
-    .hero-email{max-width:100%}
-    .app-dl{justify-content:center}
-    .feat-grid{grid-template-columns:1fr}
-    .num-grid{grid-template-columns:repeat(2,1fr);gap:20px}
-    .angle-grid{grid-template-columns:1fr}
-    .angle-row{grid-template-columns:1fr}
-    .cta-choices{flex-direction:column;align-items:center}
-    .nav-r a:not(.nav-cta){display:none}
+/* Animations */
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .5s,transform .6s cubic-bezier(.23,1,.32,1)}
+.rv.vis{opacity:1;transform:translateY(0)}
+
+/* Responsive */
+@media(max-width:1024px){
+  .hero .w{grid-template-columns:1fr;gap:40px}
+  .hero-right{order:-1}
+  .features{grid-template-columns:1fr}
+  .feat.wide{grid-column:auto}
+  .ways .w{grid-template-columns:1fr;gap:24px}
 }
-@media(max-width:480px){
-    .hero-email{flex-direction:column}
-    .hero-email input{padding:13px 14px}
-    .hero-email button{padding:13px}
+@media(max-width:768px){
+  .w{padding:0 24px}
+  .n-links a:not(.n-cta){display:none}
+  .split-wrap{grid-template-columns:1fr;gap:12px}
+  .chaos{display:none}
+  .split-label{display:none}
+  .nums .w{flex-direction:column;gap:24px}
+  .ft-top{flex-direction:column;gap:28px}
+  .ft-links{gap:20px}
 }
 </style>
 </head>
 <body>
 
 <!-- Nav -->
-<nav>
-<div class="nav-inner">
-    <a class="n-logo" href="/"><span class="n-v">V</span><span class="n-w">erityn</span></a>
-    <div class="nav-r">
-        <a href="#features">Features</a>
-        <a href="#how">How it works</a>
-        <a href="/privacy">Privacy</a>
-        <a href="#get" class="nav-cta">Get the briefing</a>
+<nav id="nav">
+  <div class="w">
+    <a href="#" class="n-logo"><span class="n-v">V</span><span class="n-word">erityn</span></a>
+    <div class="n-links">
+      <a href="#how">How it works</a>
+      <a href="#ways">The brief</a>
+      <a href="#app">App</a><a href="#cta" class="n-cta">Get the daily brief</a>
     </div>
-</div>
+  </div>
 </nav>
 
-<!-- Hero -->
+<!-- HERO: THE SPLIT -->
 <section class="hero">
-<div class="hero-text">
-    <h1>7 stories.<br><em>Why they matter<br>to you.</em></h1>
-    <p class="hero-p">We read a hundred sources before you wake up. You get 7 stories. Each one has a line that connects it to your actual life. In your inbox or on your phone.</p>
-    <div class="hero-actions">
-        <div class="hero-email">
-            <input type="email" id="email-top" placeholder="you@email.com">
-            <button onclick="subscribe('top')">Get the briefing</button>
-        </div>
-        <span class="hero-or">or</span>
-        <div class="app-dl">
-            <a href="https://apps.apple.com/app/verityn/id6763644319" target="_blank">
-                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" style="height:42px">
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=com.verityn.app" target="_blank">
-                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" style="height:62px;margin:-10px 0">
-            </a>
-        </div>
+  <div class="w">
+    <div class="hero-left">
+      <div class="hero-label">For English speakers in Germany</div>
+      <h1>Germany news,<br><em>briefed daily.</em></h1>
+      <p class="hero-desc">7 stories about Germany, every morning. Each one tells you why it matters to your life here. Krankenkasse hikes, BVG strikes, visa changes, Mietpreisbremse updates. In English, in plain language, in under 5 minutes.</p>
+      <a href="#cta" class="hero-cta">Get the daily brief →</a>
+      <p class="hero-sub">Free. No account needed. Unsubscribe anytime.</p>
     </div>
-    <p class="hero-note">Free. No spam. No tracking. Unsubscribe in one click.</p>
-    <p class="form-msg" id="msg-top"></p>
-</div>
-<div class="hero-card-wrap">
-    <div class="hero-card-bg"></div>
-    <div class="hero-card">
-        <div class="hc-header">
-            <span class="hc-greeting">Good morning, Alex</span>
-            <span class="hc-date">Today, 7:00 AM</span>
+    <div class="hero-right">
+      <span class="split-label left">Your feed right now</span>
+      <span class="split-label right">Verityn</span>
+      <div class="split-wrap">
+        <!-- Left: chaos feed -->
+        <div class="chaos">
+          <div class="chaos-top">40+ headlines</div>
+          <div class="chaos-item"><div class="chaos-src">CNN</div><div class="chaos-hl">Trump says he might meet with Kim Jong Un again</div></div>
+          <div class="chaos-item"><div class="chaos-src">BBC</div><div class="chaos-hl">Taylor Swift tickets resale controversy grows</div></div>
+          <div class="chaos-item"><div class="chaos-src">Reuters</div><div class="chaos-hl">Iran nuclear talks resume after months-long pause</div></div>
+          <div class="chaos-item"><div class="chaos-src">Guardian</div><div class="chaos-hl">Premier League: weekend results roundup</div></div>
+          <div class="chaos-item"><div class="chaos-src">NYT</div><div class="chaos-hl">Hollywood actors union reaches deal with studios</div></div>
+          <div class="chaos-item"><div class="chaos-src">CNBC</div><div class="chaos-hl">Bitcoin rises above $90,000 on ETF optimism</div></div>
+          <div class="chaos-item"><div class="chaos-src">Mail</div><div class="chaos-hl">Royal family member spotted at London restaurant</div></div>
+          <div class="chaos-item"><div class="chaos-src">AP</div><div class="chaos-hl">Wildfire threatens homes in southern California</div></div>
+          <div class="chaos-item"><div class="chaos-src">Bloomberg</div><div class="chaos-hl">Fed officials hint at holding rates through summer</div></div>
+          <div class="chaos-item"><div class="chaos-src">Sky</div><div class="chaos-hl">Love Island contestant removed after controversy</div></div>
         </div>
-        <div class="hc-meta">7 stories · 4 min read</div>
-        <div class="hc-dots">
-            <span class="hc-dot" style="background:var(--red)"></span>
-            <span class="hc-dot" style="background:var(--warm-2)"></span>
-            <span class="hc-dot" style="background:var(--warm-2)"></span>
-            <span class="hc-dot" style="background:var(--warm-2)"></span>
-            <span class="hc-dot" style="background:var(--warm-2)"></span>
-            <span class="hc-dot" style="background:var(--warm-2)"></span>
-            <span class="hc-dot" style="background:var(--warm-2)"></span>
-        </div>
-        <div class="hc-story">
-            <div class="hc-story-top">
-                <div class="hc-badge">1</div>
-                <span class="hc-src">Reuters · 38m ago</span>
+
+        <!-- Right: Verityn reel — readable, no phone -->
+        <div class="reel">
+          <!-- Header: logo + greeting + context strip -->
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2px">
+            <div>
+              <div class="reel-logo"><span class="reel-v">V</span><span class="reel-word">erityn</span></div>
+              <div style="font-size:.72rem;font-weight:600;color:var(--ink);margin-top:2px">Good morning, Sarah</div>
+              <div style="font-size:.52rem;color:var(--ink-50);margin-top:1px">4 min · 7 stories · Updated 12m ago</div>
             </div>
-            <div class="hc-hl">ECB holds rates amid first Bundesbank dissent in 4 years</div>
-            <div class="hc-why">
-                <p>Your mortgage rate follows ECB with a 6-week lag. Check fixed-rate options before July.</p>
+            <div style="font-size:.52rem;color:var(--ink-50);text-align:right;padding-top:4px">Tue, 13 May<br>Berlin</div>
+          </div>
+          <!-- 7-dot progress -->
+          <div style="display:flex;gap:4px;margin:8px 0 12px">
+            <div style="flex:1;height:3px;border-radius:2px;background:var(--red)"></div>
+            <div style="flex:1;height:3px;border-radius:2px;background:var(--red)"></div>
+            <div style="flex:1;height:3px;border-radius:2px;background:var(--red);opacity:.3"></div>
+            <div style="flex:1;height:3px;border-radius:2px;background:var(--ink-10)"></div>
+            <div style="flex:1;height:3px;border-radius:2px;background:var(--ink-10)"></div>
+            <div style="flex:1;height:3px;border-radius:2px;background:var(--ink-10)"></div>
+            <div style="flex:1;height:3px;border-radius:2px;background:var(--ink-10)"></div>
+          </div>
+          <!-- Card 1 -->
+          <div style="background:var(--white);border-radius:14px;overflow:hidden;margin-bottom:10px;border:1px solid rgba(0,0,0,.04)">
+            <div style="height:72px;background:linear-gradient(135deg,#2d4a3a,#4a6a50);position:relative"><div style="position:absolute;bottom:6px;left:8px;font-size:.42rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--red);background:rgba(250,248,244,.9);padding:2px 6px;border-radius:3px">The Local</div></div>
+            <div style="padding:10px 12px">
+              <div class="reel-hl">Krankenkasse premiums confirmed to rise in January. Average: €18-25/month.</div>
+              <div style="background:rgba(192,57,43,.04);border-radius:8px;padding:8px 10px;margin:6px 0">
+                <div style="font-size:.62rem;color:var(--why);line-height:1.4">Check your December Krankenkasse letter. Most plans adjust in January. If you're on TK or AOK, the increase is at the higher end.</div>
+              </div>
+              <div class="reel-meta"><div><span class="reel-src">The Local</span> <span class="reel-time">2h ago</span></div><div class="reel-btns"><span class="reel-btn-read">Read ↗</span><span class="reel-btn-dive">Deep Dive →</span></div></div>
             </div>
-        </div>
-        <div class="hc-story-2">
-            <div class="hc-story-top">
-                <div class="hc-badge">2</div>
-                <span class="hc-src">Guardian · 1h ago</span>
+          </div>
+          <!-- Card 2 -->
+          <div style="background:var(--white);border-radius:14px;overflow:hidden;margin-bottom:10px;border:1px solid rgba(0,0,0,.04)">
+            <div style="height:56px;background:linear-gradient(135deg,#3a4a6a,#5a6a8a);position:relative"><div style="position:absolute;bottom:6px;left:8px;font-size:.42rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--red);background:rgba(250,248,244,.9);padding:2px 6px;border-radius:3px">DW</div></div>
+            <div style="padding:8px 12px">
+              <div style="font-family:Georgia,serif;font-size:.78rem;font-weight:700;line-height:1.15;color:var(--ink);margin-bottom:4px">BVG cuts night bus routes by 22% starting Sunday</div>
+              <div style="background:rgba(192,57,43,.04);border-radius:8px;padding:6px 8px">
+                <div style="font-size:.56rem;color:var(--why);line-height:1.35">If you rely on the N7 or N42, check the new timetable. S-Bahn Ring runs all night on weekends.</div>
+              </div>
             </div>
-            <div class="hc-hl-2">EU passes landmark AI governance framework with teeth</div>
+          </div>
+          <!-- Card 3 (partial, scroll continues) -->
+          <div style="background:var(--white);border-radius:14px 14px 0 0;overflow:hidden;border:1px solid rgba(0,0,0,.04);border-bottom:none">
+            <div style="height:40px;background:linear-gradient(135deg,#4a3a2a,#6a5a4a);position:relative"><div style="position:absolute;bottom:6px;left:8px;font-size:.42rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--red);background:rgba(250,248,244,.9);padding:2px 6px;border-radius:3px">Tagesschau</div></div>
+            <div style="padding:8px 12px 0">
+              <div style="font-family:Georgia,serif;font-size:.78rem;font-weight:700;line-height:1.15;color:var(--ink)">Blue Card salary threshold drops to €41,000</div>
+            </div>
+          </div>
+          <!-- Bottom nav: 4 tabs -->
+          <div class="reel-nav"><span class="reel-nav-item on">Today</span><span class="reel-nav-item">Topics</span><span class="reel-nav-item">Search</span><span class="reel-nav-item">Settings</span></div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 </section>
 
-<!-- Source ticker -->
+<!-- Ticker -->
 <div class="ticker">
-<div class="ticker-track">
-    <span class="ticker-item"><span class="ticker-dot"></span>Reuters</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>The Guardian</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Financial Times</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>New York Times</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>BBC</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Bloomberg</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Deutsche Welle</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Politico</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Euronews</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Al Jazeera</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>CNBC</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Reuters</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>The Guardian</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Financial Times</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>New York Times</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>BBC</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Bloomberg</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Deutsche Welle</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Politico</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Euronews</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Al Jazeera</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>CNBC</span>
-</div>
+  <div class="ticker-track">
+    <div class="ticker-item"><div class="ticker-dot"></div>7 Stories Twice a Day</div>
+    <div class="ticker-item"><div class="ticker-dot"></div>Tells You Why It Matters</div>
+    <div class="ticker-item"><div class="ticker-dot"></div>Germany Focused</div>
+    <div class="ticker-item"><div class="ticker-dot"></div>English Language</div>
+    <div class="ticker-item"><div class="ticker-dot"></div>City Personalized</div>
+    <div class="ticker-item"><div class="ticker-dot"></div>Done in 5 Minutes</div>
+    <div class="ticker-item"><div class="ticker-dot"></div>7 Stories Twice a Day</div>
+    <div class="ticker-item"><div class="ticker-dot"></div>Tells You Why It Matters</div>
+    <div class="ticker-item"><div class="ticker-dot"></div>Germany Focused</div>
+    <div class="ticker-item"><div class="ticker-dot"></div>English Language</div>
+    <div class="ticker-item"><div class="ticker-dot"></div>City Personalized</div>
+    <div class="ticker-item"><div class="ticker-dot"></div>Done in 5 Minutes</div>
+  </div>
 </div>
 
-<!-- Why-line section -->
-<section class="whyline">
-<div class="whyline-top">
-    <h2>The part most news skips.</h2>
-    <p>You read a headline. So what? What does it mean for your rent, your portfolio, your next hiring decision? That's what the why-line answers — and it changes depending on who's reading.</p>
-</div>
-<div class="why-demo">
-    <div class="tab-bar">
-        <button class="tab active" onclick="showTab(0)">Europe</button>
-        <button class="tab" onclick="showTab(1)">United States</button>
-        <button class="tab" onclick="showTab(2)">India</button>
+<!-- How It Works -->
+<section class="how" id="how">
+  <div class="w">
+    <div class="rv">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Four things that make<br>Verityn different.</h2>
     </div>
-
-    <!-- EU -->
-    <div class="tab-panel active" data-tab="0">
-        <div class="why-card">
-            <div class="why-card-top">
-                <div class="hc-badge">1</div>
-                <span class="hc-src">Reuters · 38 min ago</span>
-            </div>
-            <div class="hc-hl" style="font-size:1.2rem">ECB holds rates amid first Bundesbank dissent in 4 years</div>
-        </div>
-        <div class="angle-row">
-            <div class="angle">
-                <div class="angle-who">Berlin · Finance professional</div>
-                <p>Your mortgage rate follows ECB with a 6-week lag. Check fixed-rate options before July.</p>
-            </div>
-            <div class="angle">
-                <div class="angle-who">Mumbai · Tech founder</div>
-                <p>Your euro-denominated funding round just got cheaper. The hold keeps EUR/INR favorable through Q3.</p>
-            </div>
-        </div>
+    <div class="features">
+      <div class="feat wide rv">
+        <div class="feat-num">01</div>
+        <h3><span>"Why it matters to you"</span></h3>
+        <p>Every story comes with a line written for your life in Germany. Not a generic summary. "Your Krankenkasse premium rises €18-25/month. Most plans adjust in January. Watch your December letter." Two sentences. Specific. Practical. That line is the whole product.</p>
+      </div>
+      <div class="feat rv">
+        <div class="feat-num">02</div>
+        <h3><span>Seven stories.</span> Three tiers.</h3>
+        <p>The lead story gets the full treatment: headline, why-line, and a link to the source. Stories 2-4 are "Also Today." Stories 5-7 are "Worth Knowing." A headline and one sentence. You always know what to read first.</p>
+      </div>
+      <div class="feat rv">
+        <div class="feat-num">03</div>
+        <h3><span>Tap "Deep Dive"</span> on anything.</h3>
+        <p>See a story that matters? Tap once and get the full picture: what happened, the background, why it matters, what different sides are saying, and what to watch next. Like asking a friend who actually follows German politics.</p>
+      </div>
+      <div class="feat wide rv">
+        <div class="feat-num">04</div>
+        <h3><span>Your city,</span> not just your country.</h3>
+        <p>Pick Berlin, Munich, Hamburg, or Frankfurt. Verityn pulls local stories from your city. S-Bahn closures, housing rules, Anmeldung changes. Then blends them with nationwide news. 2-3 of your 7 stories come from your city. The rest cover what's happening across Germany.</p>
+      </div>
     </div>
-
-    <!-- US -->
-    <div class="tab-panel" data-tab="1">
-        <div class="why-card">
-            <div class="why-card-top">
-                <div class="hc-badge">2</div>
-                <span class="hc-src">New York Times · 1h ago</span>
-            </div>
-            <div class="hc-hl" style="font-size:1.2rem">US proposes 25% tariff on semiconductor imports from China</div>
-        </div>
-        <div class="angle-row">
-            <div class="angle">
-                <div class="angle-who">San Francisco · Hardware startup</div>
-                <p>Your BOM cost jumps 8-12% by Q4. Talk to your contract manufacturer about locking in current pricing now.</p>
-            </div>
-            <div class="angle">
-                <div class="angle-who">Bangalore · IT services</div>
-                <p>Your US clients will delay hardware purchases. Expect slower deal cycles but more demand for software-only solutions.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- India -->
-    <div class="tab-panel" data-tab="2">
-        <div class="why-card">
-            <div class="why-card-top">
-                <div class="hc-badge">3</div>
-                <span class="hc-src">Economic Times · 2h ago</span>
-            </div>
-            <div class="hc-hl" style="font-size:1.2rem">RBI keeps repo rate at 6% as monsoon forecast stays normal</div>
-        </div>
-        <div class="angle-row">
-            <div class="angle">
-                <div class="angle-who">Delhi · Home buyer</div>
-                <p>Your EMI stays the same through September. If you've been waiting to lock in a home loan, rates won't go lower this cycle.</p>
-            </div>
-            <div class="angle">
-                <div class="angle-who">London · India fund manager</div>
-                <p>Rate stability keeps Indian equities attractive for carry trade. The rupee holds steady, protecting your USD-denominated returns.</p>
-            </div>
-        </div>
-    </div>
-</div>
+  </div>
 </section>
 
-<!-- Features -->
-<section class="features" id="features">
-<div class="features-inner">
-    <h2>The email and the app.</h2>
-    <p>The email is the briefing. The app is where you dig in.</p>
-    <div class="feat-grid">
-        <div class="feat">
-            <div class="feat-icon">01</div>
-            <h3>Morning Briefing</h3>
-            <p>7 stories with why-lines. About 4 minutes to read. Arrives as an email and shows up in the app — same briefing, your choice of format.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-icon">02</div>
-            <h3>Deep Dive</h3>
-            <p>Tap any story in the app. It breaks down what actually happened, why people disagree about it, and what's likely to happen next. One page, no tabs.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-icon">03</div>
-            <h3>Topics</h3>
-            <p>The ECB held rates on Monday. The Bundesbank dissented on Wednesday. Markets moved on Friday. We connect it as one thread instead of three separate headlines.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-icon">04</div>
-            <h3>AI Search</h3>
-            <p>"How does the ECB decision affect my rent?" — type a question, get an answer pulled from actual sources. With links to where the information came from.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-icon">05</div>
-            <h3>Twice a day</h3>
-            <p>Morning edition at 7 AM. Evening update at 6 PM. Nothing in between. If you've read your 7 stories, that's it until the next edition.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-icon">06</div>
-            <h3>That's all it does</h3>
-            <p>No ads. No feed that refreshes when you pull it. The app doesn't want your attention. It wants to give you 7 stories and send you on your way.</p>
-        </div>
+<!-- Two Ways to Read -->
+<section class="ways" id="ways">
+  <div class="w">
+    <div class="rv">
+      <div class="section-label" style="color:var(--gold)">Two ways to read</div>
+      <h2 class="section-title">Newsletter or app.<br>Same 7 stories.</h2>
     </div>
-</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div class="way-card rv">
+        <div class="way-icon">📧</div>
+        <h3>The newsletter</h3>
+        <p>Lands in your inbox at 7am Berlin time. 7 stories with full context. 80-120 words each. German sources translated to English. Read it over coffee, then get on with your day. No app needed.</p>
+      </div>
+      <div class="way-card rv">
+        <div class="way-icon">📱</div>
+        <h3>The app</h3>
+        <p>Same 7 stories, shorter why-lines, plus Deep Dive, topic tracking, and search. Swipe through the reel, tap anything to go deeper. Updates every morning. Available on iOS, Android coming soon.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Numbers -->
-<section class="numbers" id="how">
-<h2>How it works</h2>
-<div class="num-grid">
-    <div class="num-item">
-        <div class="big">100+</div>
-        <div class="label">Sources read</div>
-    </div>
-    <div class="num-item">
-        <div class="big">7</div>
-        <div class="label">Stories picked</div>
-    </div>
-    <div class="num-item">
-        <div class="big">1</div>
-        <div class="label">Why-line each</div>
-    </div>
-    <div class="num-item">
-        <div class="big">4 min</div>
-        <div class="label">Then you're done</div>
-    </div>
-</div>
+<section class="nums rv">
+  <div class="w">
+    <div class="num-item"><div class="num-val">265</div><div class="num-lbl">Articles scraped every 3 hours</div></div>
+    <div class="num-item"><div class="num-val">7</div><div class="num-lbl">Stories that make it to you</div></div>
+    <div class="num-item"><div class="num-val"><span>&lt;</span>5m</div><div class="num-lbl">To read the whole briefing</div></div>
+    <div class="num-item"><div class="num-val">4</div><div class="num-lbl">Cities with local stories</div></div>
+  </div>
 </section>
 
-<!-- Bottom CTA -->
-<section class="cta-section" id="get">
-<h2>Tomorrow morning, 7 AM.</h2>
-<p>Email or app. Same briefing, free either way.</p>
-<div class="cta-choices">
-    <div class="cta-box">
-        <h3>Email briefing</h3>
-        <p class="sub">7 stories in your inbox every morning.</p>
-        <div class="form-row-s">
-            <input type="email" id="email-bottom" placeholder="you@email.com">
-            <button onclick="subscribe('bottom')">Subscribe</button>
-        </div>
-        <p class="form-msg" id="msg-bottom"></p>
+
+<!-- App Download -->
+<section class="app-dl" id="app" style="padding:80px 0;background:var(--cream)">
+  <div class="w rv" style="text-align:center">
+    <div class="section-label">Download the app</div>
+    <h2 class="section-title" style="margin-left:auto;margin-right:auto;max-width:none">Read on the go.<br>Same 7 stories.</h2>
+    <p style="font-size:.92rem;line-height:1.7;color:var(--ink-80);max-width:440px;margin:0 auto 28px">The newsletter gives you the briefing. The app gives you Deep Dive, topic tracking, AI search, and city-level stories. Both free.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center">
+      <a href="https://apps.apple.com/app/verityn" target="_blank" rel="noopener" style="display:inline-block;transition:transform .2s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" style="height:52px">
+      </a>
+      <div style="position:relative;display:inline-block;opacity:.45">
+        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" style="height:76px">
+        <span style="position:absolute;top:4px;right:-4px;background:var(--red);color:var(--cream);font-size:.48rem;font-weight:700;padding:3px 8px;border-radius:10px;letter-spacing:.04em">SOON</span>
+      </div>
     </div>
-    <div class="cta-box">
-        <h3>The app</h3>
-        <p class="sub">Briefing + Deep Dive, Topics, AI Search.</p>
-        <div class="app-links-col" style="display:flex;flex-direction:column;align-items:center;gap:10px">
-            <a href="https://apps.apple.com/app/verityn/id6763644319" target="_blank" style="background:none;padding:0;display:block"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" style="height:38px"></a>
-            <a href="https://play.google.com/store/apps/details?id=com.verityn.app" target="_blank" style="background:none;padding:0;display:block"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" style="height:56px;margin:-9px 0"></a>
-        </div>
-    </div>
-</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-s" id="cta">
+  <div class="w rv">
+    <div class="section-label" style="text-align:center">Get started</div>
+    <h2 class="section-title" style="text-align:center;max-width:none">Tomorrow morning, 7am.<br>Your first briefing.</h2>
+    <p class="cta-desc">Drop your email. We'll send you 7 stories about Germany every morning. In English, in plain language, with a line on each one telling you why it matters to your life here. No spam. Unsubscribe anytime.</p>
+    <form class="wl-form" id="wlForm" onsubmit="return submitWaitlist(event)">
+      <input class="wl-input" type="email" placeholder="you@example.com" required id="wlEmail">
+      <button class="wl-btn" type="submit" id="wlBtn">Subscribe</button>
+    </form>
+    <p class="wl-note" id="wlNote">Free. No account needed.</p>
+  </div>
 </section>
 
 <!-- Footer -->
 <footer>
-    <p>© 2026 Verityn · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="https://instagram.com/verityn.news" target="_blank">Instagram</a> · <a href="mailto:hello@verityn.news">hello@verityn.news</a></p>
+  <div class="w">
+    <div class="ft-top">
+      <div>
+        <a href="#" class="n-logo" style="text-decoration:none"><span class="n-v">V</span><span class="n-word" style="color:var(--cream)">erityn</span></a>
+        <div class="ft-tag">Germany news, briefed daily for English speakers.</div>
+      </div>
+      <div class="ft-links">
+        <div class="ft-col"><h4>Product</h4><a href="#how">How it works</a><a href="#ways">The brief</a><a href="#cta">Subscribe</a></div>
+        <div class="ft-col"><h4>Legal</h4><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></div>
+        <div class="ft-col"><h4>Connect</h4><a href="https://instagram.com/verityn.news" target="_blank">Instagram</a><a href="#" class="eml" data-e="hello">loading...</a></div>
+      </div>
+    </div>
+    <div class="ft-div"></div>
+    <div class="ft-bot">
+      <span>&copy; 2026 Verityn</span>
+      <span>Made in Berlin</span>
+    </div>
+  </div>
 </footer>
 
 <script>
-function showTab(idx) {
-    document.querySelectorAll('.tab').forEach(function(t, i) {
-        t.classList.toggle('active', i === idx);
-    });
-    document.querySelectorAll('.tab-panel').forEach(function(p) {
-        p.classList.toggle('active', p.getAttribute('data-tab') == idx);
-    });
-}
+  // Preloader
+  window.addEventListener('load',()=>{const p=document.getElementById('pre');if(p){setTimeout(()=>p.classList.add('done'),1200)}});
 
-function getRegion() {
-    try {
-        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
-        if (/Europe|Africa/.test(tz)) return 'eu';
-        if (/America/.test(tz)) return 'us';
-        if (/Asia\/(Kolkata|Calcutta|Mumbai|Delhi|Chennai|Colombo|Dhaka|Karachi)/.test(tz)) return 'india';
-        if (/Asia/.test(tz)) return 'asia';
-        return 'global';
-    } catch (e) { return 'global'; }
-}
+  // Nav scroll
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>30)},{passive:true});
 
-async function subscribe(pos) {
-    var input = document.getElementById('email-' + pos);
-    var msg = document.getElementById('msg-' + pos);
-    var email = input.value.trim();
-    if (!email || !email.includes('@')) {
-        msg.textContent = 'Enter a valid email.';
-        msg.className = 'form-msg err';
-        return;
+  // Scroll reveal
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}})},{threshold:.15});
+  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+  // Email obfuscation
+  const d='verityn.news';document.querySelectorAll('.eml').forEach(a=>{const u=a.getAttribute('data-e')+'@'+d;a.href='mail'+'to:'+u;a.textContent=u});
+
+  // Waitlist
+  async function submitWaitlist(e){
+    e.preventDefault();
+    const email=document.getElementById('wlEmail').value;
+    const btn=document.getElementById('wlBtn');
+    const note=document.getElementById('wlNote');
+    btn.disabled=true;btn.textContent='Sending...';
+    try{
+      const r=await fetch('https://verityn-backend-ten.vercel.app/api/waitlist',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});
+      const d=await r.json();
+      if(r.ok){
+        document.getElementById('wlForm').innerHTML='<div class="wl-success">You\'re in. First briefing arrives tomorrow at 7am Berlin time.</div>';
+      }else{
+        note.innerHTML='<span class="wl-error">'+(d.error||'Something went wrong. Try again.')+'</span>';
+        btn.disabled=false;btn.textContent='Subscribe';
+      }
+    }catch(err){
+      note.innerHTML='<span class="wl-error">Connection error. Try again.</span>';
+      btn.disabled=false;btn.textContent='Subscribe';
     }
-    var btn = input.parentElement.querySelector('button');
-    btn.disabled = true;
-    btn.textContent = 'One sec...';
-    var tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch(e) {}
-    var region = getRegion();
-    try {
-        var r = await fetch('https://verityn-backend-ten.vercel.app/api/newsletter?action=subscribe', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email, timezone: tz, region: region })
-        });
-        var d = await r.json();
-        if (d.ok) {
-            msg.textContent = d.already ? "Already subscribed. Tomorrow morning." : "Done. First briefing arrives tomorrow at 7 AM.";
-            msg.className = 'form-msg ok';
-            input.value = '';
-        } else {
-            msg.textContent = d.error || 'Something went wrong.';
-            msg.className = 'form-msg err';
-        }
-    } catch (e) {
-        msg.textContent = 'Connection error. Try again.';
-        msg.className = 'form-msg err';
-    }
-    btn.disabled = false;
-    btn.textContent = pos === 'top' ? 'Get the briefing' : 'Subscribe';
-}
+    return false;
+  }
 </script>
 </body>
 </html>
